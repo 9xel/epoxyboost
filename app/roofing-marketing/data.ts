@@ -1,6 +1,6 @@
 export const IMG = {
-  logo: "https://hookagency.com/wp-content/uploads/2024/10/hook-agency-logo-thick.svg",
-  hero: "https://hookagency.com/wp-content/uploads/2024/10/hook-better-leads-roofing-marketing-hook-agency-e1728525938371.jpg",
+  logo: "/epoxyboost-logo.svg",
+  hero: "/images/IMG_0745 (2).webp",
   websitesIcon:
     "https://hookagency.com/wp-content/uploads/2024/09/websites-icon-large-green.svg",
   seoIcon:

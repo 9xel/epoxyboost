@@ -39,3 +39,7 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+# original photos — never commit; convert to WebP in public/images/ instead
+/assets/originals/*
+!/assets/originals/.gitkeep

@@ -4,6 +4,7 @@ import Link from "next/link";
 import { useEffect, useRef, useState } from "react";
 import { IMG, navLinks, type NavLink } from "../data";
 import { HookImg } from "./HookImg";
+import { LaunchPromoBar } from "./LaunchPromoBar";
 import { MobileNav } from "./MobileNav";
 
 function MegaDropdown({ link }: { link: NavLink }) {
@@ -73,6 +74,7 @@ function MegaDropdown({ link }: { link: NavLink }) {
 export function SiteHeader() {
   return (
     <header id="wrapper-navbar" className="hook-header">
+      <LaunchPromoBar />
       <nav
         id="main-nav"
         className="mx-auto flex max-w-[1400px] items-center justify-between gap-4 px-4 py-3 lg:px-8 lg:py-4"

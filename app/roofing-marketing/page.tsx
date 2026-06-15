@@ -2,6 +2,8 @@ import Image from "next/image";
 import { CaseStudiesCarousel } from "./components/CaseStudiesCarousel";
 import { FaqAccordion } from "./components/FaqAccordion";
 import { FullStrategyBreakdown } from "./components/FullStrategyBreakdown";
+import { EyebrowComparisonSection } from "./components/EyebrowComparisonSection";
+import { HeroQuoteFormSection } from "./components/HeroQuoteFormSection";
 import { HeroSection } from "./components/HeroSection";
 import { HookImg } from "./components/HookImg";
 import { LogoCarousel } from "./components/LogoCarousel";
@@ -16,6 +18,8 @@ export default function RoofingMarketingPage() {
     <>
       <SiteHeader />
       <HeroSection />
+      <HeroQuoteFormSection />
+      <EyebrowComparisonSection />
       <FullStrategyBreakdown />
 
       <section className="bg-[var(--hook-dark)] px-4 py-16 text-white lg:px-8 lg:py-24">

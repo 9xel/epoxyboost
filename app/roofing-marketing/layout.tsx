@@ -5,7 +5,7 @@ import "./hook-theme.css";
 const nunitoSans = Nunito_Sans({
   variable: "--font-hook-body",
   subsets: ["latin"],
-  weight: ["400", "600", "700", "800"],
+  weight: ["400", "600", "700", "800", "900"],
 });
 
 const robotoSlab = Roboto_Slab({
