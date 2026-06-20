@@ -3,6 +3,7 @@
 import Link from "next/link";
 import { useEffect, useRef, useState } from "react";
 import { IMG, navLinks, type NavLink } from "../data";
+import { PhoneIcon } from "./PhoneIcon";
 import { SiteImg } from "./SiteImg";
 import { LaunchPromoBar } from "./LaunchPromoBar";
 import { MobileNav } from "./MobileNav";
@@ -102,30 +103,18 @@ export function SiteHeader() {
             className="flex items-center gap-2 text-sm font-bold text-white lg:hidden"
             aria-label="Give us a call"
           >
-            <SiteImg
-              src={IMG.callIcon}
-              alt=""
-              width={20}
-              height={20}
-              className="h-5 w-5"
-            />
+            <PhoneIcon />
             <span className="hidden sm:inline">Call</span>
           </a>
           <a
             href="tel:612-772-9555"
             className="phone-link hidden items-center gap-2 text-sm font-bold text-white lg:flex"
           >
-            <SiteImg
-              src={IMG.callIcon}
-              alt=""
-              width={20}
-              height={20}
-              className="h-5 w-5"
-            />
+            <PhoneIcon />
             612-772-9555
           </a>
           <a href="#contact" className="btn--big solid--lime hidden shrink-0 sm:inline-flex">
-            Schedule Intro Call
+            Claim My City
           </a>
           <MobileNav />
         </div>

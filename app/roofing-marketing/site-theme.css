@@ -56,9 +56,9 @@
   color: var(--eb-black);
 }
 
-.eb-page--high-contrast .hero-form-card,
-.eb-page--high-contrast .hero-form-card__heading,
-.eb-page--high-contrast .hero-form__input {
+.eb-page--high-contrast .hero-form-card:not(.hero-form-card--premium),
+.eb-page--high-contrast .hero-form-card:not(.hero-form-card--premium) .hero-form-card__heading,
+.eb-page--high-contrast .hero-form-card:not(.hero-form-card--premium) .hero-form__input {
   color: var(--eb-black);
 }
 

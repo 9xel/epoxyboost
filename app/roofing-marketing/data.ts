@@ -10,7 +10,6 @@ export const IMG = {
   process: pic("eb-process", 768, 763),
   youtube: pic("eb-youtube", 640, 360),
   skydiver: pic("eb-skydiver", 1200, 800),
-  callIcon: pic("eb-call-icon", 20, 20),
   pinIcon: pic("eb-pin-icon", 20, 20),
   introCall: pic("eb-intro-call", 280, 200),
   sydnee: pic("eb-sydnee", 56, 56),

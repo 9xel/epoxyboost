@@ -5,6 +5,7 @@ import { FullStrategyBreakdown } from "./components/FullStrategyBreakdown";
 import { EyebrowComparisonSection } from "./components/EyebrowComparisonSection";
 import { HeroQuoteFormSection } from "./components/HeroQuoteFormSection";
 import { HeroSection } from "./components/HeroSection";
+import { PhoneIcon } from "./components/PhoneIcon";
 import { SiteImg } from "./components/SiteImg";
 import { LogoCarousel } from "./components/LogoCarousel";
 import { ResourcesCarousel } from "./components/ResourcesCarousel";
@@ -299,7 +300,7 @@ export default function RoofingMarketingPage() {
               className="h-10 w-auto brightness-0 invert"
             />
             <a href="tel:612-772-9555" className="flex items-center gap-2 text-sm font-bold">
-              <SiteImg src={IMG.callIcon} alt="" width={20} height={20} className="h-5 w-5" />
+              <PhoneIcon />
               Give Us a Call: 612-772-9555
             </a>
             <p className="flex items-start gap-2 text-sm text-white/70">

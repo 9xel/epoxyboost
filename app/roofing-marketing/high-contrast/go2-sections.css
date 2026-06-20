@@ -693,6 +693,21 @@
   color: var(--eb-lime);
 }
 
+.eb-page--high-contrast .hero-quote-section__grid {
+  align-items: start;
+}
+
+.eb-page--high-contrast .hero-quote-section__form .hero-form-card--premium {
+  background: var(--hc-card-bg);
+  border: 1px solid var(--hc-card-border);
+  color: var(--eb-white);
+}
+
+.eb-page--high-contrast .hero-quote-section__form .hero-form-card--premium .hero-form-card__subheading,
+.eb-page--high-contrast .hero-quote-section__form .hero-form-card--premium .hero-form__trust-line {
+  color: rgba(255, 255, 255, 0.68);
+}
+
 .eb-page--high-contrast .hc-post-hero .eb-card-shadow,
 .eb-page--high-contrast .hc-post-hero article.rounded.bg-white,
 .eb-page--high-contrast .hc-post-hero article.rounded.border {

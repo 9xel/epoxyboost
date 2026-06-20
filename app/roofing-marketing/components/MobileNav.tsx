@@ -3,6 +3,7 @@
 import Link from "next/link";
 import { useEffect, useState } from "react";
 import { IMG, navLinks } from "../data";
+import { PhoneIcon } from "./PhoneIcon";
 import { SiteImg } from "./SiteImg";
 
 export function MobileNav() {
@@ -141,13 +142,7 @@ export function MobileNav() {
             href="tel:612-772-9555"
             className="flex items-center justify-center gap-2 text-sm font-bold"
           >
-            <SiteImg
-              src={IMG.callIcon}
-              alt=""
-              width={20}
-              height={20}
-              className="h-5 w-5"
-            />
+            <PhoneIcon />
             612-772-9555
           </a>
           <a
