@@ -1,6 +1,6 @@
 import Image from "next/image";
 
-export function HookImg({
+export function SiteImg({
   src,
   alt,
   className,

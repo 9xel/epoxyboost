@@ -42,7 +42,7 @@ export function FaqAccordion() {
                 {faq.question}
               </span>
               <span
-                className={`flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-[var(--hook-lime)] text-black transition-transform ${isOpen ? "rotate-180" : ""}`}
+                className={`flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-[var(--eb-lime)] text-black transition-transform ${isOpen ? "rotate-180" : ""}`}
               >
                 ▲
               </span>

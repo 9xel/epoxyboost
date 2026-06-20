@@ -5,5 +5,5 @@ export default function HighContrastLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-  return <div className="hook-page--high-contrast">{children}</div>;
+  return <div className="eb-page--high-contrast">{children}</div>;
 }

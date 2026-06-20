@@ -31,12 +31,12 @@ export function HeroSection() {
         />
       </picture>
 
-      <div className="hook-container">
-        <div className="hook-row hero-row">
-          <div className="hook-col">
+      <div className="eb-container">
+        <div className="eb-row hero-row">
+          <div className="eb-col">
             <div className="hero-content">
               <header>
-                <p className="hero-eyebrow">WE KNOW EPOXY</p>
+                <p className="hero-eyebrow">WE KNOW EPOXY + HOW TO GROW YOUR BRAND</p>
                 <h1 className="hero-headline">
                   WE ARE ACCEPTING 3 EPOXY CONTRACTORS WHO ARE READY TO OWN THEIR
                   CITY.

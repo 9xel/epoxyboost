@@ -3,7 +3,7 @@
 import Link from "next/link";
 import { useEffect, useRef, useState } from "react";
 import { IMG, navLinks, type NavLink } from "../data";
-import { HookImg } from "./HookImg";
+import { SiteImg } from "./SiteImg";
 import { LaunchPromoBar } from "./LaunchPromoBar";
 import { MobileNav } from "./MobileNav";
 
@@ -24,7 +24,7 @@ function MegaDropdown({ link }: { link: NavLink }) {
   if (!link.children?.length) {
     return (
       <li className="nav-item">
-        <a href={link.href} className="hook-nav-link">
+        <a href={link.href} className="eb-nav-link">
           {link.label}
         </a>
       </li>
@@ -40,7 +40,7 @@ function MegaDropdown({ link }: { link: NavLink }) {
     >
       <button
         type="button"
-        className="hook-nav-link flex items-center gap-1"
+        className="eb-nav-link flex items-center gap-1"
         aria-expanded={open}
         onClick={() => setOpen((v) => !v)}
       >
@@ -51,13 +51,13 @@ function MegaDropdown({ link }: { link: NavLink }) {
       </button>
 
       {open && (
-        <div className="hook-mega-menu absolute left-1/2 top-full z-50 mt-2 w-[min(720px,calc(100vw-2rem))] -translate-x-1/2 rounded-lg border border-white/10 bg-[#1a1a1a] p-4 shadow-2xl">
+        <div className="eb-mega-menu absolute left-1/2 top-full z-50 mt-2 w-[min(720px,calc(100vw-2rem))] -translate-x-1/2 rounded-lg border border-white/10 bg-[#1a1a1a] p-4 shadow-2xl">
           <ul className="grid gap-2 sm:grid-cols-2">
             {link.children.map((child) => (
               <li key={child.label}>
                 <a
                   href={child.href}
-                  className="block rounded px-3 py-2 text-sm font-semibold text-white/90 transition hover:bg-white/10 hover:text-[var(--hook-lime)]"
+                  className="block rounded px-3 py-2 text-sm font-semibold text-white/90 transition hover:bg-white/10 hover:text-[var(--eb-lime)]"
                   onClick={() => setOpen(false)}
                 >
                   {child.label}
@@ -73,7 +73,7 @@ function MegaDropdown({ link }: { link: NavLink }) {
 
 export function SiteHeader() {
   return (
-    <header id="wrapper-navbar" className="hook-header">
+    <header id="wrapper-navbar" className="eb-header">
       <LaunchPromoBar />
       <nav
         id="main-nav"
@@ -81,9 +81,9 @@ export function SiteHeader() {
         aria-label="Main Navigation"
       >
         <Link href="/roofing-marketing" className="shrink-0">
-          <HookImg
+          <SiteImg
             src={IMG.logo}
-            alt="Hook Agency"
+            alt="EpoxyBoost"
             width={156}
             height={34}
             className="h-auto w-[140px] xl:w-[156px]"
@@ -102,7 +102,7 @@ export function SiteHeader() {
             className="flex items-center gap-2 text-sm font-bold text-white lg:hidden"
             aria-label="Give us a call"
           >
-            <HookImg
+            <SiteImg
               src={IMG.callIcon}
               alt=""
               width={20}
@@ -115,7 +115,7 @@ export function SiteHeader() {
             href="tel:612-772-9555"
             className="phone-link hidden items-center gap-2 text-sm font-bold text-white lg:flex"
           >
-            <HookImg
+            <SiteImg
               src={IMG.callIcon}
               alt=""
               width={20}

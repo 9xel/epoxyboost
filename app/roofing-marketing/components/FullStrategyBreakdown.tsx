@@ -21,7 +21,7 @@ export function FullStrategyBreakdown() {
   return (
     <section
       id="full-strategy-breakdown"
-      className="scroll-mt-24 bg-[var(--hook-gray)] px-4 py-16 lg:px-8 lg:py-20"
+      className="scroll-mt-24 bg-[var(--eb-gray)] px-4 py-16 lg:px-8 lg:py-20"
       aria-labelledby="full-strategy-heading"
     >
       <div className="mx-auto max-w-3xl">
@@ -32,7 +32,7 @@ export function FullStrategyBreakdown() {
           The Full Scale Strategy &amp; Breakdown
         </h2>
 
-        <p className="mt-6 text-base leading-7 text-[var(--hook-muted)]">
+        <p className="mt-6 text-base leading-7 text-[var(--eb-muted)]">
           We are recruiting 3 top-tier epoxy contractors who already do flawless
           work, have great reviews, and want to completely dominate their local market
           to join our Premier Launch. We will deploy a fully loaded, high-converting

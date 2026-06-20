@@ -5,7 +5,7 @@ import { FullStrategyBreakdown } from "./components/FullStrategyBreakdown";
 import { EyebrowComparisonSection } from "./components/EyebrowComparisonSection";
 import { HeroQuoteFormSection } from "./components/HeroQuoteFormSection";
 import { HeroSection } from "./components/HeroSection";
-import { HookImg } from "./components/HookImg";
+import { SiteImg } from "./components/SiteImg";
 import { LogoCarousel } from "./components/LogoCarousel";
 import { ResourcesCarousel } from "./components/ResourcesCarousel";
 import { ServicesCarousel } from "./components/ServicesCarousel";
@@ -22,10 +22,10 @@ export default function RoofingMarketingPage() {
       <EyebrowComparisonSection />
       <FullStrategyBreakdown />
 
-      <section className="bg-[var(--hook-dark)] px-4 py-16 text-white lg:px-8 lg:py-24">
+      <section className="bg-[var(--eb-dark)] px-4 py-16 text-white lg:px-8 lg:py-24">
         <div className="mx-auto max-w-7xl">
           <h2 className="text-center text-3xl font-extrabold md:text-4xl lg:text-5xl">
-            Hook Better Leads With Our Services
+            EpoxyBoost Better Leads With Our Services
           </h2>
           <ServicesCarousel />
         </div>
@@ -38,19 +38,19 @@ export default function RoofingMarketingPage() {
           <h2 className="text-3xl font-extrabold uppercase tracking-wide md:text-4xl">
             We&apos;re Out Here Learning
           </h2>
-          <p className="mt-6 text-base leading-8 text-[var(--hook-muted)]">
+          <p className="mt-6 text-base leading-8 text-[var(--eb-muted)]">
             We have a bunch of roofing contractors that trust us to do their digital
             marketing to drive leads, because we&apos;ve demonstrated a commitment to
             this industry.
           </p>
-          <p className="mt-4 text-base leading-8 text-[var(--hook-muted)]">
+          <p className="mt-4 text-base leading-8 text-[var(--eb-muted)]">
             Watch us roof a house with a client and learn about the biggest mistakes
             along the way
           </p>
           <h3 className="mt-8 text-xl font-extrabold">
             Stop Wasting Money, Start With What Works (Even If You&apos;re Under $1M)
           </h3>
-          <p className="mt-4 text-sm leading-7 text-[var(--hook-muted)]">
+          <p className="mt-4 text-sm leading-7 text-[var(--eb-muted)]">
             The best roofing marketing strategies don&apos;t always start with an
             agency — they start with you. Use low-cost, high-impact tactics like branded
             yard signs, truck wraps, and fully optimized Google Business Profiles.
@@ -70,18 +70,18 @@ export default function RoofingMarketingPage() {
             className="w-full object-cover transition-transform group-hover:scale-[1.02]"
           />
           <span className="absolute inset-0 flex items-center justify-center bg-black/20">
-            <span className="flex h-16 w-16 items-center justify-center rounded-full bg-[var(--hook-lime)] text-2xl text-black">
+            <span className="flex h-16 w-16 items-center justify-center rounded-full bg-[var(--eb-lime)] text-2xl text-black">
               ▶
             </span>
           </span>
         </a>
       </section>
 
-      <section className="bg-[var(--hook-gray)] px-4 py-16 lg:px-8">
+      <section className="bg-[var(--eb-gray)] px-4 py-16 lg:px-8">
         <div className="mx-auto grid max-w-7xl gap-8 md:grid-cols-3">
           {values.map((value) => (
             <article key={value.title} className="rounded bg-white p-8 text-center">
-              <HookImg
+              <SiteImg
                 src={value.icon}
                 alt=""
                 width={48}
@@ -89,7 +89,7 @@ export default function RoofingMarketingPage() {
                 className="mx-auto h-12 w-12"
               />
               <h3 className="mt-6 text-lg font-extrabold">{value.title}</h3>
-              <p className="mt-4 text-sm leading-7 text-[var(--hook-muted)]">
+              <p className="mt-4 text-sm leading-7 text-[var(--eb-muted)]">
                 {value.text}
               </p>
             </article>
@@ -97,11 +97,11 @@ export default function RoofingMarketingPage() {
         </div>
       </section>
 
-      <section className="bg-[var(--hook-lime)] px-4 py-12 lg:px-8">
+      <section className="bg-[var(--eb-lime)] px-4 py-12 lg:px-8">
         <div className="mx-auto grid max-w-7xl gap-8 text-center md:grid-cols-3">
           <div>
-            <HookImg
-              src="https://hookagency.com/wp-content/uploads/2024/09/Google-Logo-white.svg"
+            <SiteImg
+              src={IMG.googleLogo}
               alt="Google"
               width={80}
               height={28}
@@ -130,48 +130,48 @@ export default function RoofingMarketingPage() {
         </div>
       </section>
 
-      <section id="contact" className="bg-[var(--hook-gray)] px-4 py-16 lg:px-8 lg:py-24">
+      <section id="contact" className="bg-[var(--eb-gray)] px-4 py-16 lg:px-8 lg:py-24">
         <div className="mx-auto grid max-w-7xl gap-12 lg:grid-cols-2">
           <div>
             <h2 className="text-3xl font-extrabold uppercase md:text-4xl">
               Contact Us To Set Up A Brief Intro Call!
             </h2>
-            <p className="mt-6 text-base leading-8 text-[var(--hook-muted)]">
+            <p className="mt-6 text-base leading-8 text-[var(--eb-muted)]">
               Let&apos;s talk about how using a niched agency will get you more leads.{" "}
               <strong>Just a heads up</strong> – we are usually the best fit for
               growth-mode contractors over 2M+ because of the significant investment
               required.
             </p>
           </div>
-          <form className="hook-card-shadow space-y-4 rounded bg-white p-8">
+          <form className="eb-card-shadow space-y-4 rounded bg-white p-8">
             <div className="grid gap-4 sm:grid-cols-2">
               <input
                 placeholder="First Name *"
-                className="rounded border border-[#ccc] px-4 py-3 text-sm outline-none focus:border-[var(--hook-green)]"
+                className="rounded border border-[#ccc] px-4 py-3 text-sm outline-none focus:border-[var(--eb-green)]"
               />
               <input
                 placeholder="Last Name *"
-                className="rounded border border-[#ccc] px-4 py-3 text-sm outline-none focus:border-[var(--hook-green)]"
+                className="rounded border border-[#ccc] px-4 py-3 text-sm outline-none focus:border-[var(--eb-green)]"
               />
             </div>
             <input
               placeholder="Phone *"
-              className="w-full rounded border border-[#ccc] px-4 py-3 text-sm outline-none focus:border-[var(--hook-green)]"
+              className="w-full rounded border border-[#ccc] px-4 py-3 text-sm outline-none focus:border-[var(--eb-green)]"
             />
             <input
               placeholder="Email *"
-              className="w-full rounded border border-[#ccc] px-4 py-3 text-sm outline-none focus:border-[var(--hook-green)]"
+              className="w-full rounded border border-[#ccc] px-4 py-3 text-sm outline-none focus:border-[var(--eb-green)]"
             />
             <input
               placeholder="Business Name *"
-              className="w-full rounded border border-[#ccc] px-4 py-3 text-sm outline-none focus:border-[var(--hook-green)]"
+              className="w-full rounded border border-[#ccc] px-4 py-3 text-sm outline-none focus:border-[var(--eb-green)]"
             />
             <textarea
               placeholder="Message *"
               rows={4}
-              className="w-full rounded border border-[#ccc] px-4 py-3 text-sm outline-none focus:border-[var(--hook-green)]"
+              className="w-full rounded border border-[#ccc] px-4 py-3 text-sm outline-none focus:border-[var(--eb-green)]"
             />
-            <button type="button" className="hook-btn-primary w-full px-6 py-4 text-sm uppercase">
+            <button type="button" className="eb-btn-primary w-full px-6 py-4 text-sm uppercase">
               Get in Touch
             </button>
           </form>
@@ -191,7 +191,7 @@ export default function RoofingMarketingPage() {
                 "Monthly reporting rhythm",
               ].map((step, i) => (
                 <li key={step} className="flex gap-3">
-                  <span className="flex h-8 w-8 items-center justify-center rounded-full bg-[var(--hook-lime)] text-sm font-bold">
+                  <span className="flex h-8 w-8 items-center justify-center rounded-full bg-[var(--eb-lime)] text-sm font-bold">
                     {i + 1}
                   </span>
                   {step}
@@ -209,13 +209,13 @@ export default function RoofingMarketingPage() {
         </div>
       </section>
 
-      <section className="bg-[var(--hook-gray)] px-4 py-16 lg:px-8">
+      <section className="bg-[var(--eb-gray)] px-4 py-16 lg:px-8">
         <CaseStudiesCarousel />
       </section>
 
-      <section className="bg-[var(--hook-dark)] px-4 py-16 text-white lg:px-8 lg:py-24">
+      <section className="bg-[var(--eb-dark)] px-4 py-16 text-white lg:px-8 lg:py-24">
         <div className="mx-auto max-w-4xl">
-          <p className="text-center text-sm font-bold uppercase tracking-[0.2em] text-[var(--hook-lime)]">
+          <p className="text-center text-sm font-bold uppercase tracking-[0.2em] text-[var(--eb-lime)]">
             FAQs
           </p>
           <h2 className="mt-3 text-center text-3xl font-extrabold md:text-4xl">
@@ -231,12 +231,12 @@ export default function RoofingMarketingPage() {
         <div className="mx-auto max-w-7xl">
           <div className="flex flex-col items-start justify-between gap-4 md:flex-row md:items-center">
             <div>
-              <p className="text-sm font-bold uppercase tracking-[0.2em] text-[var(--hook-muted)]">
+              <p className="text-sm font-bold uppercase tracking-[0.2em] text-[var(--eb-muted)]">
                 Helpful Resources
               </p>
               <h2 className="mt-2 text-3xl font-extrabold">Check Out Our Top Resources</h2>
             </div>
-            <span className="hook-btn-outline px-6 py-3 text-sm uppercase">
+            <span className="eb-btn-outline px-6 py-3 text-sm uppercase">
               View All Articles
             </span>
           </div>
@@ -246,7 +246,7 @@ export default function RoofingMarketingPage() {
 
       <LogoCarousel logos={partnerLogos} />
 
-      <section className="relative overflow-hidden bg-[var(--hook-dark)] px-4 py-20 text-white lg:px-8">
+      <section className="relative overflow-hidden bg-[var(--eb-dark)] px-4 py-20 text-white lg:px-8">
         <div className="absolute inset-0 opacity-30">
           {/* eslint-disable-next-line @next/next/no-img-element */}
           <img src={IMG.skydiver} alt="" className="h-full w-full object-cover" />
@@ -273,12 +273,12 @@ export default function RoofingMarketingPage() {
             </div>
             <a
               href="#contact"
-              className="hook-btn-primary mt-8 inline-block px-8 py-4 text-sm uppercase"
+              className="eb-btn-primary mt-8 inline-block px-8 py-4 text-sm uppercase"
             >
               Schedule Intro Call
             </a>
           </div>
-          <HookImg
+          <SiteImg
             src={IMG.introCall}
             alt="Schedule a Free 20-Minute Consultation"
             width={280}
@@ -288,22 +288,22 @@ export default function RoofingMarketingPage() {
         </div>
       </section>
 
-      <footer className="bg-[var(--hook-dark)] px-4 py-16 text-white lg:px-8">
+      <footer className="bg-[var(--eb-dark)] px-4 py-16 text-white lg:px-8">
         <div className="mx-auto grid max-w-7xl gap-10 md:grid-cols-2 lg:grid-cols-4">
           <div className="space-y-6">
-            <HookImg
+            <SiteImg
               src={IMG.logo}
-              alt="Hook Agency"
+              alt="EpoxyBoost"
               width={180}
               height={40}
               className="h-10 w-auto brightness-0 invert"
             />
             <a href="tel:612-772-9555" className="flex items-center gap-2 text-sm font-bold">
-              <HookImg src={IMG.callIcon} alt="" width={20} height={20} className="h-5 w-5" />
+              <SiteImg src={IMG.callIcon} alt="" width={20} height={20} className="h-5 w-5" />
               Give Us a Call: 612-772-9555
             </a>
             <p className="flex items-start gap-2 text-sm text-white/70">
-              <HookImg src={IMG.pinIcon} alt="" width={20} height={20} className="mt-0.5 h-5 w-5" />
+              <SiteImg src={IMG.pinIcon} alt="" width={20} height={20} className="mt-0.5 h-5 w-5" />
               600 N Washington Ave Suite C203, Minneapolis, MN 55401
             </p>
           </div>
@@ -312,7 +312,7 @@ export default function RoofingMarketingPage() {
             <ul className="mt-4 space-y-2 text-sm text-white/70">
               <li>Process</li>
               <li>Founder</li>
-              <li>About Hook</li>
+              <li>About EpoxyBoost</li>
             </ul>
           </div>
           <div>
@@ -333,7 +333,7 @@ export default function RoofingMarketingPage() {
           </div>
         </div>
         <p className="mx-auto mt-12 max-w-7xl border-t border-white/10 pt-8 text-center text-sm text-white/50">
-          © Copyright 2026 Hook Agency. Visual clone for demonstration purposes.
+          © Copyright 2026 EpoxyBoost. Visual clone for demonstration purposes.
         </p>
       </footer>
     </>

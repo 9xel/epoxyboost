@@ -1,12 +1,12 @@
 "use client";
 
-import { HookCarousel } from "./HookCarousel";
-import { HookImg } from "./HookImg";
+import { Carousel } from "./Carousel";
+import { SiteImg } from "./SiteImg";
 
 export function LogoCarousel({ logos }: { logos: string[] }) {
   return (
-    <section className="bg-[var(--hook-gray)] px-4 py-10 lg:px-12">
-      <HookCarousel
+    <section className="bg-[var(--eb-gray)] px-4 py-10 lg:px-12">
+      <Carousel
         ariaLabel="Client logos"
         slidesPerView={{ mobile: 2, tablet: 4, desktop: 6 }}
         gap={32}
@@ -20,7 +20,7 @@ export function LogoCarousel({ logos }: { logos: string[] }) {
             key={logo}
             className="flex h-16 items-center justify-center rounded bg-white/60 px-4"
           >
-            <HookImg
+            <SiteImg
               src={logo}
               alt="Client logo"
               width={160}
@@ -29,7 +29,7 @@ export function LogoCarousel({ logos }: { logos: string[] }) {
             />
           </div>
         ))}
-      </HookCarousel>
+      </Carousel>
     </section>
   );
 }

@@ -2,11 +2,11 @@
 
 import Image from "next/image";
 import { testimonials } from "../data";
-import { HookCarousel } from "./HookCarousel";
+import { Carousel } from "./Carousel";
 
 export function TestimonialsCarousel() {
   return (
-    <HookCarousel
+    <Carousel
       ariaLabel="Customer testimonials"
       slidesPerView={{ mobile: 1, tablet: 2, desktop: 3 }}
       gap={24}
@@ -17,7 +17,7 @@ export function TestimonialsCarousel() {
       {testimonials.map((item) => (
         <article
           key={item.name}
-          className="hook-card-shadow h-full rounded border border-black/5 p-6"
+          className="eb-card-shadow h-full rounded border border-black/5 p-6"
         >
           <div className="flex items-center gap-4">
             <Image
@@ -29,15 +29,15 @@ export function TestimonialsCarousel() {
             />
             <div>
               <h3 className="font-extrabold">{item.name}</h3>
-              <p className="text-sm text-[var(--hook-muted)]">{item.company}</p>
+              <p className="text-sm text-[var(--eb-muted)]">{item.company}</p>
             </div>
           </div>
-          <p className="mt-4 text-sm leading-7 text-[var(--hook-muted)]">
+          <p className="mt-4 text-sm leading-7 text-[var(--eb-muted)]">
             &ldquo;{item.quote}&rdquo;
           </p>
-          <div className="mt-4 text-[var(--hook-lime)]">★★★★★</div>
+          <div className="mt-4 text-[var(--eb-lime)]">★★★★★</div>
         </article>
       ))}
-    </HookCarousel>
+    </Carousel>
   );
 }

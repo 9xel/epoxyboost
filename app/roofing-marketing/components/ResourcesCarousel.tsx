@@ -2,11 +2,11 @@
 
 import Image from "next/image";
 import { resources } from "../data";
-import { HookCarousel } from "./HookCarousel";
+import { Carousel } from "./Carousel";
 
 export function ResourcesCarousel() {
   return (
-    <HookCarousel
+    <Carousel
       ariaLabel="Resources"
       slidesPerView={{ mobile: 1, tablet: 2, desktop: 3 }}
       gap={24}
@@ -15,7 +15,7 @@ export function ResourcesCarousel() {
       {resources.map((resource) => (
         <article
           key={resource.title}
-          className="hook-card-shadow h-full overflow-hidden rounded bg-white"
+          className="eb-card-shadow h-full overflow-hidden rounded bg-white"
         >
           <div className="relative h-48 w-full">
             <Image
@@ -27,18 +27,18 @@ export function ResourcesCarousel() {
             />
           </div>
           <div className="p-6">
-            <span className="text-xs font-bold uppercase text-[var(--hook-green)]">
+            <span className="text-xs font-bold uppercase text-[var(--eb-green)]">
               {resource.category}
             </span>
             <h3 className="mt-3 text-lg font-extrabold leading-snug">
               {resource.title}
             </h3>
-            <span className="mt-4 inline-block text-sm font-bold uppercase text-[var(--hook-blue)]">
+            <span className="mt-4 inline-block text-sm font-bold uppercase text-[var(--eb-blue)]">
               Read More →
             </span>
           </div>
         </article>
       ))}
-    </HookCarousel>
+    </Carousel>
   );
 }

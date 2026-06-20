@@ -5,7 +5,7 @@ export function HeroQuoteFormSection() {
       className="hero-quote-section"
       aria-labelledby="hero-form-heading"
     >
-      <div className="hook-container">
+      <div className="eb-container">
         <aside className="hero-form-card">
           <h2 id="hero-form-heading" className="hero-form-card__heading">
             Claim Your Premier Launch Spot

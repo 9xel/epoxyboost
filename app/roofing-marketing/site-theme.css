@@ -1,80 +1,71 @@
 @import "tailwindcss";
 
 @font-face {
-  font-family: champion;
-  src: url("https://hookagency.com/wp-content/themes/hook-theme-child/fonts/champion-htf-welterweight-webfont.woff2")
-    format("woff2");
-  font-weight: 400;
-  font-style: normal;
-  font-display: swap;
-}
-
-@font-face {
   font-family: "Aktiv Grotesk Bold";
   src: url("/fonts/AktivGroteskEx_Trial_Bd.woff2") format("woff2"),
     url("/fonts/AktivGroteskEx_Trial_Bd.ttf") format("truetype");
   font-display: swap;
 }
 
-.hook-page {
-  --hook-lime: #d4fd52;
-  --hook-green: #0f5132;
-  --hook-blue: #084298;
-  --hook-promo-blue: #0052cc;
-  --hook-promo-bar-height: 52px;
-  --hook-dark: #19191c;
-  --hook-gray: #f5f5f5;
-  --hook-muted: #666666;
+.eb-page {
+  --eb-lime: #d4fd52;
+  --eb-green: #0f5132;
+  --eb-blue: #084298;
+  --eb-promo-blue: #0052cc;
+  --eb-promo-bar-height: 52px;
+  --eb-dark: #19191c;
+  --eb-gray: #f5f5f5;
+  --eb-muted: #666666;
   --section-gap-sm: 18px;
   --mobile-img-height: 300px;
 }
 
-.hook-page--high-contrast {
-  --hook-lime: #b6ff00;
-  --hook-blue: #00a3ff;
-  --hook-promo-blue: #00a3ff;
-  --hook-green: #b6ff00;
-  --hook-black: #000000;
-  --hook-dark: #18181b;
-  --hook-gray: #fafafa;
-  --hook-muted: #a1a1aa;
-  --hook-white: #fafafa;
-  color: var(--hook-white);
+.eb-page--high-contrast {
+  --eb-lime: #b6ff00;
+  --eb-blue: #00a3ff;
+  --eb-promo-blue: #00a3ff;
+  --eb-green: #b6ff00;
+  --eb-black: #000000;
+  --eb-dark: #18181b;
+  --eb-gray: #fafafa;
+  --eb-muted: #a1a1aa;
+  --eb-white: #fafafa;
+  color: var(--eb-white);
 }
 
-.hook-page--high-contrast .hero.hero--landing {
-  background-color: var(--hook-dark);
+.eb-page--high-contrast .hero.hero--landing {
+  background-color: var(--eb-dark);
 }
 
-.hook-page--high-contrast .solid--lime {
-  background-color: var(--hook-lime);
-  color: var(--hook-black);
+.eb-page--high-contrast .solid--lime {
+  background-color: var(--eb-lime);
+  color: var(--eb-black);
 }
 
-.hook-page--high-contrast .solid--lime::before {
-  background: color-mix(in srgb, var(--hook-lime) 50%, transparent);
+.eb-page--high-contrast .solid--lime::before {
+  background: color-mix(in srgb, var(--eb-lime) 50%, transparent);
 }
 
-.hook-page--high-contrast .hook-btn-primary,
-.hook-page--high-contrast .hook-btn-lime {
-  color: var(--hook-black);
+.eb-page--high-contrast .eb-btn-primary,
+.eb-page--high-contrast .eb-btn-lime {
+  color: var(--eb-black);
 }
 
-.hook-page--high-contrast .hook-btn-outline {
-  border-color: var(--hook-black);
-  color: var(--hook-black);
+.eb-page--high-contrast .eb-btn-outline {
+  border-color: var(--eb-black);
+  color: var(--eb-black);
 }
 
-.hook-page--high-contrast .hero-form-card,
-.hook-page--high-contrast .hero-form-card__heading,
-.hook-page--high-contrast .hero-form__input {
-  color: var(--hook-black);
+.eb-page--high-contrast .hero-form-card,
+.eb-page--high-contrast .hero-form-card__heading,
+.eb-page--high-contrast .hero-form__input {
+  color: var(--eb-black);
 }
 
 /* ── Launch promo bar (above header) ── */
 .launch-promo-bar {
   width: 100%;
-  background: var(--hook-promo-blue);
+  background: var(--eb-promo-blue);
 }
 
 .launch-promo-bar__link {
@@ -108,8 +99,8 @@
   isolation: isolate;
   animation: launch-promo-badge-glow-halo 2.5s ease-in-out infinite;
   box-shadow:
-    0 0 8px color-mix(in srgb, var(--hook-lime) 35%, transparent),
-    0 0 16px color-mix(in srgb, var(--hook-lime) 18%, transparent);
+    0 0 8px color-mix(in srgb, var(--eb-lime) 35%, transparent),
+    0 0 16px color-mix(in srgb, var(--eb-lime) 18%, transparent);
 }
 
 .launch-promo-bar__badge-wrap::before {
@@ -119,14 +110,14 @@
   opacity: 0.82;
   background: conic-gradient(
     from 0deg,
-    color-mix(in srgb, var(--hook-lime) 85%, white),
-    color-mix(in srgb, var(--hook-lime) 55%, white),
+    color-mix(in srgb, var(--eb-lime) 85%, white),
+    color-mix(in srgb, var(--eb-lime) 55%, white),
     rgba(255, 255, 255, 0.7),
-    color-mix(in srgb, var(--hook-lime) 28%, transparent) 42%,
+    color-mix(in srgb, var(--eb-lime) 28%, transparent) 42%,
     transparent 58%,
-    color-mix(in srgb, var(--hook-lime) 65%, white) 72%,
-    color-mix(in srgb, var(--hook-lime) 70%, white),
-    color-mix(in srgb, var(--hook-lime) 85%, white)
+    color-mix(in srgb, var(--eb-lime) 65%, white) 72%,
+    color-mix(in srgb, var(--eb-lime) 70%, white),
+    color-mix(in srgb, var(--eb-lime) 85%, white)
   );
   animation: launch-promo-badge-glow-spin 3.5s linear infinite;
 }
@@ -141,15 +132,15 @@
   0%,
   100% {
     box-shadow:
-      0 0 6px color-mix(in srgb, var(--hook-lime) 30%, transparent),
-      0 0 14px color-mix(in srgb, var(--hook-lime) 15%, transparent);
+      0 0 6px color-mix(in srgb, var(--eb-lime) 30%, transparent),
+      0 0 14px color-mix(in srgb, var(--eb-lime) 15%, transparent);
   }
 
   50% {
     box-shadow:
-      0 0 10px color-mix(in srgb, var(--hook-lime) 55%, transparent),
-      0 0 20px color-mix(in srgb, var(--hook-lime) 32%, transparent),
-      0 0 30px color-mix(in srgb, var(--hook-lime) 14%, transparent);
+      0 0 10px color-mix(in srgb, var(--eb-lime) 55%, transparent),
+      0 0 20px color-mix(in srgb, var(--eb-lime) 32%, transparent),
+      0 0 30px color-mix(in srgb, var(--eb-lime) 14%, transparent);
   }
 }
 
@@ -206,8 +197,8 @@
   .launch-promo-bar__badge-wrap {
     animation: none;
     box-shadow:
-      0 0 8px color-mix(in srgb, var(--hook-lime) 30%, transparent),
-      0 0 16px color-mix(in srgb, var(--hook-lime) 15%, transparent);
+      0 0 8px color-mix(in srgb, var(--eb-lime) 30%, transparent),
+      0 0 16px color-mix(in srgb, var(--eb-lime) 15%, transparent);
   }
 
   .launch-promo-bar__badge-wrap::before {
@@ -216,7 +207,7 @@
   }
 }
 
-/* ── Fixed header (matches hookagency.com) ── */
+/* ── Fixed header ── */
 #wrapper-navbar {
   position: fixed;
   top: 0;
@@ -226,19 +217,19 @@
   background: #000;
 }
 
-.hook-header nav {
+.eb-header nav {
   max-width: 1320px;
   margin-inline: auto;
   padding: 0.5rem 1rem;
 }
 
 @media (min-width: 992px) {
-  .hook-header nav {
+  .eb-header nav {
     padding: 0.75rem 1.5rem;
   }
 }
 
-.hook-nav-link {
+.eb-nav-link {
   color: #fff;
   font-size: 0.9375rem;
   font-weight: 600;
@@ -246,8 +237,8 @@
   transition: color 0.2s ease;
 }
 
-.hook-nav-link:hover {
-  color: var(--hook-lime);
+.eb-nav-link:hover {
+  color: var(--eb-lime);
 }
 
 .phone-link {
@@ -258,11 +249,11 @@
 }
 
 .phone-link:hover {
-  color: var(--hook-lime);
+  color: var(--eb-lime);
 }
 
 #wrapper-navbar nav .btn--big,
-#wrapper-navbar nav .hook-btn-big {
+#wrapper-navbar nav .eb-btn-big {
   font-size: 0.875rem;
   padding-inline: 16px;
   white-space: nowrap;
@@ -270,7 +261,7 @@
 
 @media (min-width: 1200px) {
   #wrapper-navbar nav .btn--big,
-  #wrapper-navbar nav .hook-btn-big {
+  #wrapper-navbar nav .eb-btn-big {
     font-size: 0.9375rem;
     padding-inline: 24px;
   }
@@ -280,7 +271,7 @@
 .hero.hero--landing {
   position: relative;
   background-color: #19191c;
-  padding-top: calc(169px + var(--hook-promo-bar-height));
+  padding-top: calc(169px + var(--eb-promo-bar-height));
   padding-bottom: 3rem;
   overflow: hidden;
 }
@@ -328,7 +319,7 @@
   }
 }
 
-.hook-container {
+.eb-container {
   position: relative;
   z-index: 2;
   width: 100%;
@@ -338,23 +329,23 @@
 }
 
 @media (min-width: 992px) {
-  .hook-container {
+  .eb-container {
     padding-inline: 1.5rem;
   }
 }
 
-.hook-row {
+.eb-row {
   display: flex;
   flex-wrap: wrap;
   gap: 3rem;
 }
 
-.hook-col {
+.eb-col {
   width: 100%;
 }
 
 @media (min-width: 992px) {
-  .hook-col {
+  .eb-col {
     width: 50%;
     max-width: 50%;
     flex: 0 0 50%;
@@ -376,12 +367,12 @@
 }
 
 .hero-eyebrow {
-  font-family: var(--font-hook-body), "Nunito Sans", sans-serif;
+  font-family: var(--font-eb-body), "Nunito Sans", sans-serif;
   font-size: 13px;
-  font-weight: 670;
+  font-weight: 800;
   letter-spacing: 0.08em;
   text-transform: uppercase;
-  color: var(--hook-lime);
+  color: var(--eb-lime);
   margin: 0 0 12px;
 }
 
@@ -390,8 +381,7 @@
 }
 
 .hero-headline {
-  font-family: champion, var(--font-hook-display), Impact, "Arial Narrow Bold",
-    sans-serif;
+  font-family: var(--font-eb-display), Impact, "Arial Narrow Bold", sans-serif;
   font-size: clamp(2.25rem, 5.5vw, 3.875rem);
   font-weight: 700;
   line-height: 1.04;
@@ -409,7 +399,7 @@
 }
 
 .hero-lead {
-  font-family: var(--font-hook-body), "Nunito Sans", sans-serif;
+  font-family: var(--font-eb-body), "Nunito Sans", sans-serif;
   font-size: 1rem;
   line-height: 1.6;
   color: rgba(255, 255, 255, 0.88);
@@ -436,7 +426,7 @@
   position: relative;
   margin: 0;
   padding-left: 2.25rem;
-  font-family: var(--font-hook-body), "Nunito Sans", sans-serif;
+  font-family: var(--font-eb-body), "Nunito Sans", sans-serif;
   font-size: 1rem;
   line-height: 1.55;
   color: #fff;
@@ -450,7 +440,7 @@
   left: 0;
   width: 24px;
   height: 24px;
-  background-image: url("/hook/circle-checkmark-icon-lime.svg");
+  background-image: url("/icons/circle-checkmark-icon-lime.svg");
   background-repeat: no-repeat;
   background-size: contain;
   background-position: center;
@@ -458,7 +448,7 @@
 
 .hero-trust-pillars__lead {
   font-weight: 800;
-  color: var(--hook-lime);
+  color: var(--eb-lime);
 }
 
 .hero-trust-pillars__body {
@@ -514,7 +504,7 @@
   left: 0;
   width: 20px;
   height: 20px;
-  background-image: url("/hook/circle-checkmark-icon-lime.svg");
+  background-image: url("/icons/circle-checkmark-icon-lime.svg");
   background-repeat: no-repeat;
   background-size: contain;
   background-position: center;
@@ -522,13 +512,13 @@
 
 .strategy-value-stack__value {
   font-weight: 800;
-  color: var(--hook-green);
+  color: var(--eb-green);
 }
 
 .hero-quote-section {
   position: relative;
   z-index: 2;
-  background-color: var(--hook-dark);
+  background-color: var(--eb-dark);
   padding: 2rem 0 3rem;
 }
 
@@ -537,7 +527,7 @@
     padding: 2.5rem 0 4rem;
   }
 
-  .hero-quote-section .hook-container {
+  .hero-quote-section .eb-container {
     display: flex;
     justify-content: center;
   }
@@ -551,7 +541,7 @@
 
 /* ── Eyebrow style comparison (dev preview) ── */
 .eyebrow-comparison {
-  background: var(--hook-gray);
+  background: var(--eb-gray);
   color: #000;
   padding: 2.5rem 0 3rem;
   border-top: 1px solid rgba(0, 0, 0, 0.08);
@@ -562,7 +552,7 @@
 }
 
 .eyebrow-comparison__title {
-  font-family: var(--font-hook-body), "Nunito Sans", sans-serif;
+  font-family: var(--font-eb-body), "Nunito Sans", sans-serif;
   font-size: 1.125rem;
   font-weight: 800;
   text-transform: uppercase;
@@ -574,7 +564,7 @@
 .eyebrow-comparison__intro {
   margin: 0.5rem 0 0;
   font-size: 0.875rem;
-  color: var(--hook-muted);
+  color: var(--eb-muted);
 }
 
 .eyebrow-comparison__grid {
@@ -606,24 +596,24 @@
   align-items: center;
   min-height: 72px;
   padding: 1.25rem 1.5rem;
-  background: var(--hook-dark);
+  background: var(--eb-dark);
 }
 
 .eyebrow-comparison__sample {
   margin: 0;
   text-transform: uppercase;
-  color: var(--hook-lime);
+  color: var(--eb-lime);
 }
 
 .eyebrow-comparison__sample--original {
-  font-family: var(--font-hook-body), "Nunito Sans", sans-serif;
+  font-family: var(--font-eb-body), "Nunito Sans", sans-serif;
   font-size: 13px;
   font-weight: 800;
   letter-spacing: 0.14em;
 }
 
 .eyebrow-comparison__sample--bebas {
-  font-family: var(--font-hook-display), "Bebas Neue", sans-serif;
+  font-family: var(--font-eb-display), "Bebas Neue", sans-serif;
   font-size: 16px;
   font-weight: 400;
   letter-spacing: 0.1em;
@@ -649,7 +639,7 @@
 
 .eyebrow-comparison__label {
   margin: 0;
-  font-family: var(--font-hook-body), "Nunito Sans", sans-serif;
+  font-family: var(--font-eb-body), "Nunito Sans", sans-serif;
   font-size: 0.8125rem;
   font-weight: 700;
   color: #000;
@@ -659,14 +649,14 @@
   margin: 0.25rem 0 0;
   font-size: 0.75rem;
   font-weight: 600;
-  color: var(--hook-green);
+  color: var(--eb-green);
 }
 
 .eyebrow-comparison__specs {
   margin: 0.375rem 0 0;
   font-size: 0.6875rem;
   line-height: 1.5;
-  color: var(--hook-muted);
+  color: var(--eb-muted);
 }
 
 .hero-form-card {
@@ -690,8 +680,7 @@
 }
 
 .hero-form-card__heading {
-  font-family: champion, var(--font-hook-display), Impact, "Arial Narrow Bold",
-    sans-serif;
+  font-family: var(--font-eb-display), Impact, "Arial Narrow Bold", sans-serif;
   font-size: clamp(1.35rem, 2.5vw, 1.75rem);
   font-weight: 500;
   line-height: 1.15;
@@ -701,10 +690,10 @@
 }
 
 .hero-form-card__subheading {
-  font-family: var(--font-hook-body), "Nunito Sans", sans-serif;
+  font-family: var(--font-eb-body), "Nunito Sans", sans-serif;
   font-size: 0.875rem;
   line-height: 1.5;
-  color: var(--hook-muted);
+  color: var(--eb-muted);
   margin: 0 0 1.25rem;
 }
 
@@ -724,7 +713,7 @@
   border: 1px solid #ccc;
   border-radius: 4px;
   padding: 0.75rem 1rem;
-  font-family: var(--font-hook-body), "Nunito Sans", sans-serif;
+  font-family: var(--font-eb-body), "Nunito Sans", sans-serif;
   font-size: 0.875rem;
   line-height: 1.4;
   color: #000;
@@ -734,7 +723,7 @@
 }
 
 .hero-form__input:focus {
-  border-color: var(--hook-green);
+  border-color: var(--eb-green);
 }
 
 .hero-form__submit {
@@ -742,7 +731,7 @@
   margin-top: 0.25rem;
   border: none;
   cursor: pointer;
-  font-family: var(--font-hook-body), "Nunito Sans", sans-serif;
+  font-family: var(--font-eb-body), "Nunito Sans", sans-serif;
 }
 
 .sr-only {
@@ -762,7 +751,7 @@
 }
 
 .hero.hero--landing .sh-micro {
-  font-family: var(--font-hook-heading), "Roboto Slab", serif;
+  font-family: var(--font-eb-heading), "Roboto Slab", serif;
   font-size: 13px;
   font-weight: 800;
   letter-spacing: 1.3px;
@@ -772,8 +761,7 @@
 }
 
 .hero.hero--landing .sh-headline {
-  font-family: champion, var(--font-hook-display), Impact, "Arial Narrow Bold",
-    sans-serif;
+  font-family: var(--font-eb-display), Impact, "Arial Narrow Bold", sans-serif;
   text-transform: uppercase;
   font-weight: 500;
   line-height: 1.2;
@@ -792,7 +780,7 @@
 }
 
 .hero.hero--landing .wp-block-paragraph {
-  font-family: var(--font-hook-body), "Nunito Sans", sans-serif;
+  font-family: var(--font-eb-body), "Nunito Sans", sans-serif;
   font-size: 1rem;
   line-height: 1.6;
   color: rgba(255, 255, 255, 0.9);
@@ -821,7 +809,7 @@
   display: flex;
   align-items: center;
   gap: 0.75rem;
-  font-family: var(--font-hook-body), "Nunito Sans", sans-serif;
+  font-family: var(--font-eb-body), "Nunito Sans", sans-serif;
   font-size: 0.9375rem;
   line-height: 1.5;
   color: #fff;
@@ -835,7 +823,7 @@
   left: -40px;
   width: 24px;
   height: 24px;
-  background-image: url("/hook/circle-checkmark-icon-lime.svg");
+  background-image: url("/icons/circle-checkmark-icon-lime.svg");
   background-repeat: no-repeat;
   background-size: contain;
   background-position: center;
@@ -915,7 +903,7 @@
   text-decoration: underline;
 }
 
-.hook-btn-big {
+.eb-btn-big {
   display: inline-flex;
   align-items: center;
   justify-content: center;
@@ -928,29 +916,29 @@
   transition: all 0.5s;
 }
 
-.hook-btn-lime {
-  background-color: var(--hook-lime);
+.eb-btn-lime {
+  background-color: var(--eb-lime);
   color: #000;
   box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.08);
 }
 
-.hook-btn-lime:hover {
+.eb-btn-lime:hover {
   filter: brightness(0.95);
 }
 
-.hook-btn-primary {
-  background-color: var(--hook-lime);
+.eb-btn-primary {
+  background-color: var(--eb-lime);
   color: #000;
   font-weight: 700;
   border-radius: 4px;
   transition: filter 0.2s ease;
 }
 
-.hook-btn-primary:hover {
+.eb-btn-primary:hover {
   filter: brightness(0.95);
 }
 
-.hook-btn-outline {
+.eb-btn-outline {
   border: 2px solid #000;
   color: #000;
   font-weight: 700;
@@ -959,17 +947,17 @@
   transition: background-color 0.2s ease;
 }
 
-.hook-btn-outline:hover {
+.eb-btn-outline:hover {
   background-color: rgba(0, 0, 0, 0.05);
 }
 
-.hook-btn-dark {
-  background-color: var(--hook-dark);
+.eb-btn-dark {
+  background-color: var(--eb-dark);
   color: #fff;
   font-weight: 700;
   border-radius: 4px;
 }
 
-.hook-card-shadow {
+.eb-card-shadow {
   box-shadow: 0 4px 24px rgba(0, 0, 0, 0.08);
 }

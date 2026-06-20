@@ -5,7 +5,7 @@ export default function Home() {
     <main className="flex min-h-screen flex-col items-center justify-center gap-6 bg-white px-6 text-center">
       <h1 className="text-3xl font-semibold text-black">newtestnext</h1>
       <p className="max-w-md text-zinc-600">
-        Hook Agency roofing marketing page clone built from Firecrawl scrape data.
+        EpoxyBoost roofing marketing page clone built from Firecrawl scrape data.
       </p>
       <Link
         href="/roofing-marketing"

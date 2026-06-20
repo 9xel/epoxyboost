@@ -1,21 +1,21 @@
 import type { Metadata } from "next";
 import { Bebas_Neue, Nunito_Sans, Roboto_Slab } from "next/font/google";
-import "./hook-theme.css";
+import "./site-theme.css";
 
 const nunitoSans = Nunito_Sans({
-  variable: "--font-hook-body",
+  variable: "--font-eb-body",
   subsets: ["latin"],
   weight: ["400", "600", "700", "800", "900"],
 });
 
 const robotoSlab = Roboto_Slab({
-  variable: "--font-hook-heading",
+  variable: "--font-eb-heading",
   subsets: ["latin"],
   weight: ["400", "600", "700", "800"],
 });
 
 const bebasNeue = Bebas_Neue({
-  variable: "--font-hook-display",
+  variable: "--font-eb-display",
   subsets: ["latin"],
   weight: "400",
 });
@@ -33,7 +33,7 @@ export default function RoofingMarketingLayout({
 }>) {
   return (
     <div
-      className={`${nunitoSans.variable} ${robotoSlab.variable} ${bebasNeue.variable} hook-page font-[family-name:var(--font-hook-body)] text-black antialiased`}
+      className={`${nunitoSans.variable} ${robotoSlab.variable} ${bebasNeue.variable} eb-page font-[family-name:var(--font-eb-body)] text-black antialiased`}
     >
       {children}
     </div>

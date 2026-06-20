@@ -4,7 +4,7 @@ import { FaqAccordion } from "../components/FaqAccordion";
 import { FullStrategyBreakdown } from "../components/FullStrategyBreakdown";
 import { HeroQuoteFormSection } from "../components/HeroQuoteFormSection";
 import { HeroSection } from "../components/HeroSection";
-import { HookImg } from "../components/HookImg";
+import { SiteImg } from "../components/SiteImg";
 import { LogoCarousel } from "../components/LogoCarousel";
 import { ResourcesCarousel } from "../components/ResourcesCarousel";
 import { ServicesCarousel } from "../components/ServicesCarousel";
@@ -26,7 +26,7 @@ export default function RoofingMarketingHighContrastPage() {
           <section className="hc-section hc-container">
             <header className="hc-section-header hc-section-header--center">
               <h2 className="hc-title hc-title--center">
-                Hook Better Leads With Our Services
+                EpoxyBoost Better Leads With Our Services
               </h2>
             </header>
             <ServicesCarousel />
@@ -87,7 +87,7 @@ export default function RoofingMarketingHighContrastPage() {
             <div className="hc-grid-3">
               {values.map((value) => (
                 <article key={value.title} className="hc-value-card">
-                  <HookImg
+                  <SiteImg
                     src={value.icon}
                     alt=""
                     width={48}
@@ -106,8 +106,8 @@ export default function RoofingMarketingHighContrastPage() {
           <section className="hc-section hc-section--compact hc-container">
             <div className="hc-stats-grid">
               <div>
-                <HookImg
-                  src="https://hookagency.com/wp-content/uploads/2024/09/Google-Logo-white.svg"
+                <SiteImg
+                  src={IMG.googleLogo}
                   alt="Google"
                   width={80}
                   height={28}
@@ -162,7 +162,7 @@ export default function RoofingMarketingHighContrastPage() {
                 <input placeholder="Email *" />
                 <input placeholder="Business Name *" />
                 <textarea placeholder="Message *" rows={4} />
-                <button type="button" className="hook-btn-primary w-full px-6 py-4 text-sm uppercase">
+                <button type="button" className="eb-btn-primary w-full px-6 py-4 text-sm uppercase">
                   Get in Touch
                 </button>
               </form>
@@ -263,7 +263,7 @@ export default function RoofingMarketingHighContrastPage() {
                 </div>
                 <a
                   href="#contact"
-                  className="hook-btn-primary mt-8 inline-block px-8 py-4 text-sm uppercase"
+                  className="eb-btn-primary mt-8 inline-block px-8 py-4 text-sm uppercase"
                 >
                   Schedule Intro Call
                 </a>
@@ -275,19 +275,19 @@ export default function RoofingMarketingHighContrastPage() {
         <footer className="hc-footer">
           <div className="hc-container hc-footer__grid">
             <div className="space-y-6">
-              <HookImg
+              <SiteImg
                 src={IMG.logo}
-                alt="Hook Agency"
+                alt="EpoxyBoost"
                 width={180}
                 height={40}
                 className="h-10 w-auto brightness-0 invert"
               />
               <a href="tel:612-772-9555" className="flex items-center gap-2 text-sm font-bold">
-                <HookImg src={IMG.callIcon} alt="" width={20} height={20} className="h-5 w-5" />
+                <SiteImg src={IMG.callIcon} alt="" width={20} height={20} className="h-5 w-5" />
                 Give Us a Call: 612-772-9555
               </a>
               <p className="flex items-start gap-2 text-sm">
-                <HookImg src={IMG.pinIcon} alt="" width={20} height={20} className="mt-0.5 h-5 w-5" />
+                <SiteImg src={IMG.pinIcon} alt="" width={20} height={20} className="mt-0.5 h-5 w-5" />
                 600 N Washington Ave Suite C203, Minneapolis, MN 55401
               </p>
             </div>
@@ -296,7 +296,7 @@ export default function RoofingMarketingHighContrastPage() {
               <ul>
                 <li>Process</li>
                 <li>Founder</li>
-                <li>About Hook</li>
+                <li>About EpoxyBoost</li>
               </ul>
             </div>
             <div>
@@ -317,7 +317,7 @@ export default function RoofingMarketingHighContrastPage() {
             </div>
           </div>
           <p className="hc-container hc-footer__copy">
-            © Copyright 2026 Hook Agency. Visual clone for demonstration purposes.
+            © Copyright 2026 EpoxyBoost. Visual clone for demonstration purposes.
           </p>
         </footer>
       </div>

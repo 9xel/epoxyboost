@@ -1,29 +1,29 @@
 /* go2epoxy homepage section rhythm — high-contrast palette, scoped to this route */
 
-.hook-page--high-contrast {
+.eb-page--high-contrast {
   --hc-lead-line-height: 2;
   --hc-band-gradient: linear-gradient(
     90deg,
-    var(--hook-dark),
-    color-mix(in srgb, var(--hook-dark) 55%, #000)
+    var(--eb-dark),
+    color-mix(in srgb, var(--eb-dark) 55%, #000)
   );
   --hc-divider: linear-gradient(
     90deg,
     transparent 5%,
-    var(--hook-lime) 25%,
-    var(--hook-lime) 75%,
+    var(--eb-lime) 25%,
+    var(--eb-lime) 75%,
     transparent 95%
   );
   --hc-card-bg: linear-gradient(
     160deg,
-    color-mix(in srgb, var(--hook-dark) 92%, #fff) 0%,
-    var(--hook-dark) 100%
+    color-mix(in srgb, var(--eb-dark) 92%, #fff) 0%,
+    var(--eb-dark) 100%
   );
-  --hc-card-border: color-mix(in srgb, var(--hook-lime) 28%, transparent);
+  --hc-card-border: color-mix(in srgb, var(--eb-lime) 28%, transparent);
 }
 
 .hc-post-hero {
-  color: var(--hook-white);
+  color: var(--eb-white);
 }
 
 .hc-container {
@@ -44,15 +44,15 @@
   position: relative;
   overflow: hidden;
   background: var(--hc-band-gradient);
-  color: var(--hook-white);
+  color: var(--eb-white);
 }
 
 .hc-band--solid {
-  background: var(--hook-dark);
+  background: var(--eb-dark);
 }
 
 .hc-band--black {
-  background: var(--hook-black);
+  background: var(--eb-black);
 }
 
 .hc-band::after {
@@ -126,7 +126,7 @@
   letter-spacing: 1.05px;
   line-height: 1.5;
   text-transform: uppercase;
-  color: var(--hook-lime);
+  color: var(--eb-lime);
 }
 
 .hc-title {
@@ -135,7 +135,7 @@
   font-size: clamp(1.35rem, 3vw, 1.5rem);
   font-weight: 400;
   line-height: 1.2;
-  color: var(--hook-lime);
+  color: var(--eb-lime);
 }
 
 .hc-title--center {
@@ -148,7 +148,7 @@
   font-size: clamp(0.95rem, 2vw, 1.15rem);
   letter-spacing: 0.09em;
   text-transform: uppercase;
-  color: var(--hook-lime);
+  color: var(--eb-lime);
   line-height: 1.25;
 }
 
@@ -158,14 +158,14 @@
   font-size: clamp(0.95rem, 2vw, 1.05rem);
   font-weight: 400;
   line-height: 1.3;
-  color: var(--hook-lime);
+  color: var(--eb-lime);
 }
 
 .hc-body {
   margin: 0;
   font-size: 1rem;
   line-height: var(--hc-lead-line-height);
-  color: var(--hook-white);
+  color: var(--eb-white);
 }
 
 .hc-body + .hc-body {
@@ -173,11 +173,11 @@
 }
 
 .hc-body--bright {
-  color: var(--hook-white);
+  color: var(--eb-white);
 }
 
 .hc-body strong {
-  color: var(--hook-lime);
+  color: var(--eb-lime);
   font-family: "Aktiv Grotesk Bold", sans-serif;
   font-weight: 400;
 }
@@ -188,7 +188,7 @@
   font-size: clamp(1.75rem, 4vw, 2.25rem);
   font-weight: 400;
   line-height: 1.1;
-  color: var(--hook-lime);
+  color: var(--eb-lime);
 }
 
 .hc-stat-label {
@@ -198,7 +198,7 @@
   letter-spacing: 1.05px;
   line-height: 1.5;
   text-transform: uppercase;
-  color: var(--hook-white);
+  color: var(--eb-white);
 }
 
 .hc-section-header {
@@ -240,7 +240,7 @@
 .hc-faq-heading .hc-title {
   margin-top: 0.75rem;
   margin-bottom: 2.25rem;
-  color: var(--hook-lime);
+  color: var(--eb-lime);
 }
 
 @media (width >= 62.5rem) {
@@ -311,7 +311,7 @@
   font-size: clamp(0.95rem, 2vw, 1.05rem);
   font-weight: 400;
   line-height: 1.4;
-  color: var(--hook-white);
+  color: var(--eb-white);
 }
 
 .hc-process-list__num {
@@ -322,8 +322,8 @@
   width: 2rem;
   height: 2rem;
   border-radius: 9999px;
-  background: var(--hook-lime);
-  color: var(--hook-black);
+  background: var(--eb-lime);
+  color: var(--eb-black);
   font-size: 0.875rem;
   font-weight: 700;
 }
@@ -363,8 +363,8 @@
   width: 4rem;
   height: 4rem;
   border-radius: 9999px;
-  background: var(--hook-lime);
-  color: var(--hook-black);
+  background: var(--eb-lime);
+  color: var(--eb-black);
   font-size: 1.5rem;
 }
 
@@ -377,7 +377,7 @@
   box-shadow: 0 8px 32px rgba(0, 0, 0, 0.28);
 }
 
-.hook-page--high-contrast .hc-value-card img {
+.eb-page--high-contrast .hc-value-card img {
   filter: brightness(0) invert(1);
 }
 
@@ -387,14 +387,14 @@
   font-size: clamp(0.95rem, 2vw, 1.05rem);
   font-weight: 400;
   line-height: 1.3;
-  color: var(--hook-lime);
+  color: var(--eb-lime);
 }
 
 .hc-value-card p {
   margin: 1rem 0 0;
   font-size: 0.98rem;
   line-height: var(--hc-lead-line-height);
-  color: var(--hook-white);
+  color: var(--eb-white);
 }
 
 .hc-form-card {
@@ -408,25 +408,25 @@
 .hc-form-card input,
 .hc-form-card textarea {
   width: 100%;
-  border: 1px solid color-mix(in srgb, var(--hook-muted) 45%, transparent);
+  border: 1px solid color-mix(in srgb, var(--eb-muted) 45%, transparent);
   border-radius: 4px;
   padding: 0.75rem 1rem;
   font-size: 0.875rem;
   line-height: 1.4;
-  color: var(--hook-white);
-  background: color-mix(in srgb, var(--hook-black) 40%, var(--hook-dark));
+  color: var(--eb-white);
+  background: color-mix(in srgb, var(--eb-black) 40%, var(--eb-dark));
   outline: none;
   transition: border-color 0.2s ease;
 }
 
 .hc-form-card input:focus,
 .hc-form-card textarea:focus {
-  border-color: var(--hook-blue);
+  border-color: var(--eb-blue);
 }
 
 .hc-form-card input::placeholder,
 .hc-form-card textarea::placeholder {
-  color: var(--hook-muted);
+  color: var(--eb-muted);
 }
 
 .hc-form-grid {
@@ -445,22 +445,22 @@
   align-items: center;
   justify-content: center;
   padding: 0.75rem 1.5rem;
-  border: 1px solid color-mix(in srgb, var(--hook-lime) 55%, transparent);
+  border: 1px solid color-mix(in srgb, var(--eb-lime) 55%, transparent);
   border-radius: 4px;
   font-family: "Aktiv Grotesk Bold", sans-serif;
   font-size: 0.875rem;
   font-weight: 400;
   letter-spacing: 0.02em;
   text-transform: uppercase;
-  color: var(--hook-white);
+  color: var(--eb-white);
   background: transparent;
   transition: border-color 0.2s ease, color 0.2s ease, background-color 0.2s ease;
 }
 
 .hc-btn-outline:hover {
-  border-color: var(--hook-lime);
-  color: var(--hook-lime);
-  background: color-mix(in srgb, var(--hook-lime) 8%, transparent);
+  border-color: var(--eb-lime);
+  color: var(--eb-lime);
+  background: color-mix(in srgb, var(--eb-lime) 8%, transparent);
 }
 
 /* ── CTA banner (go2 cta-banner) ── */
@@ -510,14 +510,14 @@
 .hc-cta__content .hc-title {
   font-size: clamp(1.75rem, 4vw, 2.5rem);
   line-height: 1.15;
-  color: var(--hook-lime);
+  color: var(--eb-lime);
 }
 
 .hc-cta__quote {
   margin: 1.5rem 0 0;
   font-size: 1rem;
   line-height: var(--hc-lead-line-height);
-  color: var(--hook-white);
+  color: var(--eb-white);
 }
 
 .hc-cta__author {
@@ -527,7 +527,7 @@
   margin-top: 2rem;
   font-size: 0.875rem;
   font-weight: 600;
-  color: var(--hook-white);
+  color: var(--eb-white);
 }
 
 @media (width >= 62.5rem) {
@@ -544,8 +544,8 @@
 
 .hc-footer {
   padding: 3rem 0 4rem;
-  background: var(--hook-black);
-  color: var(--hook-white);
+  background: var(--eb-black);
+  color: var(--eb-white);
 }
 
 .hc-footer__grid {
@@ -572,7 +572,7 @@
   font-weight: 400;
   letter-spacing: 0.06em;
   text-transform: uppercase;
-  color: var(--hook-lime);
+  color: var(--eb-lime);
 }
 
 .hc-footer ul {
@@ -584,75 +584,75 @@
 .hc-footer li {
   font-size: 0.875rem;
   line-height: 1.8;
-  color: var(--hook-muted);
+  color: var(--eb-muted);
 }
 
 .hc-footer a {
-  color: var(--hook-white);
+  color: var(--eb-white);
   text-decoration: none;
   transition: color 0.2s ease;
 }
 
 .hc-footer a:hover {
-  color: var(--hook-lime);
+  color: var(--eb-lime);
 }
 
 .hc-footer__copy {
   margin: 3rem auto 0;
   padding-top: 2rem;
-  border-top: 1px solid color-mix(in srgb, var(--hook-white) 10%, transparent);
+  border-top: 1px solid color-mix(in srgb, var(--eb-white) 10%, transparent);
   text-align: center;
   font-size: 0.875rem;
-  color: var(--hook-muted);
+  color: var(--eb-muted);
 }
 
 /* ── Post-hero typography: green headings, white body, green highlights ── */
 
-.hook-page--high-contrast .hc-post-hero :is(h1, h2, h3, h4, h5, h6) {
-  color: var(--hook-lime) !important;
+.eb-page--high-contrast .hc-post-hero :is(h1, h2, h3, h4, h5, h6) {
+  color: var(--eb-lime) !important;
 }
 
-.hook-page--high-contrast .hc-post-hero :is(p, li, .hc-body, .hc-body--bright) {
-  color: var(--hook-white) !important;
+.eb-page--high-contrast .hc-post-hero :is(p, li, .hc-body, .hc-body--bright) {
+  color: var(--eb-white) !important;
 }
 
-.hook-page--high-contrast .hc-post-hero article,
-.hook-page--high-contrast .hc-post-hero .text-black,
-.hook-page--high-contrast .hc-post-hero [class*="text-black"],
-.hook-page--high-contrast .hc-post-hero [class*="hook-muted"],
-.hook-page--high-contrast .hc-post-hero .strategy-value-stack__item {
-  color: var(--hook-white) !important;
+.eb-page--high-contrast .hc-post-hero article,
+.eb-page--high-contrast .hc-post-hero .text-black,
+.eb-page--high-contrast .hc-post-hero [class*="text-black"],
+.eb-page--high-contrast .hc-post-hero [class*="eb-muted"],
+.eb-page--high-contrast .hc-post-hero .strategy-value-stack__item {
+  color: var(--eb-white) !important;
 }
 
-.hook-page--high-contrast .hc-post-hero :is(strong, .strategy-value-stack__value, .hc-highlight) {
-  color: var(--hook-lime) !important;
+.eb-page--high-contrast .hc-post-hero :is(strong, .strategy-value-stack__value, .hc-highlight) {
+  color: var(--eb-lime) !important;
 }
 
-.hook-page--high-contrast .hc-post-hero .strategy-value-stack__item span {
-  color: var(--hook-white) !important;
+.eb-page--high-contrast .hc-post-hero .strategy-value-stack__item span {
+  color: var(--eb-white) !important;
 }
 
-.hook-page--high-contrast .hc-post-hero p.hc-stat,
-.hook-page--high-contrast .hc-post-hero p.text-4xl {
-  color: var(--hook-lime) !important;
+.eb-page--high-contrast .hc-post-hero p.hc-stat,
+.eb-page--high-contrast .hc-post-hero p.text-4xl {
+  color: var(--eb-lime) !important;
 }
 
 /* ── Shared component overrides (post-hero only) ── */
 
-.hook-page--high-contrast #full-strategy-breakdown {
+.eb-page--high-contrast #full-strategy-breakdown {
   scroll-margin-top: 6rem;
-  background: var(--hook-dark);
-  color: var(--hook-white);
+  background: var(--eb-dark);
+  color: var(--eb-white);
   padding: 65px 1rem 3rem;
 }
 
 @media (width >= 62.5rem) {
-  .hook-page--high-contrast #full-strategy-breakdown {
+  .eb-page--high-contrast #full-strategy-breakdown {
     padding-bottom: 4.5rem;
   }
 }
 
-.hook-page--high-contrast #full-strategy-breakdown::after {
+.eb-page--high-contrast #full-strategy-breakdown::after {
   content: "";
   position: absolute;
   left: 0;
@@ -662,144 +662,144 @@
   background: var(--hc-divider);
 }
 
-.hook-page--high-contrast #full-strategy-breakdown {
+.eb-page--high-contrast #full-strategy-breakdown {
   position: relative;
 }
 
-.hook-page--high-contrast #full-strategy-heading {
+.eb-page--high-contrast #full-strategy-heading {
   font-family: "Aktiv Grotesk Bold", sans-serif;
   font-size: clamp(1.35rem, 3vw, 1.5rem);
   font-weight: 400;
   line-height: 1.2;
   letter-spacing: 0;
   text-transform: none;
-  color: var(--hook-lime) !important;
+  color: var(--eb-lime) !important;
 }
 
-.hook-page--high-contrast #full-strategy-breakdown > div > p {
+.eb-page--high-contrast #full-strategy-breakdown > div > p {
   margin-top: 1.5rem;
   font-size: 1rem;
   line-height: var(--hc-lead-line-height);
-  color: var(--hook-white) !important;
+  color: var(--eb-white) !important;
 }
 
-.hook-page--high-contrast .strategy-value-stack__item {
+.eb-page--high-contrast .strategy-value-stack__item {
   font-size: 0.98rem;
   line-height: var(--hc-lead-line-height);
-  color: var(--hook-white);
+  color: var(--eb-white);
 }
 
-.hook-page--high-contrast .strategy-value-stack__value {
-  color: var(--hook-lime);
+.eb-page--high-contrast .strategy-value-stack__value {
+  color: var(--eb-lime);
 }
 
-.hook-page--high-contrast .hc-post-hero .hook-card-shadow,
-.hook-page--high-contrast .hc-post-hero article.rounded.bg-white,
-.hook-page--high-contrast .hc-post-hero article.rounded.border {
+.eb-page--high-contrast .hc-post-hero .eb-card-shadow,
+.eb-page--high-contrast .hc-post-hero article.rounded.bg-white,
+.eb-page--high-contrast .hc-post-hero article.rounded.border {
   background: var(--hc-card-bg) !important;
-  color: var(--hook-white) !important;
+  color: var(--eb-white) !important;
   border: 1px solid var(--hc-card-border) !important;
   border-radius: 6px !important;
   box-shadow: 0 8px 32px rgba(0, 0, 0, 0.28) !important;
 }
 
-.hook-page--high-contrast .hc-post-hero article h3 {
+.eb-page--high-contrast .hc-post-hero article h3 {
   font-family: "Aktiv Grotesk Bold", sans-serif;
   font-size: clamp(0.95rem, 2vw, 1.05rem) !important;
   font-weight: 400 !important;
   line-height: 1.3 !important;
-  color: var(--hook-lime) !important;
+  color: var(--eb-lime) !important;
 }
 
-.hook-page--high-contrast .hc-post-hero article p,
-.hook-page--high-contrast .hc-post-hero article li {
+.eb-page--high-contrast .hc-post-hero article p,
+.eb-page--high-contrast .hc-post-hero article li {
   font-size: 0.98rem !important;
   line-height: var(--hc-lead-line-height) !important;
-  color: var(--hook-white) !important;
+  color: var(--eb-white) !important;
 }
 
-.hook-page--high-contrast .hc-post-hero article span[class*="uppercase"],
-.hook-page--high-contrast .hc-post-hero article a {
+.eb-page--high-contrast .hc-post-hero article span[class*="uppercase"],
+.eb-page--high-contrast .hc-post-hero article a {
   font-family: "Aktiv Grotesk Bold", sans-serif;
   font-size: 0.8125rem !important;
   letter-spacing: 0.06em;
   text-transform: uppercase;
 }
 
-.hook-page--high-contrast .hc-post-hero article p.text-4xl {
+.eb-page--high-contrast .hc-post-hero article p.text-4xl {
   font-family: "Aktiv Grotesk Bold", sans-serif;
   font-size: clamp(1.75rem, 4vw, 2.25rem) !important;
   line-height: 1.1 !important;
-  color: var(--hook-lime) !important;
+  color: var(--eb-lime) !important;
 }
 
-.hook-page--high-contrast .hc-post-hero article span[class*="uppercase"]:first-child {
-  color: var(--hook-lime) !important;
+.eb-page--high-contrast .hc-post-hero article span[class*="uppercase"]:first-child {
+  color: var(--eb-lime) !important;
 }
 
-.hook-page--high-contrast .hc-post-hero article span[class*="uppercase"]:last-child,
-.hook-page--high-contrast .hc-post-hero article .font-bold.uppercase {
-  color: var(--hook-lime) !important;
+.eb-page--high-contrast .hc-post-hero article span[class*="uppercase"]:last-child,
+.eb-page--high-contrast .hc-post-hero article .font-bold.uppercase {
+  color: var(--eb-lime) !important;
 }
 
-.hook-page--high-contrast .hc-logo-band > section {
+.eb-page--high-contrast .hc-logo-band > section {
   background: transparent !important;
   padding-top: 48px !important;
   padding-bottom: 48px !important;
 }
 
-.hook-page--high-contrast .hc-logo-band [class*="bg-white"] {
-  background: color-mix(in srgb, var(--hook-dark) 80%, transparent) !important;
+.eb-page--high-contrast .hc-logo-band [class*="bg-white"] {
+  background: color-mix(in srgb, var(--eb-dark) 80%, transparent) !important;
   border: 1px solid var(--hc-card-border);
   border-radius: 6px;
 }
 
-.hook-page--high-contrast .hc-post-hero button.rounded-full.bg-white {
-  border: 1px solid color-mix(in srgb, var(--hook-white) 45%, transparent);
-  color: var(--hook-white);
+.eb-page--high-contrast .hc-post-hero button.rounded-full.bg-white {
+  border: 1px solid color-mix(in srgb, var(--eb-white) 45%, transparent);
+  color: var(--eb-white);
   background: rgba(0, 0, 0, 0.25) !important;
 }
 
-.hook-page--high-contrast .hc-post-hero button.rounded-full.bg-white:hover {
-  border-color: var(--hook-lime);
-  color: var(--hook-lime);
+.eb-page--high-contrast .hc-post-hero button.rounded-full.bg-white:hover {
+  border-color: var(--eb-lime);
+  color: var(--eb-lime);
   background: rgba(0, 0, 0, 0.45) !important;
 }
 
-.hook-page--high-contrast .hc-post-hero .mt-6.flex.justify-center.gap-2 button {
-  background: color-mix(in srgb, var(--hook-white) 35%, transparent) !important;
+.eb-page--high-contrast .hc-post-hero .mt-6.flex.justify-center.gap-2 button {
+  background: color-mix(in srgb, var(--eb-white) 35%, transparent) !important;
 }
 
-.hook-page--high-contrast .hc-post-hero .mt-6.flex.justify-center.gap-2 button[aria-current="true"] {
-  background: var(--hook-lime) !important;
+.eb-page--high-contrast .hc-post-hero .mt-6.flex.justify-center.gap-2 button[aria-current="true"] {
+  background: var(--eb-lime) !important;
 }
 
-.hook-page--high-contrast .hc-faq .space-y-3 > div {
-  border: 1px solid color-mix(in srgb, var(--hook-lime) 22%, transparent);
+.eb-page--high-contrast .hc-faq .space-y-3 > div {
+  border: 1px solid color-mix(in srgb, var(--eb-lime) 22%, transparent);
   border-radius: 10px;
   background: linear-gradient(
     145deg,
-    color-mix(in srgb, var(--hook-lime) 6%, transparent) 0%,
-    color-mix(in srgb, var(--hook-dark) 85%, #000) 100%
+    color-mix(in srgb, var(--eb-lime) 6%, transparent) 0%,
+    color-mix(in srgb, var(--eb-dark) 85%, #000) 100%
   ) !important;
 }
 
-.hook-page--high-contrast .hc-faq button span:first-child {
+.eb-page--high-contrast .hc-faq button span:first-child {
   font-family: "Aktiv Grotesk Bold", sans-serif;
   font-size: clamp(0.95rem, 2.4vw, 1.05rem) !important;
   font-weight: 400 !important;
   line-height: 1.4 !important;
-  color: var(--hook-white) !important;
+  color: var(--eb-white) !important;
 }
 
-.hook-page--high-contrast .hc-faq .space-y-3 > div > div {
+.eb-page--high-contrast .hc-faq .space-y-3 > div > div {
   font-size: 0.98rem !important;
   line-height: var(--hc-lead-line-height) !important;
-  color: var(--hook-white) !important;
-  border-color: color-mix(in srgb, var(--hook-lime) 15%, transparent) !important;
+  color: var(--eb-white) !important;
+  border-color: color-mix(in srgb, var(--eb-lime) 15%, transparent) !important;
 }
 
-.hook-page--high-contrast .hc-process-image {
+.eb-page--high-contrast .hc-process-image {
   border-radius: 6px;
   border: 1px solid var(--hc-card-border);
   box-shadow: 0 8px 32px rgba(0, 0, 0, 0.28);

@@ -3,7 +3,7 @@
 import Link from "next/link";
 import { useEffect, useState } from "react";
 import { IMG, navLinks } from "../data";
-import { HookImg } from "./HookImg";
+import { SiteImg } from "./SiteImg";
 
 export function MobileNav() {
   const [open, setOpen] = useState(false);
@@ -59,9 +59,9 @@ export function MobileNav() {
       >
         <div className="flex items-center justify-between border-b border-black/10 px-4 py-4">
           <Link href="/roofing-marketing" onClick={close}>
-            <HookImg
+            <SiteImg
               src={IMG.logo}
-              alt="Hook Agency"
+              alt="EpoxyBoost"
               width={140}
               height={32}
               className="h-8 w-auto"
@@ -88,7 +88,7 @@ export function MobileNav() {
                     <a
                       href={link.href}
                       onClick={close}
-                      className="block rounded px-3 py-3 text-sm font-bold uppercase tracking-wide hover:bg-[var(--hook-gray)]"
+                      className="block rounded px-3 py-3 text-sm font-bold uppercase tracking-wide hover:bg-[var(--eb-gray)]"
                     >
                       {link.label}
                     </a>
@@ -105,7 +105,7 @@ export function MobileNav() {
                     onClick={() =>
                       setExpanded(isExpanded ? null : link.label)
                     }
-                    className="flex w-full items-center justify-between rounded px-3 py-3 text-left text-sm font-bold uppercase tracking-wide hover:bg-[var(--hook-gray)]"
+                    className="flex w-full items-center justify-between rounded px-3 py-3 text-left text-sm font-bold uppercase tracking-wide hover:bg-[var(--eb-gray)]"
                     aria-expanded={isExpanded}
                   >
                     {link.label}
@@ -116,13 +116,13 @@ export function MobileNav() {
                     </span>
                   </button>
                   {isExpanded && (
-                    <ul className="mb-2 ml-3 border-l-2 border-[var(--hook-lime)] pl-3">
+                    <ul className="mb-2 ml-3 border-l-2 border-[var(--eb-lime)] pl-3">
                       {link.children!.map((child) => (
                         <li key={child.label}>
                           <a
                             href={child.href}
                             onClick={close}
-                            className="block rounded px-2 py-2 text-sm font-semibold text-[var(--hook-muted)] hover:text-black"
+                            className="block rounded px-2 py-2 text-sm font-semibold text-[var(--eb-muted)] hover:text-black"
                           >
                             {child.label}
                           </a>
@@ -141,7 +141,7 @@ export function MobileNav() {
             href="tel:612-772-9555"
             className="flex items-center justify-center gap-2 text-sm font-bold"
           >
-            <HookImg
+            <SiteImg
               src={IMG.callIcon}
               alt=""
               width={20}
@@ -153,7 +153,7 @@ export function MobileNav() {
           <a
             href="#contact"
             onClick={close}
-            className="hook-btn-big hook-btn-lime block text-center"
+            className="eb-btn-big eb-btn-lime block text-center"
           >
             Schedule Intro Call
           </a>

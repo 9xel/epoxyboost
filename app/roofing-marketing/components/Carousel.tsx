@@ -14,7 +14,7 @@ type SlidesPerView = {
   desktop: number;
 };
 
-type HookCarouselProps = {
+type CarouselProps = {
   children: ReactNode[];
   slidesPerView?: SlidesPerView;
   gap?: number;
@@ -52,7 +52,7 @@ function useSlidesPerView(config: SlidesPerView) {
   return count;
 }
 
-export function HookCarousel({
+export function Carousel({
   children,
   slidesPerView = { mobile: 1, tablet: 2, desktop: 3 },
   gap = 24,
@@ -63,7 +63,7 @@ export function HookCarousel({
   loop = true,
   className = "",
   ariaLabel = "Carousel",
-}: HookCarouselProps) {
+}: CarouselProps) {
   const perView = useSlidesPerView(slidesPerView);
   const [index, setIndex] = useState(0);
   const [isPaused, setIsPaused] = useState(false);
@@ -154,7 +154,7 @@ export function HookCarousel({
           <button
             type="button"
             onClick={() => goTo(index - 1)}
-            className="absolute left-0 top-1/2 z-10 flex h-10 w-10 -translate-x-1/2 -translate-y-1/2 items-center justify-center rounded-full bg-white text-lg font-bold shadow-md transition hover:bg-[var(--hook-lime)]"
+            className="absolute left-0 top-1/2 z-10 flex h-10 w-10 -translate-x-1/2 -translate-y-1/2 items-center justify-center rounded-full bg-white text-lg font-bold shadow-md transition hover:bg-[var(--eb-lime)]"
             aria-label="Previous slide"
           >
             ‹
@@ -162,7 +162,7 @@ export function HookCarousel({
           <button
             type="button"
             onClick={() => goTo(index + 1)}
-            className="absolute right-0 top-1/2 z-10 flex h-10 w-10 -translate-y-1/2 translate-x-1/2 items-center justify-center rounded-full bg-white text-lg font-bold shadow-md transition hover:bg-[var(--hook-lime)]"
+            className="absolute right-0 top-1/2 z-10 flex h-10 w-10 -translate-y-1/2 translate-x-1/2 items-center justify-center rounded-full bg-white text-lg font-bold shadow-md transition hover:bg-[var(--eb-lime)]"
             aria-label="Next slide"
           >
             ›
@@ -179,7 +179,7 @@ export function HookCarousel({
               onClick={() => setIndex(dotIndex)}
               className={`h-2.5 rounded-full transition-all ${
                 dotIndex === index
-                  ? "w-8 bg-[var(--hook-lime)]"
+                  ? "w-8 bg-[var(--eb-lime)]"
                   : "w-2.5 bg-black/20"
               }`}
               aria-label={`Go to slide ${dotIndex + 1}`}

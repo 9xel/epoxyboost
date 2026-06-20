@@ -1,43 +1,38 @@
+const pic = (seed: string, w: number, h: number) =>
+  `https://picsum.photos/seed/${seed}/${w}/${h}`;
+
 export const IMG = {
   logo: "/epoxyboost-logo.svg",
   hero: "/images/IMG_0745 (2).webp",
-  websitesIcon:
-    "https://hookagency.com/wp-content/uploads/2024/09/websites-icon-large-green.svg",
-  seoIcon:
-    "https://hookagency.com/wp-content/uploads/2024/09/seo-icon-large-green.svg",
-  ppcIcon:
-    "https://hookagency.com/wp-content/uploads/2024/09/ppc-icon-large-green.svg",
-  process:
-    "https://hookagency.com/wp-content/uploads/2024/10/roofing-marketing-in-the-trenches-768x763.png",
-  youtube: "https://i.ytimg.com/vi/k6KQNJf24jc/hqdefault.jpg",
-  skydiver:
-    "https://hookagency.com/wp-content/uploads/2024/09/dude-skydiving.gif",
-  callIcon:
-    "https://hookagency.com/wp-content/uploads/2024/09/iphone-call-green.svg",
-  pinIcon:
-    "https://hookagency.com/wp-content/uploads/2024/09/location-pin-icon-green.svg",
-  introCall:
-    "https://hookagency.com/wp-content/uploads/2024/10/intro-call-chalk-callout.png",
-  sydnee:
-    "https://hookagency.com/wp-content/uploads/2024/09/sydnee-hook-agency-150x150.webp",
+  websitesIcon: pic("eb-websites-icon", 64, 64),
+  seoIcon: pic("eb-seo-icon", 64, 64),
+  ppcIcon: pic("eb-ppc-icon", 64, 64),
+  process: pic("eb-process", 768, 763),
+  youtube: pic("eb-youtube", 640, 360),
+  skydiver: pic("eb-skydiver", 1200, 800),
+  callIcon: pic("eb-call-icon", 20, 20),
+  pinIcon: pic("eb-pin-icon", 20, 20),
+  introCall: pic("eb-intro-call", 280, 200),
+  sydnee: pic("eb-sydnee", 56, 56),
+  googleLogo: pic("eb-google-logo", 80, 28),
 };
 
 export const clientLogos = [
-  "https://hookagency.com/wp-content/uploads/2025/12/bears-plumbing-services-logo-plumbing-hvac-home-services-marketing-lead-generation.svg",
-  "https://hookagency.com/wp-content/uploads/2025/12/panther-hvac-heating-cooling-geothermal-home-services-hvac-marketing-lead-generation.svg",
-  "https://hookagency.com/wp-content/uploads/2024/08/Genz-Ryan-Logo.svg",
-  "https://hookagency.com/wp-content/uploads/2025/12/Badgerland-Roofing-Solar-Logo-1.svg",
-  "https://hookagency.com/wp-content/uploads/2025/12/smock-heating-air-home-services-marketing-lead-generation.svg",
-  "https://hookagency.com/wp-content/uploads/2026/03/TC-Backer-construction.png",
+  pic("eb-client-1", 160, 48),
+  pic("eb-client-2", 160, 48),
+  pic("eb-client-3", 160, 48),
+  pic("eb-client-4", 160, 48),
+  pic("eb-client-5", 160, 48),
+  pic("eb-client-6", 160, 48),
 ];
 
 export const partnerLogos = [
-  "https://hookagency.com/wp-content/uploads/2024/08/roofcon-logo-gray.svg",
-  "https://hookagency.com/wp-content/uploads/2025/06/proline-crm-logo-gray.svg",
-  "https://hookagency.com/wp-content/uploads/2024/08/rilla-logo-gray.svg",
-  "https://hookagency.com/wp-content/uploads/2024/08/aeroseal-logo-gray.svg",
-  "https://hookagency.com/wp-content/uploads/2024/08/roofing-academy-logo-gray.svg",
-  "https://hookagency.com/wp-content/uploads/2024/10/dope-gray.svg",
+  pic("eb-partner-1", 140, 40),
+  pic("eb-partner-2", 140, 40),
+  pic("eb-partner-3", 140, 40),
+  pic("eb-partner-4", 140, 40),
+  pic("eb-partner-5", 140, 40),
+  pic("eb-partner-6", 140, 40),
 ];
 
 export type NavLink = {
@@ -48,7 +43,7 @@ export type NavLink = {
 
 export const navLinks: NavLink[] = [
   { label: "Pricing", href: "#" },
-  { label: "Website Results", href: "#" },
+  { label: "Results", href: "#" },
   {
     label: "About",
     href: "#",
@@ -106,17 +101,17 @@ export const services = [
 
 export const values = [
   {
-    icon: "https://hookagency.com/wp-content/uploads/2024/09/diamond-icon-black.svg",
+    icon: pic("eb-value-diamond", 48, 48),
     title: "Extreme Ownership",
     text: "We take more accountability & responsibility than is necessary or comfortable. We act like we own the company when we make decisions.",
   },
   {
-    icon: "https://hookagency.com/wp-content/uploads/2024/09/paper-icon-black-1.svg",
+    icon: pic("eb-value-paper", 48, 48),
     title: "Fun Under Pressure",
     text: "When challenges come up, we not only maintain a positive attitude, but have fun and use it as an opportunity to improve.",
   },
   {
-    icon: "https://hookagency.com/wp-content/uploads/2024/09/brain-icon-black.svg",
+    icon: pic("eb-value-brain", 48, 48),
     title: "Scrappy",
     text: "We're always looking for more efficient and productive ways to do things. We're able to do more with less & we turn constraints into inspiration.",
   },
@@ -127,41 +122,36 @@ export const testimonials = [
     name: "Chris Owens",
     company: "Frontline Adjusters",
     quote:
-      "Hook redesigned my companies website, they are consummate pros and it came out fantastic. With Hook, they knew the language and the industry like the back of their hand.",
-    image:
-      "https://hookagency.com/wp-content/uploads/2024/10/chris-owens-frontline--150x150.png",
+      "EpoxyBoost redesigned my companies website, they are consummate pros and it came out fantastic. With EpoxyBoost, they knew the language and the industry like the back of their hand.",
+    image: pic("eb-testimonial-chris", 150, 150),
   },
   {
     name: "Karly Rolls",
     company: "Rolls Mechanical",
     quote:
       "I simply could not be happier. The work they did for me was professional, timely and true to my organization! They turned our website into something I am so proud of.",
-    image:
-      "https://hookagency.com/wp-content/uploads/2025/12/karly-rolls-headshot-150x150.png",
+    image: pic("eb-testimonial-karly", 150, 150),
   },
   {
     name: "Kristin Sullivan",
     company: "Bob's AC",
     quote:
-      "Hook Agency has been an incredible partner for our digital marketing growth. Their team is sharp, responsive, and truly understands how to drive high-quality leads.",
-    image:
-      "https://hookagency.com/wp-content/uploads/2025/12/kristin-sullivan-150x150.jpeg",
+      "EpoxyBoost has been an incredible partner for our digital marketing growth. Their team is sharp, responsive, and truly understands how to drive high-quality leads.",
+    image: pic("eb-testimonial-kristin", 150, 150),
   },
   {
     name: "Courtney White",
     company: "Greentek Roofing & Solar",
     quote:
-      "Hook has been an absolute game-changer for our business! Their marketing team combines creativity with strategic thinking, resulting in campaigns that truly resonate with our audience.",
-    image:
-      "https://hookagency.com/wp-content/uploads/2024/10/Screenshot-2025-05-10-at-5.54.10-PM-150x150.png",
+      "EpoxyBoost has been an absolute game-changer for our business! Their marketing team combines creativity with strategic thinking, resulting in campaigns that truly resonate with our audience.",
+    image: pic("eb-testimonial-courtney", 150, 150),
   },
   {
     name: "Robin Scherer",
     company: "Trust Roofing",
     quote:
-      "Hook Agency is the epitome of professionalism in a marketing agency. They built me a 5 star website that converts and manage all my google ads with an insanely good ROI.",
-    image:
-      "https://hookagency.com/wp-content/uploads/2024/10/chris-owens-frontline--150x150.png",
+      "EpoxyBoost is the epitome of professionalism in a marketing agency. They built me a 5 star website that converts and manage all my google ads with an insanely good ROI.",
+    image: pic("eb-testimonial-robin", 150, 150),
   },
 ];
 
@@ -174,7 +164,7 @@ export const caseStudies = [
       "$30K in organic traffic revenue every month",
       "83.33% increase in first page rank YoY",
     ],
-    logo: "https://hookagency.com/wp-content/uploads/2024/10/northface-logo-color.svg",
+    logo: pic("eb-case-northface", 120, 40),
   },
   {
     label: "Roofing",
@@ -184,7 +174,7 @@ export const caseStudies = [
       "351.32% Increase In Total Keywords",
       "300% Increase In Engaged Traffic YoY",
     ],
-    logo: "https://hookagency.com/wp-content/uploads/2024/10/monarch-roofing-logo.png",
+    logo: pic("eb-case-monarch", 120, 40),
   },
   {
     label: "Roofing",
@@ -194,7 +184,7 @@ export const caseStudies = [
       "1,200 monthly website visitors",
       "1,400% growth in first-time users",
     ],
-    logo: "https://hookagency.com/wp-content/uploads/2024/10/johnson-restoration.svg",
+    logo: pic("eb-case-johnson", 120, 40),
   },
 ];
 
@@ -202,19 +192,16 @@ export const resources = [
   {
     title: "Unlock The Power of Social Media as a Search Engine",
     category: "Social Media",
-    image:
-      "https://hookagency.com/wp-content/uploads/2026/04/social-search-optimization-home-services-hook-agency-355x768.jpeg",
+    image: pic("eb-resource-social", 355, 768),
   },
   {
     title: "What is a Missed Call Worth?",
     category: "call tracking",
-    image:
-      "https://hookagency.com/wp-content/uploads/2026/04/what-is-a-missed-call-worth-hook-agency-768x512.png",
+    image: pic("eb-resource-missed-call", 768, 512),
   },
   {
     title: "PPC for Home Services: Turn Ad Spend Into Booked Jobs",
     category: "paid advertising",
-    image:
-      "https://hookagency.com/wp-content/uploads/2026/04/ppc-campaigns-hook-agency-handbook-768x430.webp",
+    image: pic("eb-resource-ppc", 768, 430),
   },
 ];

@@ -30,7 +30,7 @@ export function EyebrowComparisonSection() {
       className="eyebrow-comparison"
       aria-labelledby="eyebrow-comparison-heading"
     >
-      <div className="hook-container">
+      <div className="eb-container">
         <header className="eyebrow-comparison__header">
           <h2 id="eyebrow-comparison-heading" className="eyebrow-comparison__title">
             Hero Eyebrow Style Comparison
