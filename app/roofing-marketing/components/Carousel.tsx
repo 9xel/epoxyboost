@@ -119,7 +119,7 @@ export function Carousel({
     >
       <div className="overflow-hidden">
         <div
-          className="flex transition-transform duration-500 ease-out"
+          className="flex items-stretch transition-transform duration-500 ease-out"
           style={{
             gap: `${gap}px`,
             transform: `translateX(${offset})`,
@@ -139,11 +139,11 @@ export function Carousel({
           {children.map((child, i) => (
             <div
               key={i}
-              className="shrink-0"
+              className="flex shrink-0"
               style={{ width: slideWidth }}
               aria-hidden={i < index || i >= index + perView}
             >
-              {child}
+              <div className="flex w-full flex-1 flex-col">{child}</div>
             </div>
           ))}
         </div>

@@ -1,33 +1,69 @@
 import Image from "next/image";
+import type { ReactNode } from "react";
 import { CaseStudiesCarousel } from "../components/CaseStudiesCarousel";
 import { FaqAccordion } from "../components/FaqAccordion";
 import { FullStrategyBreakdown } from "../components/FullStrategyBreakdown";
+import { ClaimSpotFormSection } from "../components/ClaimSpotFormSection";
 import { HeroQuoteFormSection } from "../components/HeroQuoteFormSection";
 import { HeroSection } from "../components/HeroSection";
+import { MinimalSiteFooter } from "../components/MinimalSiteFooter";
 import { PhoneIcon } from "../components/PhoneIcon";
 import { SiteImg } from "../components/SiteImg";
 import { LogoCarousel } from "../components/LogoCarousel";
 import { ResourcesCarousel } from "../components/ResourcesCarousel";
 import { ServicesCarousel } from "../components/ServicesCarousel";
+import { ScrollAnchor } from "../components/ScrollAnchor";
 import { SiteHeader } from "../components/SiteHeader";
 import { TestimonialsCarousel } from "../components/TestimonialsCarousel";
 import { clientLogos, IMG, partnerLogos, values } from "../data";
 
-export default function RoofingMarketingHighContrastPage() {
+type EpoxyBoostLandingPageProps = {
+  showPromoBar?: boolean;
+  showNavLinks?: boolean;
+  showCallTextSplit?: boolean;
+  ctaLabel?: string;
+  hero?: ReactNode;
+  showMiddleSections?: boolean;
+  showServicesSection?: boolean;
+  showClaimFormSection?: boolean;
+  minimalFooter?: boolean;
+};
+
+export function EpoxyBoostLandingPage({
+  showPromoBar = true,
+  showNavLinks = true,
+  showCallTextSplit = true,
+  ctaLabel,
+  hero = <HeroSection />,
+  showMiddleSections = true,
+  showServicesSection = false,
+  showClaimFormSection = false,
+  minimalFooter = false,
+}: EpoxyBoostLandingPageProps) {
   return (
     <>
-      <SiteHeader />
-      <HeroSection />
-      <HeroQuoteFormSection />
+      <SiteHeader
+        showPromoBar={showPromoBar}
+        showNavLinks={showNavLinks}
+        showCallTextSplit={showCallTextSplit}
+        ctaLabel={ctaLabel}
+        ctaHref={showClaimFormSection ? "#waitlist" : "#contact"}
+      />
+      <main id="main-content">
+        {hero}
+        {showMiddleSections ? <HeroQuoteFormSection /> : null}
 
-      <div className="hc-post-hero">
+        <div className="hc-post-hero">
+        {showMiddleSections ? (
+          <>
         <FullStrategyBreakdown />
 
-        <div className="hc-band">
+        <ScrollAnchor id="services" />
+        <div className="hc-band hc-services-section">
           <section className="hc-section hc-container">
             <header className="hc-section-header hc-section-header--center">
-              <h2 className="hc-title hc-title--center">
-                EpoxyBoost Better Leads With Our Services
+              <h2 className="hero-headline hc-services-section__title">
+                BOOST YOUR BRAND WITH OUR SERVICES
               </h2>
             </header>
             <ServicesCarousel />
@@ -114,9 +150,7 @@ export default function RoofingMarketingHighContrastPage() {
                   height={28}
                   className="mx-auto h-7 w-auto brightness-0 invert"
                 />
-                <p className="hc-stat hc-stat--logo">
-                  170+
-                </p>
+                <p className="hc-stat hc-stat--logo">170+</p>
                 <p className="hc-stat-label">Five-Star Google Reviews</p>
               </div>
               <div>
@@ -272,7 +306,32 @@ export default function RoofingMarketingHighContrastPage() {
             </div>
           </div>
         </div>
+          </>
+        ) : null}
 
+        {showServicesSection ? (
+          <>
+            <ScrollAnchor id="services" />
+            <div className="hc-band hc-services-section">
+            <section className="hc-section hc-container">
+              <header className="hc-section-header hc-section-header--center">
+                <h2 className="hero-headline hc-services-section__title">
+                  BOOST YOUR BRAND WITH OUR SERVICES
+                </h2>
+              </header>
+              <ServicesCarousel />
+            </section>
+          </div>
+          </>
+        ) : null}
+
+        {showClaimFormSection ? <ClaimSpotFormSection /> : null}
+        </div>
+      </main>
+
+      {minimalFooter ? (
+        <MinimalSiteFooter />
+      ) : (
         <footer className="hc-footer">
           <div className="hc-container hc-footer__grid">
             <div className="space-y-6">
@@ -318,10 +377,10 @@ export default function RoofingMarketingHighContrastPage() {
             </div>
           </div>
           <p className="hc-container hc-footer__copy">
-            © Copyright 2026 EpoxyBoost. Visual clone for demonstration purposes.
+            © 2026 EpoxyBoost
           </p>
         </footer>
-      </div>
+      )}
     </>
   );
 }

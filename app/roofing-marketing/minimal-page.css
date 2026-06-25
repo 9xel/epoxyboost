@@ -1,0 +1,177 @@
+/* Minimal text pages — legal, policy, and similar content */
+
+.minimal-page {
+  background-color: var(--eb-black);
+  color: var(--eb-white);
+}
+
+.minimal-page__hero-bg {
+  background: var(--hc-band-gradient);
+  color: var(--eb-white);
+  padding-top: calc(5.5rem + var(--eb-promo-bar-height, 0px));
+}
+
+@media (min-width: 992px) {
+  .minimal-page__hero-bg {
+    padding-top: calc(5.75rem + var(--eb-promo-bar-height, 0px));
+  }
+}
+
+.minimal-page__hero {
+  padding: 2rem 0 2.5rem;
+}
+
+.minimal-page__hero-inner {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+.minimal-page__hero-title {
+  margin: 0;
+  font-family: "Aktiv Grotesk Bold", sans-serif;
+  font-size: clamp(1.75rem, 5vw, 2.5rem);
+  font-weight: 400;
+  line-height: 1.15;
+  color: var(--eb-white);
+}
+
+.minimal-page__content {
+  position: relative;
+  background-color: var(--eb-black);
+  color: var(--eb-white);
+  padding: clamp(2rem, 5vw, 3rem) 0 calc(3rem + 2rem);
+  overflow: hidden;
+}
+
+.minimal-page__content::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 50%;
+  width: 100vw;
+  height: 2px;
+  background: var(--hc-divider);
+  transform: translateX(-50%);
+  z-index: 2;
+  pointer-events: none;
+}
+
+.minimal-page__inner {
+  position: relative;
+  z-index: 1;
+  max-width: 42rem;
+  margin-inline: auto;
+}
+
+.minimal-page__meta {
+  margin: 0 0 1.25rem;
+  color: rgba(255, 255, 255, 0.92);
+  font-size: 0.9375rem;
+  line-height: 1.5;
+}
+
+.minimal-page__intro {
+  margin: 0 0 1rem;
+  color: rgba(255, 255, 255, 0.88);
+  font-size: 1rem;
+  line-height: 1.75;
+}
+
+.minimal-page__intro:last-of-type {
+  margin-bottom: 2rem;
+}
+
+.minimal-page__section + .minimal-page__section {
+  margin-top: 2rem;
+  padding-top: 2rem;
+  border-top: 1px solid color-mix(in srgb, var(--eb-lime) 18%, transparent);
+}
+
+.minimal-page__section h2 {
+  margin: 0 0 0.875rem;
+  font-family: "Aktiv Grotesk Bold", sans-serif;
+  font-weight: 400;
+  font-size: clamp(1.05rem, 2.4vw, 1.2rem);
+  line-height: 1.3;
+  color: var(--eb-white);
+}
+
+.minimal-page__section p {
+  margin: 0 0 1rem;
+  color: rgba(255, 255, 255, 0.86);
+  font-size: 1rem;
+  line-height: 1.75;
+}
+
+.minimal-page__section p:last-child {
+  margin-bottom: 0;
+}
+
+.minimal-page__section ul {
+  margin: 0 0 1rem;
+  padding-left: 1.35rem;
+  color: rgba(255, 255, 255, 0.86);
+}
+
+.minimal-page__section li {
+  font-size: 1rem;
+  line-height: 1.75;
+}
+
+.minimal-page__section li + li {
+  margin-top: 0.5rem;
+}
+
+.minimal-page__section li::marker {
+  color: var(--eb-lime);
+}
+
+.minimal-page__contact {
+  font-style: normal;
+}
+
+.minimal-page__contact p {
+  margin: 0 0 1rem;
+}
+
+.minimal-page__section a {
+  color: var(--eb-lime);
+  text-decoration: underline;
+  text-underline-offset: 0.15em;
+}
+
+.minimal-page__section a:hover {
+  color: var(--eb-white);
+}
+
+.minimal-page__section .minimal-page__contact a {
+  color: rgba(255, 255, 255, 0.68);
+}
+
+.minimal-page__section .minimal-page__contact a:hover {
+  color: rgba(255, 255, 255, 0.86);
+}
+
+@media (width >= 62.5rem) {
+  .minimal-page__hero {
+    padding: 3.5rem 0 2.5rem;
+  }
+}
+
+@media (width < 62.5rem) {
+  .minimal-page__hero {
+    padding: 1.75rem 0 1.5rem;
+  }
+
+  .minimal-page__section + .minimal-page__section {
+    margin-top: 1.75rem;
+    padding-top: 1.75rem;
+  }
+
+  .minimal-page__section p,
+  .minimal-page__section li {
+    font-size: 0.9375rem;
+  }
+}

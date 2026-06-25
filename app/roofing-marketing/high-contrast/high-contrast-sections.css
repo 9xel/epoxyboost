@@ -1,4 +1,4 @@
-/* go2epoxy homepage section rhythm — high-contrast palette, scoped to this route */
+/* High-contrast marketing page section rhythm and palette */
 
 .eb-page--high-contrast {
   --hc-lead-line-height: 2;
@@ -116,7 +116,7 @@
   }
 }
 
-/* ── Typography (go2 homepage scale) ── */
+/* ── Typography ── */
 
 .hc-eyebrow {
   margin: 0 0 8px;
@@ -463,7 +463,7 @@
   background: color-mix(in srgb, var(--eb-lime) 8%, transparent);
 }
 
-/* ── CTA banner (go2 cta-banner) ── */
+/* ── CTA banner ── */
 
 .hc-cta {
   padding: 48px 0 56px;
@@ -553,6 +553,136 @@
   gap: 2.5rem;
 }
 
+.hc-footer--minimal {
+  position: relative;
+  z-index: 1;
+  overflow: visible;
+  padding: 0;
+  background-color: var(--eb-black);
+}
+
+.hc-footer--minimal::before {
+  content: "";
+  position: absolute;
+  left: 50%;
+  top: 0;
+  width: 100vw;
+  height: 2px;
+  background: var(--hc-divider);
+  transform: translateX(-50%);
+  z-index: 0;
+  pointer-events: none;
+}
+
+.hc-footer__brand {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 0;
+  padding: calc(2.5rem - 12px) 0 1.5rem;
+}
+
+.hc-footer__logo {
+  display: block;
+  line-height: 0;
+  margin-bottom: 1.25rem;
+}
+
+.hc-footer__logo img {
+  display: block;
+  width: clamp(140px, 42vw, 180px);
+  max-width: 100%;
+  height: auto;
+  margin: 0;
+  transform: translateY(-12px);
+}
+
+.hc-footer__contact {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 0.5rem;
+  margin: 0;
+  font-style: normal;
+  font-size: 0.9375rem;
+  font-weight: 400;
+  line-height: 1.5;
+}
+
+.hc-footer__contact-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  color: var(--eb-white);
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+
+.hc-footer__contact-link:hover {
+  color: color-mix(in srgb, var(--eb-white) 80%, transparent);
+}
+
+.hc-footer__contact-link svg {
+  display: block;
+  width: 20px;
+  height: 20px;
+  flex-shrink: 0;
+}
+
+.hc-footer__contact-link--email svg {
+  transform: translateY(calc(0.11em - 1px));
+}
+
+.hc-footer__legal-copy {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 0.25rem;
+  margin: 0.75rem 0 0;
+  font-size: 0.8125rem;
+  font-weight: 400;
+  line-height: 1;
+  color: var(--eb-muted);
+}
+
+.hc-footer__legal-brand,
+.hc-footer__legal-links {
+  margin: 0;
+  line-height: 1.4;
+  color: var(--eb-muted);
+}
+
+.hc-footer__legal-links a {
+  color: inherit;
+  text-decoration: underline;
+  text-decoration-color: color-mix(in srgb, var(--eb-muted) 55%, transparent);
+  text-underline-offset: 2px;
+  transition: color 0.2s ease, text-decoration-color 0.2s ease;
+}
+
+.hc-footer__legal-links a:hover {
+  color: color-mix(in srgb, var(--eb-muted) 75%, white);
+  text-decoration-color: color-mix(in srgb, var(--eb-muted) 85%, transparent);
+}
+
+@media (width >= 62.5rem) {
+  .hc-footer__brand {
+    padding: calc(3.5rem - 12px) 0 1.5rem;
+  }
+
+  .hc-footer__logo {
+    margin-bottom: 1.5rem;
+  }
+
+  .hc-footer__contact {
+    font-size: 1rem;
+  }
+
+  .hc-footer__logo img {
+    width: clamp(156px, 22vw, 180px);
+  }
+}
+
 @media (width >= 48rem) {
   .hc-footer__grid {
     grid-template-columns: 1fr 1fr;
@@ -597,6 +727,18 @@
   color: var(--eb-lime);
 }
 
+.hc-footer .hc-footer__legal-links a {
+  color: var(--eb-muted);
+  text-decoration: underline;
+  text-decoration-color: color-mix(in srgb, var(--eb-muted) 55%, transparent);
+  text-underline-offset: 2px;
+}
+
+.hc-footer .hc-footer__legal-links a:hover {
+  color: color-mix(in srgb, var(--eb-muted) 75%, white);
+  text-decoration-color: color-mix(in srgb, var(--eb-muted) 85%, transparent);
+}
+
 .hc-footer__copy {
   margin: 3rem auto 0;
   padding-top: 2rem;
@@ -612,7 +754,8 @@
   color: var(--eb-lime) !important;
 }
 
-.eb-page--high-contrast .hc-post-hero :is(p, li, .hc-body, .hc-body--bright) {
+.eb-page--high-contrast .hc-post-hero
+  :is(p, li, .hc-body, .hc-body--bright):not(.hc-footer__legal-brand):not(.hc-footer__legal-links) {
   color: var(--eb-white) !important;
 }
 
@@ -640,7 +783,6 @@
 /* ── Shared component overrides (post-hero only) ── */
 
 .eb-page--high-contrast #full-strategy-breakdown {
-  scroll-margin-top: 6rem;
   background: var(--eb-dark);
   color: var(--eb-white);
   padding: 65px 1rem 3rem;
@@ -705,6 +847,17 @@
 
 .eb-page--high-contrast .hero-quote-section__form .hero-form-card--premium .hero-form-card__subheading,
 .eb-page--high-contrast .hero-quote-section__form .hero-form-card--premium .hero-form__trust-line {
+  color: rgba(255, 255, 255, 0.68);
+}
+
+.eb-page--high-contrast .claim-spot-section__inner .hero-form-card--premium {
+  background: var(--hc-card-bg);
+  border: 1px solid var(--hc-card-border);
+  color: var(--eb-white);
+}
+
+.eb-page--high-contrast .claim-spot-section__inner .hero-form-card--premium .hero-form-card__subheading,
+.eb-page--high-contrast .claim-spot-section__inner .hero-form-card--premium .hero-form__trust-line {
   color: rgba(255, 255, 255, 0.68);
 }
 
@@ -818,4 +971,73 @@
   border-radius: 6px;
   border: 1px solid var(--hc-card-border);
   box-shadow: 0 8px 32px rgba(0, 0, 0, 0.28);
+}
+
+/* Footer legal — must stay muted grey; excluded from post-hero white text */
+.eb-page--high-contrast .hc-footer--minimal .hc-footer__legal-copy,
+.eb-page--high-contrast .hc-footer--minimal .hc-footer__legal-brand,
+.eb-page--high-contrast .hc-footer--minimal .hc-footer__legal-links,
+.eb-page--high-contrast .hc-footer--minimal .hc-footer__legal-links a {
+  color: var(--eb-muted) !important;
+}
+
+/* Services section — match branding hero typography */
+.eb-page--high-contrast .hc-services-section .hero-headline {
+  color: #fff !important;
+  font-size: clamp(calc(2.25rem - 3px), calc(5.5vw - 3px), calc(3.875rem - 3px)) !important;
+}
+
+@media (min-width: 1200px) {
+  .eb-page--high-contrast .hc-services-section .hero-headline {
+    font-size: calc(4rem - 3px) !important;
+  }
+}
+
+.eb-page--high-contrast .hc-services-section article h3 {
+  font-family: var(--font-eb-body), "Nunito Sans", sans-serif !important;
+  font-size: clamp(16px, 2.5vw, 22px) !important;
+  font-weight: 800 !important;
+  line-height: 1.35 !important;
+  letter-spacing: normal !important;
+  text-transform: none !important;
+  color: var(--eb-lime) !important;
+}
+
+.eb-page--high-contrast .hc-services-section article p {
+  font-family: var(--font-eb-body), "Nunito Sans", sans-serif !important;
+  font-size: 14px !important;
+  font-weight: 400 !important;
+  line-height: 1.6 !important;
+  color: rgba(255, 255, 255, 0.88) !important;
+}
+
+.eb-page--manrope .hc-services-section article p {
+  font-family: var(--font-eb-manrope), Manrope, sans-serif !important;
+  font-size: 15px !important;
+}
+
+.hc-services-section .service-card__icon {
+  height: 5rem;
+}
+
+.hc-services-section .service-card__icon img {
+  filter: none;
+}
+
+.service-card__icon img[src$=".svg"] {
+  filter: brightness(0);
+}
+
+.eb-page--high-contrast .hc-post-hero .service-card__icon img[src$=".svg"] {
+  filter: none;
+}
+
+.hc-services-section .service-card__title {
+  display: flex;
+  align-items: flex-start;
+}
+
+.hc-services-section .service-card__cta {
+  min-height: 1.25rem;
+  align-items: center;
 }

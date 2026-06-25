@@ -4,9 +4,16 @@ import Link from "next/link";
 import { useEffect, useState } from "react";
 import { IMG, navLinks } from "../data";
 import { PhoneIcon } from "./PhoneIcon";
+import { NavCaret } from "./NavCaret";
 import { SiteImg } from "./SiteImg";
 
-export function MobileNav() {
+export function MobileNav({
+  ctaLabel = "Claim My City",
+  ctaHref = "#contact",
+}: {
+  ctaLabel?: string;
+  ctaHref?: string;
+}) {
   const [open, setOpen] = useState(false);
   const [expanded, setExpanded] = useState<string | null>(null);
 
@@ -59,7 +66,7 @@ export function MobileNav() {
         }`}
       >
         <div className="flex items-center justify-between border-b border-black/10 px-4 py-4">
-          <Link href="/roofing-marketing" onClick={close}>
+          <Link href="/" onClick={close}>
             <SiteImg
               src={IMG.logo}
               alt="EpoxyBoost"
@@ -110,11 +117,9 @@ export function MobileNav() {
                     aria-expanded={isExpanded}
                   >
                     {link.label}
-                    <span
-                      className={`text-xs transition-transform ${isExpanded ? "rotate-180" : ""}`}
-                    >
-                      ▼
-                    </span>
+                    <NavCaret
+                      className={`eb-nav-dropdown__caret eb-nav-dropdown__caret--mobile ${isExpanded ? "eb-nav-dropdown__caret--open" : ""}`}
+                    />
                   </button>
                   {isExpanded && (
                     <ul className="mb-2 ml-3 border-l-2 border-[var(--eb-lime)] pl-3">
@@ -146,11 +151,11 @@ export function MobileNav() {
             612-772-9555
           </a>
           <a
-            href="#contact"
+            href={ctaHref}
             onClick={close}
             className="eb-btn-big eb-btn-lime block text-center"
           >
-            Schedule Intro Call
+            {ctaLabel}
           </a>
         </div>
       </div>

@@ -1,8 +1,8 @@
 const launchPackageItems = [
   {
-    title: "Premium Epoxy Website",
+    title: "Premium Website",
     description:
-      "A clean, high-converting website built to make your company look established and turn visitors into quote requests.",
+      "A clean, high-converting website built to make your company look established and turn clicks into paying customers.",
   },
   {
     title: "Local SEO + Google Maps Setup",
@@ -46,11 +46,6 @@ export function LaunchPackageValueStack() {
           </li>
         ))}
       </ul>
-
-      <p className="launch-value-stack__proof">
-        Based on the strategy used to help build Vancouver&apos;s fastest-growing epoxy
-        brand in 6 months.
-      </p>
     </div>
   );
 }

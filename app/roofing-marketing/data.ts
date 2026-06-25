@@ -4,8 +4,10 @@ const pic = (seed: string, w: number, h: number) =>
 export const IMG = {
   logo: "/epoxyboost-logo.svg",
   hero: "/images/IMG_0745 (2).webp",
-  websitesIcon: pic("eb-websites-icon", 64, 64),
+  websitesIcon: "/icons/service-websites-seo.svg",
+  brandingIcon: "/images/go2epoxy-logo.webp",
   seoIcon: pic("eb-seo-icon", 64, 64),
+  growthIcon: "/icons/service-growth-trend.svg",
   ppcIcon: pic("eb-ppc-icon", 64, 64),
   process: pic("eb-process", 768, 763),
   youtube: pic("eb-youtube", 640, 360),
@@ -49,7 +51,7 @@ export const navLinks: NavLink[] = [
     children: [
       { label: "About Us", href: "#" },
       { label: "Our Process", href: "#" },
-      { label: "Demo of Our Services", href: "#" },
+      { label: "How We Work", href: "#" },
       { label: "Founder", href: "#" },
       { label: "Career Opportunities", href: "#" },
     ],
@@ -64,37 +66,42 @@ export const navLinks: NavLink[] = [
       { label: "Google Local Service Ads", href: "#" },
     ],
   },
-  {
-    label: "Resources",
-    children: [
-      { label: "Contractor Marketing Blog", href: "#" },
-      { label: "Free Mini Courses & Resources", href: "#" },
-      { label: "Weekly Video Content", href: "#" },
-      { label: "Home Services Podcasts", href: "#" },
-    ],
-  },
-  { label: "Reviews", href: "#" },
   { label: "Contact Us", href: "#contact" },
 ];
 
 export const services = [
   {
     icon: IMG.websitesIcon,
-    title: "Custom Websites",
-    description:
-      "We take pride in our design process because we know it works. You won't just have a site that looks good, but one that works to give you more leads.",
+    iconWidth: 72,
+    iconHeight: 72,
+    iconClassName: "h-[4.5rem] w-[4.5rem] shrink-0 object-contain",
+    title: "Websites + SEO",
+    paragraphs: [
+      "Our sites are built to turn clicks into calls, form submissions, and paying customers.",
+      "We show off your best work, reviews, and services and set up the SEO foundation local customers need to find you online.",
+    ],
   },
   {
-    icon: IMG.seoIcon,
-    title: "Search Engine Optimization",
-    description:
-      "Drive more serious leads and traffic to your site with search engine optimization that helps you rank higher on search engines like Google.",
+    icon: IMG.brandingIcon,
+    iconWidth: 160,
+    iconHeight: 80,
+    iconClassName: "h-20 w-auto",
+    title: "Branding",
+    paragraphs: [
+      "Make it clear that the difference between you and the cheaper guy is more than just price.",
+      "We upgrade your brand's image and highlight the quality of your work, so customers will know why you're the premium choice in your region.",
+    ],
   },
   {
-    icon: IMG.ppcIcon,
-    title: "Paid Ad Management",
-    description:
-      "Get fast results with our PPC services. We use methods that get results and don't waste your hard-earned dollar on things that won't work.",
+    icon: IMG.growthIcon,
+    iconWidth: 72,
+    iconHeight: 72,
+    iconClassName: "h-[4.5rem] w-[4.5rem] shrink-0 object-contain",
+    title: "Growth Strategy",
+    paragraphs: [
+      "More leads only matter if your business is ready to handle them.",
+      "We build the systems you need to scale your business — from lead intake, follow-up, and tracking, to improving margins and deciding which roles to hire next.",
+    ],
   },
 ];
 

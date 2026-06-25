@@ -1,13 +1,15 @@
 import { IMG } from "../data";
+import { PillLimeButton } from "./PillLimeButton";
 
 const trustBullets = [
   {
     lead: "First Page or Free Guarantee:",
-    body: "Hit the first page of local Google search results within 6 months or you get a 100% refund. No risks.",
+    body: "Hit the first page of local Google search results within 3 months or we work for free.",
+    footnoteMark: true,
   },
   {
     lead: "14-Day Website Launch:",
-    body: "Your premium, high-converting epoxy services site is built, fully optimized, and live within two weeks.",
+    body: "Your premium, conversion-focused epoxy services site is built, SEO-ready, and live within two weeks.",
   },
   {
     lead: "Real Epoxy Experience:",
@@ -56,15 +58,18 @@ export function HeroSection() {
                 {trustBullets.map((item) => (
                   <li key={item.lead} className="hero-trust-pillars__item">
                     <strong className="hero-trust-pillars__lead">{item.lead}</strong>{" "}
-                    <span className="hero-trust-pillars__body">{item.body}</span>
+                    <span className="hero-trust-pillars__body">
+                      {item.body}
+                      {"footnoteMark" in item && item.footnoteMark ? (
+                        <span className="hero-guarantee-mark">*</span>
+                      ) : null}
+                    </span>
                   </li>
                 ))}
               </ul>
 
               <div className="hero-cta-row">
-                <a href="#full-strategy-breakdown" className="btn--big solid--lime">
-                  Learn More
-                </a>
+                <PillLimeButton href="#full-strategy-breakdown">See if I Qualify</PillLimeButton>
                 <a
                   className="btn--popup yt-video hero-cta-row__video"
                   href="https://www.youtube.com/watch?v=vqP0JaNnHLM"
@@ -79,6 +84,13 @@ export function HeroSection() {
                   </span>
                 </a>
               </div>
+
+              <p className="hero-guarantee-caveat">
+                *Rank on the first page of Google search results for &quot;epoxy flooring [your
+                city]&quot; within 3 months, or we keep working until you get there. Free of
+                charge.{" "}
+                <a href="#">Conditions apply.</a>
+              </p>
             </div>
           </div>
         </div>
