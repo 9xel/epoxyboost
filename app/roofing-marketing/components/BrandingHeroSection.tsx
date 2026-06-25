@@ -1,4 +1,5 @@
-import { IMG } from "../data";
+import { BrandingHeroPhoto } from "./BrandingHeroPhoto";
+import { HeroPhotoUpgradeScript } from "./HeroPhotoUpgradeScript";
 import { PillDarkOutlineButton } from "./PillDarkOutlineButton";
 import { PillLimeButton } from "./PillLimeButton";
 
@@ -16,18 +17,8 @@ export function BrandingHeroSection({ id, variant = "primary" }: BrandingHeroSec
       className={`hero hero--landing hero--branding${isClassic ? "" : " hero--branding-primary"}`}
       aria-label="Epoxy contractor branding and growth"
     >
-      <picture className="hero--landing__bg">
-        {/* eslint-disable-next-line @next/next/no-img-element */}
-        <img
-          src={IMG.hero}
-          width={4284}
-          height={5712}
-          alt="Epoxy flooring installation showcasing a premium finished surface"
-          className="fetch-me wp-post-image no-lazy"
-          decoding="async"
-          fetchPriority="high"
-        />
-      </picture>
+      <BrandingHeroPhoto />
+      <HeroPhotoUpgradeScript />
 
       <div className="eb-container">
         <div className="eb-row hero-row">

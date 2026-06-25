@@ -5,8 +5,10 @@ import {
   siteOpenGraph,
   siteTwitter,
 } from "../../lib/site";
+import { HERO } from "../roofing-marketing/data";
 import "../roofing-marketing/site-theme.css";
 import "../roofing-marketing/high-contrast/high-contrast-sections.css";
+import "../roofing-marketing/hero-photo.css";
 
 const nunitoSans = Nunito_Sans({
   variable: "--font-eb-body",
@@ -55,10 +57,28 @@ export default function HomeLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <div
-      className={`${nunitoSans.variable} ${robotoSlab.variable} ${bebasNeue.variable} ${manrope.variable} eb-page eb-page--no-promo-bar eb-page--manrope font-[family-name:var(--font-eb-body)] text-black antialiased`}
-    >
-      <div className="eb-page--high-contrast">{children}</div>
-    </div>
+    <>
+      <link
+        rel="preload"
+        as="image"
+        href={HERO.lcp}
+        media="(max-width: 61.999rem)"
+        type="image/webp"
+        fetchPriority="high"
+      />
+      <link
+        rel="preload"
+        as="image"
+        href={HERO.lcp}
+        media="(min-width: 62rem)"
+        type="image/webp"
+        fetchPriority="high"
+      />
+      <div
+        className={`${nunitoSans.variable} ${robotoSlab.variable} ${bebasNeue.variable} ${manrope.variable} eb-page eb-page--no-promo-bar eb-page--manrope font-[family-name:var(--font-eb-body)] text-black antialiased`}
+      >
+        <div className="eb-page--high-contrast">{children}</div>
+      </div>
+    </>
   );
 }

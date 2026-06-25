@@ -8,7 +8,8 @@
     "start": "next start",
     "lint": "eslint",
     "images:convert": "node scripts/convert-images.mjs",
-    "images:convert:thumb": "node scripts/convert-images.mjs --thumb"
+    "images:convert:thumb": "node scripts/convert-images.mjs --thumb",
+    "images:hero": "node scripts/generate-hero-variants.mjs"
   },
   "dependencies": {
     "@next/third-parties": "^16.2.9",

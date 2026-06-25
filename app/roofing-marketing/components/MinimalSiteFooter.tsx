@@ -12,6 +12,8 @@ export function MinimalSiteFooter() {
             alt="EpoxyBoost"
             width={180}
             height={40}
+            loading="lazy"
+            decoding="async"
             className="brightness-0 invert"
           />
         </div>

@@ -1,5 +1,6 @@
 "use client";
 
+import { GoogleAnalytics } from "@next/third-parties/google";
 import Script from "next/script";
 import { createContext, useCallback, useContext, useEffect, useMemo, useState } from "react";
 
@@ -33,7 +34,6 @@ export function AnalyticsProvider({ children }: { children: React.ReactNode }) {
   const [consent, setConsentState] = useState<CookieConsentChoice | null>(
     COOKIE_CONSENT_BANNER_ENABLED ? null : "all",
   );
-  const [analyticsReady, setAnalyticsReady] = useState(false);
 
   useEffect(() => {
     if (COOKIE_CONSENT_BANNER_ENABLED) {
@@ -43,7 +43,6 @@ export function AnalyticsProvider({ children }: { children: React.ReactNode }) {
 
   const setConsent = useCallback((choice: CookieConsentChoice) => {
     setConsentState(choice);
-    setAnalyticsReady(false);
   }, []);
 
   const analyticsEnabled = hasAnalyticsConsent(consent);
@@ -62,31 +61,22 @@ export function AnalyticsProvider({ children }: { children: React.ReactNode }) {
       {children}
       {analyticsEnabled && gaMeasurementId ? (
         <>
-          <Script
-            src={`https://www.googletagmanager.com/gtag/js?id=${gaMeasurementId}`}
-            strategy="afterInteractive"
-            onLoad={() => setAnalyticsReady(true)}
-          />
-          <Script id="ga-init" strategy="afterInteractive">
+          <Script id="ga-consent" strategy="afterInteractive">
             {`
               window.dataLayer = window.dataLayer || [];
               function gtag(){dataLayer.push(arguments);}
-              window.gtag = gtag;
-              gtag('js', new Date());
               gtag('consent', 'default', {
                 analytics_storage: 'granted',
                 ad_storage: 'denied',
                 ad_user_data: 'denied',
                 ad_personalization: 'denied'
               });
-              gtag('config', '${gaMeasurementId}', {
-                anonymize_ip: true
-              });
             `}
           </Script>
+          <GoogleAnalytics gaId={gaMeasurementId} />
         </>
       ) : null}
-      {analyticsReady ? <AnalyticsClickTracker /> : null}
+      {analyticsEnabled && gaMeasurementId ? <AnalyticsClickTracker /> : null}
       {COOKIE_CONSENT_BANNER_ENABLED ? <CookieConsent onConsentChange={setConsent} /> : null}
     </AnalyticsContext.Provider>
   );

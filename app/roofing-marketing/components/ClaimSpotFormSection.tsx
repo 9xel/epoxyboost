@@ -1,5 +1,9 @@
-import { HeroLaunchForm } from "./HeroLaunchForm";
+import dynamic from "next/dynamic";
 import { ScrollAnchor } from "./ScrollAnchor";
+
+const HeroLaunchForm = dynamic(() =>
+  import("./HeroLaunchForm").then((mod) => mod.HeroLaunchForm),
+);
 
 export function ClaimSpotFormSection() {
   return (

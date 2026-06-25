@@ -16,9 +16,19 @@ const inputClassName =
 
 type HeroFormServicesFieldProps = {
   idPrefix?: string;
+  invalidServices?: boolean;
+  invalidServicesOther?: boolean;
+  onServicesChange?: () => void;
+  onOtherChange?: () => void;
 };
 
-export function HeroFormServicesField({ idPrefix = "hero" }: HeroFormServicesFieldProps) {
+export function HeroFormServicesField({
+  idPrefix = "hero",
+  invalidServices = false,
+  invalidServicesOther = false,
+  onServicesChange,
+  onOtherChange,
+}: HeroFormServicesFieldProps) {
   const [isOpen, setIsOpen] = useState(false);
   const [selected, setSelected] = useState<string[]>([]);
   const [otherText, setOtherText] = useState("");
@@ -73,6 +83,7 @@ export function HeroFormServicesField({ idPrefix = "hero" }: HeroFormServicesFie
         setOtherText("");
       }
 
+      onServicesChange?.();
       return next;
     });
 
@@ -115,7 +126,9 @@ export function HeroFormServicesField({ idPrefix = "hero" }: HeroFormServicesFie
           />
           <button
             type="button"
-            className={`${inputClassName} hero-form__multiselect-trigger`}
+            className={`${inputClassName} hero-form__multiselect-trigger${
+              invalidServices ? " hero-form__input--invalid" : ""
+            }`}
             aria-expanded={isOpen}
             aria-haspopup="listbox"
             aria-controls={listboxId}
@@ -185,9 +198,12 @@ export function HeroFormServicesField({ idPrefix = "hero" }: HeroFormServicesFie
             type="text"
             required
             value={otherText}
-            onChange={(event) => setOtherText(event.target.value)}
+            onChange={(event) => {
+              setOtherText(event.target.value);
+              onOtherChange?.();
+            }}
             placeholder="Please explain what you are interested in *"
-            className={inputClassName}
+            className={`${inputClassName}${invalidServicesOther ? " hero-form__input--invalid" : ""}`}
           />
         </div>
       ) : null}

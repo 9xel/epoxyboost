@@ -52,6 +52,9 @@ export function SiteHeader({
             alt="EpoxyBoost"
             width={156}
             height={34}
+            loading="eager"
+            decoding="sync"
+            fetchPriority="high"
             className="h-auto w-[140px] xl:w-[156px] brightness-0 invert"
           />
         </Link>

@@ -16,6 +16,9 @@ export function ServicesCarousel() {
                 alt=""
                 width={service.iconWidth ?? 72}
                 height={service.iconHeight ?? 72}
+                loading="lazy"
+                decoding="async"
+                fetchPriority="low"
                 className={service.iconClassName ?? "h-[4.5rem] w-[4.5rem] shrink-0 object-contain"}
               />
             </div>
