@@ -1,7 +1,7 @@
 "use client";
 
 import { useRouter } from "next/navigation";
-import { type FormEvent, useState } from "react";
+import { type FormEvent, useRef, useState } from "react";
 
 import { pushWaitlistFormSubmitEvent } from "../../../lib/analytics";
 import {
@@ -26,6 +26,13 @@ const formFields = [
     autoComplete: "email" as const,
     label: "Email address",
     placeholder: "Email *",
+  },
+  {
+    name: "phone",
+    type: "tel",
+    autoComplete: "tel" as const,
+    label: "Phone number",
+    placeholder: "Phone *",
   },
   {
     name: "company",
@@ -55,7 +62,7 @@ export function HeroLaunchForm() {
   const router = useRouter();
   const [status, setStatus] = useState<FormStatus>("idle");
   const [errorMessage, setErrorMessage] = useState("");
-  const [phone, setPhone] = useState("");
+  const phoneRef = useRef<HTMLInputElement>(null);
 
   async function handleSubmit(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
@@ -64,6 +71,7 @@ export function HeroLaunchForm() {
 
     const formData = new FormData(event.currentTarget);
     const email = String(formData.get("email") || "").trim();
+    const phone = String(phoneRef.current?.value || formData.get("phone") || "").trim();
 
     if (!isValidEmail(email)) {
       setStatus("error");
@@ -80,7 +88,7 @@ export function HeroLaunchForm() {
     const payload = {
       name: String(formData.get("name") || "").trim(),
       email,
-      phone: phone.trim(),
+      phone,
       company: String(formData.get("company") || "").trim(),
       city: String(formData.get("city") || "").trim(),
       services: formData.getAll("services").map(String),
@@ -115,8 +123,9 @@ export function HeroLaunchForm() {
     }
   }
 
-  function handlePhoneChange(value: string) {
-    setPhone(formatUsPhoneInput(value));
+  function handlePhoneInput(event: FormEvent<HTMLInputElement>) {
+    const input = event.currentTarget;
+    input.value = formatUsPhoneInput(input.value);
   }
 
   return (
@@ -138,6 +147,29 @@ export function HeroLaunchForm() {
         {formFields.map((field) => {
           const inputId = `hero-${field.name}`;
 
+          if (field.name === "phone") {
+            return (
+              <div key={field.name} className="hero-form__field">
+                <label htmlFor={inputId} className="sr-only">
+                  {field.label}
+                </label>
+                <input
+                  ref={phoneRef}
+                  id={inputId}
+                  name={field.name}
+                  type="tel"
+                  inputMode="tel"
+                  autoComplete={field.autoComplete}
+                  required
+                  disabled={status === "submitting"}
+                  placeholder={field.placeholder}
+                  onInput={handlePhoneInput}
+                  className={inputClassName}
+                />
+              </div>
+            );
+          }
+
           return (
             <div key={field.name} className="hero-form__field">
               <label htmlFor={inputId} className="sr-only">
@@ -147,7 +179,7 @@ export function HeroLaunchForm() {
                 id={inputId}
                 name={field.name}
                 type={field.type}
-                autoComplete={field.autoComplete}
+                {...(field.autoComplete ? { autoComplete: field.autoComplete } : {})}
                 required
                 disabled={status === "submitting"}
                 placeholder={field.placeholder}
@@ -156,24 +188,6 @@ export function HeroLaunchForm() {
             </div>
           );
         })}
-        <div className="hero-form__field">
-          <label htmlFor="hero-phone" className="sr-only">
-            Phone number
-          </label>
-          <input
-            id="hero-phone"
-            name="phone"
-            type="tel"
-            inputMode="tel"
-            autoComplete="tel"
-            required
-            disabled={status === "submitting"}
-            placeholder="(555) 555-5555 *"
-            value={phone}
-            onChange={(event) => handlePhoneChange(event.target.value)}
-            className={inputClassName}
-          />
-        </div>
         <HeroFormServicesField />
         <div className="hero-form__field hero-form__consent">
           <label className="hero-form__consent-label">
