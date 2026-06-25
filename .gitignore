@@ -40,6 +40,9 @@ yarn-error.log*
 *.tsbuildinfo
 next-env.d.ts
 
+# local styling sandbox — not deployed (blocked by proxy.ts)
+/app/home-test/
+
 # original photos — never commit; convert to WebP in public/images/ instead
 /assets/originals/*
 !/assets/originals/.gitkeep

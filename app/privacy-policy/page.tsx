@@ -1,9 +1,9 @@
 import type { Metadata } from "next";
 import { siteOpenGraph, siteTwitter } from "../../lib/site";
-import { MinimalSiteFooter } from "../roofing-marketing/components/MinimalSiteFooter";
-import { PrivacyPolicyPageContent } from "../roofing-marketing/components/PrivacyPolicyPageContent";
-import { SiteHeader } from "../roofing-marketing/components/SiteHeader";
-import { privacyPolicyPage } from "../roofing-marketing/lib/privacy-policy";
+import { MinimalSiteFooter } from "../epoxyboost/components/MinimalSiteFooter";
+import { PrivacyPolicyPageContent } from "../epoxyboost/components/PrivacyPolicyPageContent";
+import { SiteHeader } from "../epoxyboost/components/SiteHeader";
+import { privacyPolicyPage } from "../epoxyboost/lib/privacy-policy";
 
 const privacyPolicyPath = "/privacy-policy";
 

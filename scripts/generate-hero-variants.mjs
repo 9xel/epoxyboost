@@ -7,7 +7,8 @@ import sharp from "sharp";
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const ROOT = path.resolve(__dirname, "..");
-const SOURCE = path.join(ROOT, "public", "images", "IMG_0745 (2).webp");
+const HERO_SLUG = "hero-go2epoxy-installer-metallic-garage";
+const SOURCE = path.join(ROOT, "public", "images", "sources", `${HERO_SLUG}.webp`);
 const OUTPUT_DIR = path.join(ROOT, "public", "images", "hero");
 
 const WIDTHS = [390, 480, 720, 824, 1040, 1200, 1600];
@@ -57,7 +58,7 @@ async function main() {
   let skipped = 0;
 
   for (const width of WIDTHS) {
-    const outputPath = path.join(OUTPUT_DIR, `eb-hero-${width}.webp`);
+    const outputPath = path.join(OUTPUT_DIR, `${HERO_SLUG}-${width}.webp`);
     const status = await writeVariant(image, width, outputPath, WEBP_QUALITY);
     if (status === "written") {
       written += 1;
@@ -69,7 +70,7 @@ async function main() {
     }
   }
 
-  const hqPath = path.join(OUTPUT_DIR, "eb-hero-hq.webp");
+  const hqPath = path.join(OUTPUT_DIR, `${HERO_SLUG}-hq.webp`);
   const hqWidth = Math.min(meta.width ?? HQ_MAX_WIDTH, HQ_MAX_WIDTH);
   const hqStatus = await writeVariant(image, hqWidth, hqPath, HQ_QUALITY);
   if (hqStatus === "written") {

@@ -1,6 +1,8 @@
+const HERO_SLUG = "hero-go2epoxy-installer-metallic-garage";
+
 export const IMG = {
   logo: "/epoxyboost-logo.svg",
-  hero: "/images/IMG_0745 (2).webp",
+  heroSource: `/images/sources/${HERO_SLUG}.webp`,
   websitesIcon: "/icons/service-websites-seo.svg",
   brandingIcon: "/images/go2epoxy-logo-160.webp",
   brandingIconHq: "/images/go2epoxy-logo.webp",
@@ -9,19 +11,19 @@ export const IMG = {
 
 /** Responsive hero assets — run `npm run images:hero` to regenerate. */
 export const HERO = {
-  lcp: "/images/hero/eb-hero-480.webp",
-  hq: "/images/hero/eb-hero-hq.webp",
+  lcp: `/images/hero/${HERO_SLUG}-480.webp`,
+  hq: `/images/hero/${HERO_SLUG}-hq.webp`,
   width: 1200,
   height: 1600,
   mobileSrcSet: [
-    "/images/hero/eb-hero-390.webp 390w",
-    "/images/hero/eb-hero-480.webp 480w",
-    "/images/hero/eb-hero-720.webp 720w",
-    "/images/hero/eb-hero-1040.webp 1040w",
-    "/images/hero/eb-hero-1200.webp 1200w",
-    "/images/hero/eb-hero-1600.webp 1600w",
+    `/images/hero/${HERO_SLUG}-390.webp 390w`,
+    `/images/hero/${HERO_SLUG}-480.webp 480w`,
+    `/images/hero/${HERO_SLUG}-720.webp 720w`,
+    `/images/hero/${HERO_SLUG}-1040.webp 1040w`,
+    `/images/hero/${HERO_SLUG}-1200.webp 1200w`,
+    `/images/hero/${HERO_SLUG}-1600.webp 1600w`,
   ].join(", "),
-  alt: "Epoxy flooring installation showcasing a premium finished surface",
+  alt: "Go2Epoxy installer in company uniform inspecting a newly installed metallic epoxy garage floor",
 } as const;
 
 export const services = [

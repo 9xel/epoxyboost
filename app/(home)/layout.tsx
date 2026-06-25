@@ -5,8 +5,8 @@ import {
   siteOpenGraph,
   siteTwitter,
 } from "../../lib/site";
-import { HERO } from "../roofing-marketing/data";
-import "../roofing-marketing/site-theme.css";
+import { HERO } from "../epoxyboost/data";
+import "../epoxyboost/site-theme.css";
 
 const AKTIV_GROTESK_WOFF2 = "/fonts/AktivGroteskEx_Trial_Bd.woff2";
 

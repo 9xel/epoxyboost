@@ -1,5 +1,5 @@
-import { BrandingHeroSection } from "../roofing-marketing/components/BrandingHeroSection";
-import { EpoxyBoostLandingPage } from "../roofing-marketing/high-contrast/EpoxyBoostLandingPage";
+import { BrandingHeroSection } from "../epoxyboost/components/BrandingHeroSection";
+import { EpoxyBoostLandingPage } from "../epoxyboost/high-contrast/EpoxyBoostLandingPage";
 
 export default function HomePage() {
   return (

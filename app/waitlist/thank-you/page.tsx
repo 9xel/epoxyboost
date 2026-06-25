@@ -1,8 +1,8 @@
 import type { Metadata } from "next";
 import { siteOpenGraph, siteTwitter } from "../../../lib/site";
-import { MinimalSiteFooter } from "../../roofing-marketing/components/MinimalSiteFooter";
-import { SiteHeader } from "../../roofing-marketing/components/SiteHeader";
-import { WaitlistThankYouPageContent } from "../../roofing-marketing/components/WaitlistThankYouPageContent";
+import { MinimalSiteFooter } from "../../epoxyboost/components/MinimalSiteFooter";
+import { SiteHeader } from "../../epoxyboost/components/SiteHeader";
+import { WaitlistThankYouPageContent } from "../../epoxyboost/components/WaitlistThankYouPageContent";
 
 const waitlistThankYouPath = "/waitlist/thank-you";
 

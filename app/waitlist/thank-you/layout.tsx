@@ -1,8 +1,8 @@
 import type { Metadata } from "next";
 import { Bebas_Neue, Manrope, Nunito_Sans, Roboto_Slab } from "next/font/google";
-import "../../roofing-marketing/site-theme.css";
-import "../../roofing-marketing/minimal-page.css";
-import "../../roofing-marketing/waitlist-thank-you-page.css";
+import "../../epoxyboost/site-theme.css";
+import "../../epoxyboost/minimal-page.css";
+import "../../epoxyboost/waitlist-thank-you-page.css";
 
 const nunitoSans = Nunito_Sans({
   variable: "--font-eb-body",
