@@ -2,12 +2,12 @@
 
 import Script from "next/script";
 
-export function HeroPhotoUpgradeScript() {
+export function ImageUpgradeScript() {
   return (
-    <Script id="hero-photo-upgrade" strategy="afterInteractive">
+    <Script id="image-upgrade" strategy="afterInteractive">
       {`
         (function () {
-          var overlays = document.querySelectorAll(".hero-photo-overlay");
+          var overlays = document.querySelectorAll(".img-upgrade-overlay, .hero-photo-overlay");
           overlays.forEach(function (img) {
             function reveal() {
               img.classList.add("is-loaded");

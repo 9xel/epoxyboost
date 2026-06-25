@@ -1,5 +1,6 @@
 import { services } from "../data";
 import { SiteImg } from "./SiteImg";
+import { UpgradeablePhoto } from "./UpgradeablePhoto";
 
 export function ServicesCarousel() {
   return (
@@ -11,16 +12,30 @@ export function ServicesCarousel() {
             className="service-card eb-card-shadow flex h-full min-h-0 flex-col rounded bg-white p-8 text-black"
           >
             <div className="service-card__icon mb-6 flex h-20 shrink-0 items-center">
-              <SiteImg
-                src={service.icon}
-                alt=""
-                width={service.iconWidth ?? 72}
-                height={service.iconHeight ?? 72}
-                loading="lazy"
-                decoding="async"
-                fetchPriority="low"
-                className={service.iconClassName ?? "h-[4.5rem] w-[4.5rem] shrink-0 object-contain"}
-              />
+              {"iconHq" in service && service.iconHq ? (
+                <UpgradeablePhoto
+                  lcp={service.icon}
+                  hq={service.iconHq}
+                  alt=""
+                  width={service.iconWidth ?? 72}
+                  height={service.iconHeight ?? 72}
+                  loading="lazy"
+                  fetchPriority="low"
+                  decoding="async"
+                  className={service.iconClassName ?? "h-[4.5rem] w-[4.5rem] shrink-0 object-contain"}
+                />
+              ) : (
+                <SiteImg
+                  src={service.icon}
+                  alt=""
+                  width={service.iconWidth ?? 72}
+                  height={service.iconHeight ?? 72}
+                  loading="lazy"
+                  decoding="async"
+                  fetchPriority="low"
+                  className={service.iconClassName ?? "h-[4.5rem] w-[4.5rem] shrink-0 object-contain"}
+                />
+              )}
             </div>
             <h3 className="service-card__title shrink-0 text-xl font-extrabold">{service.title}</h3>
             <div className="service-card__body mt-2 min-h-0 flex-1 space-y-4">

@@ -1,11 +1,6 @@
 @import "tailwindcss";
-
-@font-face {
-  font-family: "Aktiv Grotesk Bold";
-  src: url("/fonts/AktivGroteskEx_Trial_Bd.woff2") format("woff2"),
-    url("/fonts/AktivGroteskEx_Trial_Bd.ttf") format("truetype");
-  font-display: swap;
-}
+@import "./fonts-extended.css";
+@import "./high-contrast/high-contrast-sections.css";
 
 .eb-page {
   --eb-lime: #d4fd52;
@@ -22,6 +17,13 @@
 
 .eb-page--no-promo-bar {
   --eb-promo-bar-height: 0px;
+  --eb-header-offset: 4.5rem;
+}
+
+@media (min-width: 992px) {
+  .eb-page--no-promo-bar {
+    --eb-header-offset: 5rem;
+  }
 }
 
 .eb-page--high-contrast {
@@ -1167,7 +1169,7 @@
 }
 
 .hero-form-card--premium .hero-form__input.hero-form__input--premium::placeholder {
-  color: #666;
+  color: #575757;
   opacity: 1;
   font-size: calc(1em + 1px);
 }
@@ -1391,7 +1393,7 @@
   font-size: calc(1em + 1px);
   font-weight: 400;
   line-height: 1.35;
-  color: #666;
+  color: #575757;
   opacity: 1;
 }
 
@@ -1544,7 +1546,7 @@
   font-family: var(--font-eb-body), "Nunito Sans", sans-serif;
   font-size: 0.8125rem;
   line-height: 1;
-  color: #666;
+  color: #575757;
   transition: transform 0.2s ease;
 }
 
@@ -1902,4 +1904,70 @@
 
 .eb-card-shadow {
   box-shadow: 0 4px 24px rgba(0, 0, 0, 0.08);
+}
+
+/* Hero LCP: mobile picture vs desktop base+HQ stack */
+@media (max-width: 61.999rem) {
+  .hero-photo-desktop {
+    display: none;
+  }
+}
+
+@media (min-width: 62rem) {
+  .hero-photo-mobile {
+    display: none;
+  }
+}
+
+.hero-photo-desktop .hero-photo-base,
+.hero-photo-desktop .hero-photo-overlay {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: calc(100% + 40px);
+  display: block;
+}
+
+.hero-photo-overlay,
+.img-upgrade-overlay {
+  opacity: 0;
+  transition: opacity 0.5s ease;
+  pointer-events: none;
+}
+
+.hero-photo-overlay.is-loaded,
+.img-upgrade-overlay.is-loaded {
+  opacity: 1;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hero-photo-overlay,
+  .img-upgrade-overlay {
+    transition: none;
+  }
+
+  .hero-photo-overlay.is-loaded,
+  .img-upgrade-overlay.is-loaded {
+    opacity: 1;
+  }
+}
+
+/* Upgradeable below-fold images: small base + HQ overlay */
+.upgradeable-photo {
+  position: relative;
+  display: inline-flex;
+  line-height: 0;
+}
+
+.upgradeable-photo__base,
+.upgradeable-photo__overlay {
+  display: block;
+}
+
+.upgradeable-photo__overlay {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
 }

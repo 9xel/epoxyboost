@@ -2,7 +2,8 @@ export const IMG = {
   logo: "/epoxyboost-logo.svg",
   hero: "/images/IMG_0745 (2).webp",
   websitesIcon: "/icons/service-websites-seo.svg",
-  brandingIcon: "/images/go2epoxy-logo.webp",
+  brandingIcon: "/images/go2epoxy-logo-160.webp",
+  brandingIconHq: "/images/go2epoxy-logo.webp",
   growthIcon: "/icons/service-growth-trend.svg",
 } as const;
 
@@ -37,6 +38,7 @@ export const services = [
   },
   {
     icon: IMG.brandingIcon,
+    iconHq: IMG.brandingIconHq,
     iconWidth: 160,
     iconHeight: 80,
     iconClassName: "h-20 w-auto",

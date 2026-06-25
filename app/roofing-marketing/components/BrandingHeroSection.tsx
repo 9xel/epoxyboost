@@ -1,5 +1,4 @@
 import { BrandingHeroPhoto } from "./BrandingHeroPhoto";
-import { HeroPhotoUpgradeScript } from "./HeroPhotoUpgradeScript";
 import { PillDarkOutlineButton } from "./PillDarkOutlineButton";
 import { PillLimeButton } from "./PillLimeButton";
 
@@ -18,7 +17,6 @@ export function BrandingHeroSection({ id, variant = "primary" }: BrandingHeroSec
       aria-label="Epoxy contractor branding and growth"
     >
       <BrandingHeroPhoto />
-      <HeroPhotoUpgradeScript />
 
       <div className="eb-container">
         <div className="eb-row hero-row">

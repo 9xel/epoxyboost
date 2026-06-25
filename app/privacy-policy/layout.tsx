@@ -1,7 +1,6 @@
 import type { Metadata } from "next";
 import { Bebas_Neue, Manrope, Nunito_Sans, Roboto_Slab } from "next/font/google";
 import "../roofing-marketing/site-theme.css";
-import "../roofing-marketing/high-contrast/high-contrast-sections.css";
 import "../roofing-marketing/minimal-page.css";
 
 const nunitoSans = Nunito_Sans({

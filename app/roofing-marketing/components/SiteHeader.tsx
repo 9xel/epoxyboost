@@ -1,7 +1,4 @@
-"use client";
-
 import Link from "next/link";
-import { useEffect } from "react";
 import { siteContactPhone } from "../../../lib/site";
 import { IMG } from "../data";
 import { CallTextSplit } from "./CallTextSplit";
@@ -20,29 +17,6 @@ export function SiteHeader({
   ctaLabel?: string;
   ctaHref?: string;
 }) {
-  useEffect(() => {
-    const header = document.getElementById("eb-site-header");
-    if (!header) return;
-
-    const syncHeaderOffset = () => {
-      document.documentElement.style.setProperty(
-        "--eb-header-offset",
-        `${header.getBoundingClientRect().height}px`,
-      );
-    };
-
-    syncHeaderOffset();
-
-    const observer = new ResizeObserver(syncHeaderOffset);
-    observer.observe(header);
-    window.addEventListener("resize", syncHeaderOffset);
-
-    return () => {
-      observer.disconnect();
-      window.removeEventListener("resize", syncHeaderOffset);
-    };
-  }, []);
-
   return (
     <header id="eb-site-header" className="eb-header">
       <nav id="main-nav" className="eb-main-nav" aria-label="Main Navigation">

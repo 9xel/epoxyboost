@@ -1,6 +1,7 @@
 import type { ReactNode } from "react";
 
 import { ClaimSpotFormSection } from "../components/ClaimSpotFormSection";
+import { ImageUpgradeScript } from "../components/ImageUpgradeScript";
 import { MinimalSiteFooter } from "../components/MinimalSiteFooter";
 import { ServicesCarousel } from "../components/ServicesCarousel";
 import { ScrollAnchor } from "../components/ScrollAnchor";
@@ -53,6 +54,7 @@ export function EpoxyBoostLandingPage({
       </main>
 
       <MinimalSiteFooter />
+      <ImageUpgradeScript />
     </>
   );
 }

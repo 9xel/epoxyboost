@@ -7,8 +7,8 @@ import {
 } from "../../lib/site";
 import { HERO } from "../roofing-marketing/data";
 import "../roofing-marketing/site-theme.css";
-import "../roofing-marketing/high-contrast/high-contrast-sections.css";
-import "../roofing-marketing/hero-photo.css";
+
+const AKTIV_GROTESK_WOFF2 = "/fonts/AktivGroteskEx_Trial_Bd.woff2";
 
 const nunitoSans = Nunito_Sans({
   variable: "--font-eb-body",
@@ -58,6 +58,13 @@ export default function HomeLayout({
 }>) {
   return (
     <>
+      <link
+        rel="preload"
+        as="font"
+        href={AKTIV_GROTESK_WOFF2}
+        type="font/woff2"
+        crossOrigin="anonymous"
+      />
       <link
         rel="preload"
         as="image"
