@@ -36,7 +36,7 @@ export function BrandingHeroSection({ id, variant = "primary" }: BrandingHeroSec
               <header>
                 <p className="hero-eyebrow">WE KNOW EPOXY + HOW TO GROW YOUR BRAND</p>
                 <h1 className="hero-headline hero-headline--sentence">
-                  Branding, Websites, and Growth Strategy Made for Epoxy Contractors
+                  Websites, Branding & Growth Strategy for Epoxy Contractors
                 </h1>
                 <h2 className="hero-subheadline">
                   Look premium. Charge more. Get better clients.

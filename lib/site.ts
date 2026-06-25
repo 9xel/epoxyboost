@@ -8,7 +8,7 @@ export const siteUrl =
 export const siteContactEmail = "info@myepoxyboost.com";
 
 export const homePage = {
-  title: "Branding & Growth Strategy for Epoxy Contractors | EpoxyBoost",
+  title: "Websites, Branding & Growth for Epoxy Contractors | EpoxyBoost",
   description:
     "Look premium. Charge more. Get better clients. Branding, websites, and growth strategy built for epoxy contractors ready to compete on quality.",
   path: "/",
