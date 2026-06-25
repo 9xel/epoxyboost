@@ -1,5 +1,8 @@
 import { NextResponse } from "next/server";
 
+import { isValidEmail } from "../../../lib/email";
+import { isValidUsPhone } from "../../../lib/phone";
+
 const WAITLIST_FORM_URL = process.env.WAITLIST_FORM_URL;
 
 type WaitlistPayload = {
@@ -53,6 +56,20 @@ export async function POST(request: Request) {
     !isNonEmptyString(body.consent_text)
   ) {
     return NextResponse.json({ ok: false, message: "Missing required fields." }, { status: 400 });
+  }
+
+  if (!isValidEmail(body.email)) {
+    return NextResponse.json(
+      { ok: false, message: "Please enter a valid email address." },
+      { status: 400 },
+    );
+  }
+
+  if (!isValidUsPhone(body.phone)) {
+    return NextResponse.json(
+      { ok: false, message: "Please enter a valid 10-digit phone number." },
+      { status: 400 },
+    );
   }
 
   const userAgent = request.headers.get("user-agent") ?? "";

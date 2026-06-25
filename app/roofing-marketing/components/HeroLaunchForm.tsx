@@ -8,6 +8,8 @@ import {
   WAITLIST_CONSENT_TEXT_VERSION,
   WAITLIST_CONTACT_CONSENT_TEXT,
 } from "../../../lib/consent";
+import { isValidEmail } from "../../../lib/email";
+import { formatUsPhoneInput, isValidUsPhone } from "../../../lib/phone";
 import { HeroFormServicesField } from "./HeroFormServicesField";
 
 const formFields = [
@@ -24,13 +26,6 @@ const formFields = [
     autoComplete: "email" as const,
     label: "Email address",
     placeholder: "Email *",
-  },
-  {
-    name: "phone",
-    type: "tel",
-    autoComplete: "tel" as const,
-    label: "Phone number",
-    placeholder: "Phone *",
   },
   {
     name: "company",
@@ -60,7 +55,7 @@ export function HeroLaunchForm() {
   const router = useRouter();
   const [status, setStatus] = useState<FormStatus>("idle");
   const [errorMessage, setErrorMessage] = useState("");
-  const [formKey, setFormKey] = useState(0);
+  const [phone, setPhone] = useState("");
 
   async function handleSubmit(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
@@ -68,10 +63,24 @@ export function HeroLaunchForm() {
     setErrorMessage("");
 
     const formData = new FormData(event.currentTarget);
+    const email = String(formData.get("email") || "").trim();
+
+    if (!isValidEmail(email)) {
+      setStatus("error");
+      setErrorMessage("Please enter a valid email address.");
+      return;
+    }
+
+    if (!isValidUsPhone(phone)) {
+      setStatus("error");
+      setErrorMessage("Please enter a valid 10-digit phone number.");
+      return;
+    }
+
     const payload = {
       name: String(formData.get("name") || "").trim(),
-      email: String(formData.get("email") || "").trim(),
-      phone: String(formData.get("phone") || "").trim(),
+      email,
+      phone: phone.trim(),
       company: String(formData.get("company") || "").trim(),
       city: String(formData.get("city") || "").trim(),
       services: formData.getAll("services").map(String),
@@ -106,6 +115,10 @@ export function HeroLaunchForm() {
     }
   }
 
+  function handlePhoneChange(value: string) {
+    setPhone(formatUsPhoneInput(value));
+  }
+
   return (
     <aside className={cardClassName}>
       <p className="hero-form-card__badge">WAITLIST</p>
@@ -118,7 +131,6 @@ export function HeroLaunchForm() {
       </p>
 
       <form
-        key={formKey}
         className="hero-form hero-form--premium hero-form--premium-tight hero-form--premium-tight-compact"
         onSubmit={handleSubmit}
       >
@@ -144,6 +156,24 @@ export function HeroLaunchForm() {
             </div>
           );
         })}
+        <div className="hero-form__field">
+          <label htmlFor="hero-phone" className="sr-only">
+            Phone number
+          </label>
+          <input
+            id="hero-phone"
+            name="phone"
+            type="tel"
+            inputMode="tel"
+            autoComplete="tel"
+            required
+            disabled={status === "submitting"}
+            placeholder="(555) 555-5555 *"
+            value={phone}
+            onChange={(event) => handlePhoneChange(event.target.value)}
+            className={inputClassName}
+          />
+        </div>
         <HeroFormServicesField />
         <div className="hero-form__field hero-form__consent">
           <label className="hero-form__consent-label">
