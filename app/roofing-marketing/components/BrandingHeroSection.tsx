@@ -1,4 +1,6 @@
 import { BrandingHeroPhoto } from "./BrandingHeroPhoto";
+import { FitHeroSubheadline } from "./FitHeroSubheadline";
+import { FitOneLineText } from "./FitOneLineText";
 import { PillDarkOutlineButton } from "./PillDarkOutlineButton";
 import { PillLimeButton } from "./PillLimeButton";
 
@@ -23,13 +25,16 @@ export function BrandingHeroSection({ id, variant = "primary" }: BrandingHeroSec
           <div className="eb-col">
             <div className="hero-content">
               <header>
-                <p className="hero-eyebrow">WE KNOW EPOXY + HOW TO GROW YOUR BRAND</p>
+                <FitOneLineText className="hero-eyebrow" minFontSize={10}>
+                  WE KNOW EPOXY + HOW TO GROW YOUR BRAND
+                </FitOneLineText>
                 <h1 className="hero-headline hero-headline--sentence">
                   Websites, Branding & Growth Strategy for Epoxy Contractors
                 </h1>
-                <h2 className="hero-subheadline">
-                  Look premium. Charge more. Get better clients.
-                </h2>
+                <FitHeroSubheadline
+                  line1="Look premium. Charge more."
+                  line2="Get better clients."
+                />
               </header>
 
               <div className="hero-copy">

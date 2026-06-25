@@ -640,6 +640,23 @@
   margin: 0 0 1.25rem;
 }
 
+@media (max-width: 991px) {
+  .hero-subheadline--fit-lines .hero-subheadline__line {
+    display: block;
+  }
+}
+
+@media (min-width: 992px) {
+  .hero-subheadline--fit-lines .hero-subheadline__line {
+    display: inline;
+  }
+
+  .hero-subheadline--fit-lines .hero-subheadline__line + .hero-subheadline__line::before {
+    content: " ";
+    white-space: pre;
+  }
+}
+
 .hero--branding .hero-content {
   max-width: 42rem;
 }
