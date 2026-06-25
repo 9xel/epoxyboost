@@ -91,6 +91,12 @@
   padding-bottom: 3rem;
 }
 
+@media (max-width: 991px) {
+  .hc-services-section .hc-section {
+    padding-top: 55px;
+  }
+}
+
 @media (width >= 62.5rem) {
   .hc-section {
     padding-bottom: 4.5rem;
