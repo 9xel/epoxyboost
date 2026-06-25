@@ -96,10 +96,9 @@ export function HeroFormServicesField({ idPrefix = "hero" }: HeroFormServicesFie
         Which services are you interested in?
       </label>
 
-      {selected.map((value) => {
-        const option = SERVICE_OPTIONS.find((item) => item.value === value);
-        return option ? <input key={value} type="hidden" name="services" value={option.label} /> : null;
-      })}
+      {selected.map((value) => (
+        <input key={value} type="hidden" name="services" value={value} />
+      ))}
 
       <div className={`hero-form__multiselect${isOpen ? " hero-form__multiselect--open" : ""}`}>
         <div className="hero-form__multiselect-trigger-wrap">
