@@ -1,0 +1,111 @@
+/* Waitlist thank-you page — extends minimal-page patterns */
+
+.waitlist-thank-you__hero .hero-form-card__badge {
+  margin-bottom: 1rem;
+}
+
+.waitlist-thank-you__hero-lead {
+  margin: 1rem 0 0;
+  max-width: 34rem;
+  color: rgba(255, 255, 255, 0.88);
+  font-size: clamp(1rem, 2.4vw, 1.125rem);
+  line-height: 1.65;
+}
+
+.waitlist-thank-you__content {
+  position: relative;
+  background-color: var(--eb-black);
+  color: var(--eb-white);
+  padding: clamp(2rem, 5vw, 3rem) 0 calc(3rem + 2rem);
+  overflow: hidden;
+}
+
+.waitlist-thank-you__content::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 50%;
+  width: 100vw;
+  height: 2px;
+  background: var(--hc-divider);
+  transform: translateX(-50%);
+  z-index: 2;
+  pointer-events: none;
+}
+
+.waitlist-thank-you__inner {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  max-width: 42rem;
+  margin-inline: auto;
+}
+
+.waitlist-thank-you__card {
+  width: 100%;
+  max-width: 522px;
+}
+
+.waitlist-thank-you__card .hero-form-card__heading {
+  margin-bottom: 0.75rem;
+}
+
+.waitlist-thank-you__card .hero-form-card__subheading {
+  margin-bottom: 1.25rem;
+}
+
+.waitlist-thank-you__steps {
+  margin: 0 0 1.5rem;
+  padding-left: 1.25rem;
+  color: rgba(255, 255, 255, 0.86);
+}
+
+.waitlist-thank-you__steps li {
+  font-size: 0.9375rem;
+  line-height: 1.65;
+}
+
+.waitlist-thank-you__steps li + li {
+  margin-top: 0.625rem;
+}
+
+.waitlist-thank-you__steps li::marker {
+  color: var(--eb-lime);
+}
+
+.waitlist-thank-you__actions {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  gap: 0.75rem;
+  margin-top: 0.5rem;
+  padding-top: 1.25rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.waitlist-thank-you__actions .btn--big {
+  justify-content: center;
+  width: auto;
+  min-width: 12rem;
+}
+
+.waitlist-thank-you__trust-line {
+  margin-top: 1.25rem;
+  max-width: 522px;
+  text-align: center;
+}
+
+.eb-page--high-contrast .waitlist-thank-you__card {
+  background: var(--hc-card-bg);
+  border: 1px solid var(--hc-card-border);
+  color: var(--eb-white);
+}
+
+.eb-page--high-contrast .waitlist-thank-you__card .hero-form-card__subheading,
+.eb-page--high-contrast .waitlist-thank-you__trust-line {
+  color: rgba(255, 255, 255, 0.68);
+}

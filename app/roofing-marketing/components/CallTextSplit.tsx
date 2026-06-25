@@ -1,3 +1,5 @@
+import { siteContactPhone } from "../../../lib/site";
+
 function CallIcon() {
   return (
     <svg
@@ -37,14 +39,14 @@ function TextIcon() {
 export function CallTextSplit({ className }: { className?: string }) {
   return (
     <div className={["call-text-split", className].filter(Boolean).join(" ")}>
-      <a href="tel:6127729555" className="call-text-split__link">
+      <a href={`tel:${siteContactPhone}`} className="call-text-split__link">
         <span className="call-text-split__icon">
           <CallIcon />
         </span>
         Call
       </a>
       <div className="call-text-split__divider" aria-hidden="true" />
-      <a href="sms:6127729555" className="call-text-split__link">
+      <a href={`sms:${siteContactPhone}`} className="call-text-split__link">
         <span className="call-text-split__icon">
           <TextIcon />
         </span>

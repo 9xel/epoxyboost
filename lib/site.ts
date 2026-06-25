@@ -7,6 +7,11 @@ export const siteUrl =
 
 export const siteContactEmail = "info@myepoxyboost.com";
 
+export const siteContactPhone = "2138684124";
+export const siteContactPhoneDisplay = "(213) 868-4124";
+
+export const gaMeasurementId = process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID;
+
 export const homePage = {
   title: "Websites, Branding & Growth for Epoxy Contractors | EpoxyBoost",
   description:

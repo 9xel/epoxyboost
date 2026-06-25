@@ -1204,6 +1204,32 @@
   color: rgba(255, 255, 255, 0.52);
 }
 
+.hero-form__error {
+  margin: 0;
+  padding: 0.625rem 0.75rem;
+  font-family: var(--font-eb-body), "Nunito Sans", sans-serif;
+  font-size: 0.8125rem;
+  line-height: 1.45;
+  text-align: center;
+  color: #ffb4b4;
+  background: rgba(255, 80, 80, 0.12);
+  border: 1px solid rgba(255, 120, 120, 0.35);
+  border-radius: 10px;
+}
+
+.hero-form__success .hero-form-card__heading {
+  margin-bottom: 0.5rem;
+}
+
+.hero-form__success .hero-form-card__subheading {
+  margin-bottom: 1rem;
+}
+
+.hero-form__submit:disabled {
+  cursor: not-allowed;
+  opacity: 0.72;
+}
+
 .eb-page--high-contrast .hero-form-card--premium .hero-form-card__heading {
   color: var(--eb-white);
 }
@@ -1371,7 +1397,7 @@
   position: relative;
   z-index: 1;
   width: 100%;
-  margin-top: 0.125rem;
+  margin-top: 0;
   padding-top: 0.75rem;
   padding-bottom: 0.75rem;
 }
@@ -1432,10 +1458,6 @@
   font-size: 0.625rem;
   line-height: 1.4;
   color: rgba(255, 255, 255, 0.5);
-}
-
-.hero-form-card--premium-tight-compact .hero-form__field.hero-form__consent {
-  margin-top: -0.125rem;
 }
 
 .hero-form-card--premium-tight-compact .hero-form__consent-checkbox {

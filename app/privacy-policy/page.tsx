@@ -27,13 +27,7 @@ export const metadata: Metadata = {
 export default function PrivacyPolicyPage() {
   return (
     <>
-      <SiteHeader
-        showPromoBar={false}
-        showNavLinks={false}
-        showCallTextSplit={false}
-        ctaLabel="Join Our Waitlist"
-        ctaHref="/#waitlist"
-      />
+      <SiteHeader ctaLabel="Join Our Waitlist" ctaHref="/#waitlist" />
       <main id="main-content" className="minimal-page privacy-policy-page">
         <PrivacyPolicyPageContent />
       </main>
