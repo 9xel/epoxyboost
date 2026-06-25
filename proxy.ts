@@ -3,7 +3,7 @@ import { NextResponse } from "next/server";
 
 const ALLOWED_PATHS = new Set(["/", "/privacy-policy"]);
 
-export function middleware(request: NextRequest) {
+export function proxy(request: NextRequest) {
   if (ALLOWED_PATHS.has(request.nextUrl.pathname)) {
     return NextResponse.next();
   }
