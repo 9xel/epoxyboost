@@ -563,7 +563,7 @@
   position: relative;
   z-index: 1;
   overflow: visible;
-  padding: 0;
+  padding: 0 0 env(safe-area-inset-bottom, 0px);
   background-color: var(--eb-black);
 }
 
@@ -585,7 +585,7 @@
   flex-direction: column;
   align-items: flex-start;
   gap: 0;
-  padding: calc(2.5rem - 12px) 0 1.5rem;
+  padding: calc(2.5rem - 12px) 0 calc(1.5rem + env(safe-area-inset-bottom, 0px));
 }
 
 .hc-footer__logo {
@@ -673,7 +673,7 @@
 
 @media (width >= 62.5rem) {
   .hc-footer__brand {
-    padding: calc(3.5rem - 12px) 0 1.5rem;
+    padding: calc(3.5rem - 12px) 0 calc(1.5rem + env(safe-area-inset-bottom, 0px));
   }
 
   .hc-footer__logo {

@@ -35,6 +35,7 @@
   --eb-muted: #a1a1aa;
   --eb-white: #fafafa;
   color: var(--eb-white);
+  background-color: var(--eb-black);
 }
 
 .eb-page--high-contrast .hero.hero--landing {
@@ -468,6 +469,9 @@
   padding-top: calc(169px + var(--eb-promo-bar-height));
   padding-bottom: 3rem;
   overflow: hidden;
+  overflow: clip;
+  contain: paint;
+  isolation: isolate;
 }
 
 @media (min-width: 1200px) {
