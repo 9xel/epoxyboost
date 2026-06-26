@@ -587,7 +587,7 @@
 /* Compact hero typography — phones through smaller desktop/laptop */
 @media (max-width: 1199px) {
   .hero--branding .hero-headline {
-    font-size: clamp(2.625rem, 6.75vw, 4.125rem);
+    font-size: clamp(2.375rem, 6vw, 3.875rem);
   }
 
   .hero--branding-benefits .hero-checked-subheadline {
@@ -829,6 +829,17 @@
 .hero-lead--emphasis {
   font-weight: 800;
   color: #fff;
+}
+
+.hero-lead--emphasis-split {
+  display: flex;
+  flex-wrap: wrap;
+  column-gap: 0.3em;
+  row-gap: 0;
+}
+
+.hero-lead__emphasis-chunk {
+  white-space: nowrap;
 }
 
 @media (min-width: 1200px) {

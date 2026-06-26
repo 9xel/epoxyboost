@@ -5,6 +5,15 @@ import { FitOneLineText } from "./FitOneLineText";
 import { PillDarkOutlineButton } from "./PillDarkOutlineButton";
 import { PillLimeButton } from "./PillLimeButton";
 
+function HeroEmphasisPair({ first, second }: { first: string; second: string }) {
+  return (
+    <p className="hero-lead hero-lead--emphasis hero-lead--emphasis-split">
+      <span className="hero-lead__emphasis-chunk">{first}</span>
+      <span className="hero-lead__emphasis-chunk">{second}</span>
+    </p>
+  );
+}
+
 type BrandingHeroSectionProps = {
   id?: string;
   variant?: "primary" | "classic";
@@ -85,9 +94,10 @@ export function BrandingHeroSection({
                       see a real, premium company. They trust you more. And they&apos;re prepared for a
                       higher price tag.
                     </p>
-                    <p className="hero-lead hero-lead--emphasis">
-                      Stop competing on price. Start competing on quality.
-                    </p>
+                    <HeroEmphasisPair
+                      first="Stop competing on price."
+                      second="Start competing on quality."
+                    />
                   </>
                 ) : (
                   <>
@@ -98,9 +108,10 @@ export function BrandingHeroSection({
                       If you already do great epoxy work, EpoxyBoost is built to help you stand out as
                       the premium option in your city.
                     </p>
-                    <p className="hero-lead hero-lead--emphasis">
-                      Stop competing on price. Start competing on quality.
-                    </p>
+                    <HeroEmphasisPair
+                      first="Stop competing on price."
+                      second="Start competing on quality."
+                    />
                   </>
                 )}
               </div>
