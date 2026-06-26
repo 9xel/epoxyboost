@@ -1,5 +1,6 @@
 "use client";
 
+import { Turnstile, type TurnstileInstance } from "@marsidev/react-turnstile";
 import { useRouter } from "next/navigation";
 import { type FormEvent, useRef, useState } from "react";
 
@@ -66,6 +67,8 @@ const inputClassName =
 const cardClassName =
   "hero-form-card hero-form-card--premium hero-form-card--premium-tight hero-form-card--premium-tight-fit hero-form-card--premium-tight-compact";
 
+const turnstileSiteKey = process.env.NEXT_PUBLIC_TURNSTILE_SITE_KEY;
+
 type FormStatus = "idle" | "submitting" | "error";
 
 function getValidationError(invalidFields: Set<FormFieldName>): string {
@@ -103,7 +106,9 @@ export function HeroLaunchForm() {
   const [status, setStatus] = useState<FormStatus>("idle");
   const [errorMessage, setErrorMessage] = useState("");
   const [invalidFields, setInvalidFields] = useState<Set<FormFieldName>>(new Set());
+  const [turnstileToken, setTurnstileToken] = useState("");
   const phoneRef = useRef<HTMLInputElement>(null);
+  const turnstileRef = useRef<TurnstileInstance>(null);
 
   function clearInvalidField(field: FormFieldName) {
     setInvalidFields((current) => {
@@ -162,6 +167,12 @@ export function HeroLaunchForm() {
       return;
     }
 
+    if (turnstileSiteKey && !turnstileToken) {
+      setStatus("error");
+      setErrorMessage("Please complete the security check.");
+      return;
+    }
+
     const payload = {
       name: String(formData.get("name") || "").trim(),
       email,
@@ -174,6 +185,7 @@ export function HeroLaunchForm() {
       consent_at: new Date().toISOString(),
       consent_text_version: WAITLIST_CONSENT_TEXT_VERSION,
       consent_text: WAITLIST_CONTACT_CONSENT_TEXT,
+      ...(turnstileToken ? { turnstile_token: turnstileToken } : {}),
     };
 
     try {
@@ -200,6 +212,8 @@ export function HeroLaunchForm() {
       setInvalidFields(serverInvalidFields);
       setStatus("error");
       setErrorMessage(message);
+      turnstileRef.current?.reset();
+      setTurnstileToken("");
     }
   }
 
@@ -313,6 +327,18 @@ export function HeroLaunchForm() {
             </span>
           </label>
         </div>
+        {turnstileSiteKey ? (
+          <div className="hero-form__field hero-form__turnstile">
+            <Turnstile
+              ref={turnstileRef}
+              siteKey={turnstileSiteKey}
+              onSuccess={setTurnstileToken}
+              onExpire={() => setTurnstileToken("")}
+              onError={() => setTurnstileToken("")}
+              options={{ theme: "light", size: "flexible" }}
+            />
+          </div>
+        ) : null}
         {status === "error" ? (
           <p className="hero-form__error" role="alert">
             {errorMessage}

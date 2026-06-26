@@ -2,6 +2,7 @@ import { NextResponse } from "next/server";
 
 import { isValidEmail } from "../../../lib/email";
 import { isValidUsPhone } from "../../../lib/phone";
+import { isTurnstileConfigured, verifyTurnstileToken } from "../../../lib/turnstile";
 
 const WAITLIST_FORM_URL = process.env.WAITLIST_FORM_URL;
 
@@ -17,6 +18,7 @@ type WaitlistPayload = {
   consent_at?: string;
   consent_text_version?: string;
   consent_text?: string;
+  turnstile_token?: string;
 };
 
 function isNonEmptyString(value: unknown): value is string {
@@ -43,6 +45,20 @@ export async function POST(request: Request) {
       { ok: false, message: "Contact consent is required." },
       { status: 400 },
     );
+  }
+
+  if (isTurnstileConfigured()) {
+    const remoteIp =
+      request.headers.get("cf-connecting-ip") ??
+      request.headers.get("x-forwarded-for")?.split(",")[0]?.trim();
+
+    const turnstileOk = await verifyTurnstileToken(body.turnstile_token ?? "", remoteIp);
+    if (!turnstileOk) {
+      return NextResponse.json(
+        { ok: false, message: "Security check failed. Please try again." },
+        { status: 400 },
+      );
+    }
   }
 
   if (
@@ -79,7 +95,17 @@ export async function POST(request: Request) {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({
-        ...body,
+        name: body.name,
+        email: body.email,
+        phone: body.phone,
+        company: body.company,
+        city: body.city,
+        services: body.services,
+        services_other: body.services_other,
+        contact_consent: body.contact_consent,
+        consent_at: body.consent_at,
+        consent_text_version: body.consent_text_version,
+        consent_text: body.consent_text,
         user_agent: userAgent,
       }),
     });
