@@ -575,10 +575,6 @@
     margin-bottom: 15px;
   }
 
-  .hero--branding-primary .hero-copy .hero-lead {
-    font-size: clamp(13px, 0.75rem + 0.45vw, 15px);
-  }
-
   .hero--branding-primary .hero-cta-row--paired .btn--big.btn--pill {
     font-size: clamp(13px, 0.75rem + 0.45vw, 15px);
   }
@@ -588,17 +584,34 @@
   }
 }
 
+/* Compact hero typography — phones through smaller desktop/laptop */
+@media (max-width: 1199px) {
+  .hero--branding .hero-headline {
+    font-size: clamp(2.625rem, 6.75vw, 4.125rem);
+  }
+
+  .hero--branding-benefits .hero-checked-subheadline {
+    font-size: clamp(1.0625rem, 2.2vw, 1.1875rem);
+  }
+
+  .hero--branding-primary .hero-copy .hero-lead {
+    font-size: clamp(16px, 0.875rem + 0.55vw, 18px);
+  }
+}
+
 @media (min-width: 992px) {
   .hero.hero--landing .hero-content {
     padding-top: 0;
     max-width: 36rem;
   }
 
-  .hero--branding-primary .hero-copy .hero-lead {
+  .hero--branding-primary .hero-cta-row--paired .btn--big.btn--pill {
     font-size: 17px;
   }
+}
 
-  .hero--branding-primary .hero-cta-row--paired .btn--big.btn--pill {
+@media (min-width: 1200px) {
+  .hero--branding-primary .hero-copy .hero-lead {
     font-size: 17px;
   }
 }
@@ -740,7 +753,6 @@
 }
 
 .hero--branding-benefits .hero-checked-subheadline {
-  font-size: clamp(0.9375rem, 1.85vw, 1.0625rem);
   font-weight: 800;
   line-height: 1.35;
   letter-spacing: 0;
@@ -750,7 +762,7 @@
   color: #adb5bd;
 }
 
-@media (min-width: 992px) {
+@media (min-width: 1200px) {
   .hero--branding-benefits .hero-checked-subheadline {
     font-size: 1.0625rem;
   }
