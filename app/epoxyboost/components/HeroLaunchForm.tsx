@@ -106,7 +106,6 @@ export function HeroLaunchForm() {
   const [status, setStatus] = useState<FormStatus>("idle");
   const [errorMessage, setErrorMessage] = useState("");
   const [invalidFields, setInvalidFields] = useState<Set<FormFieldName>>(new Set());
-  const [turnstileToken, setTurnstileToken] = useState("");
   const phoneRef = useRef<HTMLInputElement>(null);
   const turnstileRef = useRef<TurnstileInstance>(null);
 
@@ -149,9 +148,18 @@ export function HeroLaunchForm() {
     return invalid;
   }
 
+  async function getTurnstileToken(): Promise<string | undefined> {
+    if (!turnstileSiteKey || !turnstileRef.current) {
+      return undefined;
+    }
+
+    turnstileRef.current.reset();
+    turnstileRef.current.execute();
+    return turnstileRef.current.getResponsePromise();
+  }
+
   async function handleSubmit(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
-    setStatus("submitting");
     setErrorMessage("");
     setInvalidFields(new Set());
 
@@ -167,11 +175,7 @@ export function HeroLaunchForm() {
       return;
     }
 
-    if (turnstileSiteKey && !turnstileToken) {
-      setStatus("error");
-      setErrorMessage("Please complete the security check.");
-      return;
-    }
+    setStatus("submitting");
 
     const payload = {
       name: String(formData.get("name") || "").trim(),
@@ -185,14 +189,24 @@ export function HeroLaunchForm() {
       consent_at: new Date().toISOString(),
       consent_text_version: WAITLIST_CONSENT_TEXT_VERSION,
       consent_text: WAITLIST_CONTACT_CONSENT_TEXT,
-      ...(turnstileToken ? { turnstile_token: turnstileToken } : {}),
     };
 
     try {
+      let turnstileToken: string | undefined;
+      if (turnstileSiteKey) {
+        turnstileToken = await getTurnstileToken();
+        if (!turnstileToken) {
+          throw new Error("Security check failed. Please try again.");
+        }
+      }
+
       const response = await fetch("/api/waitlist", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(payload),
+        body: JSON.stringify({
+          ...payload,
+          ...(turnstileToken ? { turnstile_token: turnstileToken } : {}),
+        }),
       });
 
       const result = (await response.json()) as { ok?: boolean; message?: string };
@@ -213,7 +227,6 @@ export function HeroLaunchForm() {
       setStatus("error");
       setErrorMessage(message);
       turnstileRef.current?.reset();
-      setTurnstileToken("");
     }
   }
 
@@ -328,16 +341,16 @@ export function HeroLaunchForm() {
           </label>
         </div>
         {turnstileSiteKey ? (
-          <div className="hero-form__field hero-form__turnstile">
-            <Turnstile
-              ref={turnstileRef}
-              siteKey={turnstileSiteKey}
-              onSuccess={setTurnstileToken}
-              onExpire={() => setTurnstileToken("")}
-              onError={() => setTurnstileToken("")}
-              options={{ theme: "light", size: "flexible" }}
-            />
-          </div>
+          <Turnstile
+            ref={turnstileRef}
+            siteKey={turnstileSiteKey}
+            className="hero-form__turnstile hero-form__turnstile--invisible"
+            options={{
+              size: "invisible",
+              appearance: "interaction-only",
+              execution: "execute",
+            }}
+          />
         ) : null}
         {status === "error" ? (
           <p className="hero-form__error" role="alert">

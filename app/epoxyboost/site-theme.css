@@ -1629,6 +1629,18 @@
   text-decoration-color: currentColor;
 }
 
+.hero-form__turnstile--invisible {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
 .hero-form-card--premium-tight-compact .hero-form__consent-label {
   font-size: 0.625rem;
   line-height: 1.4;

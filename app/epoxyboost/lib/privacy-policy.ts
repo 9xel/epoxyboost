@@ -10,7 +10,7 @@ export const privacyPolicyPage = {
   metaDescription:
     "EpoxyBoost Privacy Policy — how we collect, use, store, and protect personal information when you visit our website, join our waitlist, request a brand audit, or contact us.",
   h1: "Privacy Policy",
-  lastUpdated: "June 24, 2026",
+  lastUpdated: "June 26, 2026",
   intro:
     "EpoxyBoost respects your privacy. This Privacy Policy explains how we collect, use, store, and protect personal information when you visit our website, join our waitlist, request a brand audit, contact us, or use our services.",
   contactEmail: "info@myepoxyboost.com",
@@ -72,6 +72,9 @@ export const privacyPolicyPage = {
         "These tools may help us understand which pages visitors view, how they arrive on our website, how they interact with our content, and whether our marketing is effective.",
         "You can usually adjust your browser settings to block or delete cookies. Some parts of the website may not function properly if cookies are disabled.",
       ],
+      trailingParagraphs: [
+        "Our waitlist and contact forms use Cloudflare Turnstile, an invisible security tool that helps distinguish human visitors from bots. Turnstile processes minimal technical signals (such as IP address, browser type, and device information) solely for bot detection and website security. For more information about how Cloudflare processes this data, see https://www.cloudflare.com/turnstile-privacy-policy/.",
+      ],
     },
     {
       heading: "5. How We Share Information",
@@ -80,7 +83,7 @@ export const privacyPolicyPage = {
         "We may share personal information only when necessary, including with:",
       ],
       listItems: [
-        "Service providers who help us operate our website, forms, email, SMS, analytics, advertising, scheduling, CRM, hosting, or customer management systems",
+        "Service providers who help us operate our website, forms, email, SMS, analytics, advertising, scheduling, CRM, hosting, customer management, or website security systems (including Cloudflare Turnstile)",
         "Team members, contractors, consultants, or business partners involved in responding to your inquiry or providing services",
         "Professional advisors, such as accountants, lawyers, insurers, or business advisors, where reasonably necessary",
         "Legal, regulatory, or government authorities if required by law",

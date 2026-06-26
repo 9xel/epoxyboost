@@ -1,5 +1,43 @@
 import { privacyPolicyPage } from "../lib/privacy-policy";
 
+function parseLinkedUrl(part: string): { href: string; suffix: string } {
+  const match = part.match(/^(https:\/\/\S+?)([.,;:!?)}\]]+)$/);
+  if (match) {
+    return { href: match[1], suffix: match[2] };
+  }
+
+  return { href: part, suffix: "" };
+}
+
+function renderParagraphWithLinks(paragraph: string) {
+  const parts = paragraph.split(/(https:\/\/\S+)/);
+
+  return parts.map((part, index) => {
+    if (!part.startsWith("https://")) {
+      return part;
+    }
+
+    const { href, suffix } = parseLinkedUrl(part);
+    const label = href.includes("turnstile-privacy-policy")
+      ? "Cloudflare Turnstile Privacy Addendum"
+      : href;
+
+    return (
+      <span key={index}>
+        <a
+          href={href}
+          className="minimal-page__reference-link"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          {label}
+        </a>
+        {suffix}
+      </span>
+    );
+  });
+}
+
 function PrivacyPolicySectionContent({
   paragraphs,
   listItems,
@@ -31,7 +69,7 @@ function PrivacyPolicySectionContent({
         </ul>
       ) : null}
       {trailingParagraphs?.map((paragraph) => (
-        <p key={paragraph}>{paragraph}</p>
+        <p key={paragraph}>{renderParagraphWithLinks(paragraph)}</p>
       ))}
     </>
   );
