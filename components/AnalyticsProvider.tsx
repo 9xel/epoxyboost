@@ -1,6 +1,6 @@
 "use client";
 
-import { GoogleAnalytics, GoogleTagManager } from "@next/third-parties/google";
+import { GoogleAnalytics } from "@next/third-parties/google";
 import Script from "next/script";
 import { createContext, useCallback, useContext, useEffect, useMemo, useState } from "react";
 
@@ -30,20 +30,44 @@ export function useAnalyticsConsent() {
   return context;
 }
 
-function ConsentDefaultsScript() {
+function GtmBootstrap({ containerId }: { containerId: string }) {
   return (
-    <Script id="analytics-consent-defaults" strategy="beforeInteractive">
-      {`
-        window.dataLayer = window.dataLayer || [];
-        function gtag(){dataLayer.push(arguments);}
-        gtag('consent', 'default', {
-          analytics_storage: 'granted',
-          ad_storage: 'denied',
-          ad_user_data: 'denied',
-          ad_personalization: 'denied'
-        });
-      `}
-    </Script>
+    <>
+      <Script id="analytics-bootstrap" strategy="beforeInteractive">
+        {`
+          window.dataLayer = window.dataLayer || [];
+          function gtag(){dataLayer.push(arguments);}
+          gtag('consent', 'default', {
+            analytics_storage: 'granted',
+            ad_storage: 'denied',
+            ad_user_data: 'denied',
+            ad_personalization: 'denied'
+          });
+          try {
+            var params = new URLSearchParams(window.location.search);
+            var utmSource = params.get('utm_source');
+            var utmMedium = params.get('utm_medium');
+            var bootstrap = {
+              'gtm.start': new Date().getTime(),
+              event: 'gtm.js',
+              page_location: window.location.href
+            };
+            if (utmSource) {
+              bootstrap.campaign_source = utmSource;
+              bootstrap.campaign_medium = utmMedium || '(not set)';
+            }
+            window.dataLayer.push(bootstrap);
+          } catch (e) {
+            window.dataLayer.push({'gtm.start': new Date().getTime(), event: 'gtm.js'});
+          }
+        `}
+      </Script>
+      <Script
+        id="gtm-loader"
+        strategy="beforeInteractive"
+        src={`https://www.googletagmanager.com/gtm.js?id=${containerId}`}
+      />
+    </>
   );
 }
 
@@ -58,6 +82,23 @@ function GtmNoScript({ containerId }: { containerId: string }) {
         title="Google Tag Manager"
       />
     </noscript>
+  );
+}
+
+function ConsentDefaultsScript() {
+  return (
+    <Script id="analytics-consent-defaults" strategy="beforeInteractive">
+      {`
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('consent', 'default', {
+          analytics_storage: 'granted',
+          ad_storage: 'denied',
+          ad_user_data: 'denied',
+          ad_personalization: 'denied'
+        });
+      `}
+    </Script>
   );
 }
 
@@ -90,15 +131,17 @@ export function AnalyticsProvider({ children }: { children: React.ReactNode }) {
 
   return (
     <AnalyticsContext.Provider value={value}>
-      {trackingActive ? <ConsentDefaultsScript /> : null}
       {trackingActive && gtmId ? (
         <>
+          <GtmBootstrap containerId={gtmId} />
           <GtmNoScript containerId={gtmId} />
-          <GoogleTagManager gtmId={gtmId} />
         </>
       ) : null}
       {trackingActive && !gtmId && gaMeasurementId ? (
-        <GoogleAnalytics gaId={gaMeasurementId} />
+        <>
+          <ConsentDefaultsScript />
+          <GoogleAnalytics gaId={gaMeasurementId} />
+        </>
       ) : null}
       {children}
       {trackingActive ? <AnalyticsClickTracker /> : null}
