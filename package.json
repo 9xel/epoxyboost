@@ -13,7 +13,8 @@
     "images:convert": "node scripts/convert-images.mjs",
     "images:convert:thumb": "node scripts/convert-images.mjs --thumb",
     "images:hero": "node scripts/generate-hero-variants.mjs",
-    "images:logo": "node scripts/generate-logo-variants.mjs"
+    "images:logo": "node scripts/generate-logo-variants.mjs",
+    "images:apple-icon": "node scripts/generate-apple-icon.mjs"
   },
   "dependencies": {
     "@next/third-parties": "^16.2.9",
