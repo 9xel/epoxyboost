@@ -1,6 +1,6 @@
 "use client";
 
-import { GoogleAnalytics } from "@next/third-parties/google";
+import { GoogleAnalytics, GoogleTagManager } from "@next/third-parties/google";
 import Script from "next/script";
 import { createContext, useCallback, useContext, useEffect, useMemo, useState } from "react";
 
@@ -12,7 +12,7 @@ import {
   readCookieConsent,
   type CookieConsentChoice,
 } from "../lib/consent";
-import { gaMeasurementId } from "../lib/site";
+import { gaMeasurementId, gtmId, isAnalyticsConfigured } from "../lib/site";
 
 type AnalyticsContextValue = {
   consent: CookieConsentChoice | null;
@@ -28,6 +28,37 @@ export function useAnalyticsConsent() {
     throw new Error("useAnalyticsConsent must be used within AnalyticsProvider");
   }
   return context;
+}
+
+function ConsentDefaultsScript() {
+  return (
+    <Script id="analytics-consent-defaults" strategy="beforeInteractive">
+      {`
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('consent', 'default', {
+          analytics_storage: 'granted',
+          ad_storage: 'denied',
+          ad_user_data: 'denied',
+          ad_personalization: 'denied'
+        });
+      `}
+    </Script>
+  );
+}
+
+function GtmNoScript({ containerId }: { containerId: string }) {
+  return (
+    <noscript>
+      <iframe
+        src={`https://www.googletagmanager.com/ns.html?id=${containerId}`}
+        height="0"
+        width="0"
+        style={{ display: "none", visibility: "hidden" }}
+        title="Google Tag Manager"
+      />
+    </noscript>
+  );
 }
 
 export function AnalyticsProvider({ children }: { children: React.ReactNode }) {
@@ -46,6 +77,7 @@ export function AnalyticsProvider({ children }: { children: React.ReactNode }) {
   }, []);
 
   const analyticsEnabled = hasAnalyticsConsent(consent);
+  const trackingActive = analyticsEnabled && isAnalyticsConfigured();
 
   const value = useMemo(
     () => ({
@@ -58,25 +90,18 @@ export function AnalyticsProvider({ children }: { children: React.ReactNode }) {
 
   return (
     <AnalyticsContext.Provider value={value}>
-      {children}
-      {analyticsEnabled && gaMeasurementId ? (
+      {trackingActive ? <ConsentDefaultsScript /> : null}
+      {trackingActive && gtmId ? (
         <>
-          <Script id="ga-consent" strategy="afterInteractive">
-            {`
-              window.dataLayer = window.dataLayer || [];
-              function gtag(){dataLayer.push(arguments);}
-              gtag('consent', 'default', {
-                analytics_storage: 'granted',
-                ad_storage: 'denied',
-                ad_user_data: 'denied',
-                ad_personalization: 'denied'
-              });
-            `}
-          </Script>
-          <GoogleAnalytics gaId={gaMeasurementId} />
+          <GtmNoScript containerId={gtmId} />
+          <GoogleTagManager gtmId={gtmId} />
         </>
       ) : null}
-      {analyticsEnabled && gaMeasurementId ? <AnalyticsClickTracker /> : null}
+      {trackingActive && !gtmId && gaMeasurementId ? (
+        <GoogleAnalytics gaId={gaMeasurementId} />
+      ) : null}
+      {children}
+      {trackingActive ? <AnalyticsClickTracker /> : null}
       {COOKIE_CONSENT_BANNER_ENABLED ? <CookieConsent onConsentChange={setConsent} /> : null}
     </AnalyticsContext.Provider>
   );

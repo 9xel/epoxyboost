@@ -1,0 +1,18 @@
+{
+  "name": "@epoxyboost/gtm-setup",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Reusable Google Tag Manager API setup — copy this folder to any project.",
+  "type": "module",
+  "bin": {
+    "gtm-setup": "./setup.mjs"
+  },
+  "scripts": {
+    "setup": "node setup.mjs setup",
+    "list": "node setup.mjs list",
+    "auth": "node setup.mjs auth"
+  },
+  "dependencies": {
+    "googleapis": "^148.0.0"
+  }
+}

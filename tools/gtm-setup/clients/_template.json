@@ -1,0 +1,16 @@
+{
+  "projectName": "Example Project",
+  "accountId": "0000000000",
+  "containerId": "0000000000",
+  "workspaceName": "API Setup",
+  "ga4MeasurementId": "G-XXXXXXXXXX",
+  "googleAds": {
+    "conversionId": "AW-XXXXXXXXX"
+  },
+  "events": [
+    { "name": "quote_form_submit", "ga4": true, "adsConversionLabel": "abcDEF123" },
+    { "name": "phone_click", "ga4": true },
+    { "name": "email_click", "ga4": true }
+  ],
+  "publish": false
+}

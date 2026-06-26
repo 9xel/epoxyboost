@@ -10,7 +10,19 @@ export const siteContactEmail = "info@myepoxyboost.com";
 export const siteContactPhone = "2138684124";
 export const siteContactPhoneDisplay = "(213) 868-4124";
 
+/** Public container ID — visible in page source; used as production fallback if env is missing. */
+export const PRODUCTION_GTM_ID = "GTM-P7GQVNMF";
+
+export const gtmId =
+  process.env.NEXT_PUBLIC_GTM_ID ??
+  (process.env.VERCEL_ENV === "production" ? PRODUCTION_GTM_ID : undefined);
+
+/** Direct GA4 — used only when GTM is not configured. */
 export const gaMeasurementId = process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID;
+
+export function isAnalyticsConfigured() {
+  return Boolean(gtmId || gaMeasurementId);
+}
 
 export const homePage = {
   title: "Websites, Branding & Growth for Epoxy Contractors | EpoxyBoost",

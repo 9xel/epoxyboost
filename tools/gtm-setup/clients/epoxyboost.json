@@ -1,0 +1,14 @@
+{
+  "projectName": "EpoxyBoost",
+  "gtmPublicId": "GTM-P7GQVNMF",
+  "accountId": "0000000000",
+  "containerId": "0000000000",
+  "workspaceName": "API Setup",
+  "ga4MeasurementId": "G-9FJJ11P5SM",
+  "events": [
+    { "name": "waitlist_form_submit", "ga4": true },
+    { "name": "phone_click", "ga4": true },
+    { "name": "email_click", "ga4": true }
+  ],
+  "publish": false
+}

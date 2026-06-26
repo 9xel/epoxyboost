@@ -46,3 +46,8 @@ next-env.d.ts
 # original photos — never commit; convert to WebP in public/images/ instead
 /assets/originals/*
 !/assets/originals/.gitkeep
+
+# GTM setup tool — OAuth secrets (copy tools/gtm-setup/ to other projects)
+/tools/gtm-setup/node_modules/
+/tools/gtm-setup/oauth/client_secret.json
+/tools/gtm-setup/oauth/token.json

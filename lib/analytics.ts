@@ -1,5 +1,5 @@
 import { hasAnalyticsConsent, readCookieConsent, type CookieConsentChoice } from "./consent";
-import { gaMeasurementId } from "./site";
+import { gaMeasurementId, gtmId, isAnalyticsConfigured } from "./site";
 
 export type AnalyticsEvent = "waitlist_form_submit" | "email_click" | "phone_click";
 
@@ -13,7 +13,7 @@ declare global {
 }
 
 function canTrackAnalytics(choice: CookieConsentChoice | null = readCookieConsent()) {
-  return Boolean(gaMeasurementId && hasAnalyticsConsent(choice));
+  return isAnalyticsConfigured() && hasAnalyticsConsent(choice);
 }
 
 export function pushWaitlistFormSubmitEvent() {
@@ -30,7 +30,8 @@ export function pushAnalyticsEvent(
       return;
     }
 
-    if (typeof window.gtag === "function") {
+  // GTM custom-event triggers listen to dataLayer pushes.
+  if (!gtmId && typeof window.gtag === "function") {
       window.gtag("event", event, data);
       resolve();
       return;
