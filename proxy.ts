@@ -1,7 +1,14 @@
 import type { NextRequest } from "next/server";
 import { NextResponse } from "next/server";
 
-const ALLOWED_PATHS = new Set(["/", "/privacy-policy", "/waitlist/thank-you", "/_unknown"]);
+const ALLOWED_PATHS = new Set([
+  "/",
+  "/privacy-policy",
+  "/waitlist/thank-you",
+  "/home-test",
+  "/dev/favicon-preview",
+  "/_unknown",
+]);
 
 export function proxy(request: NextRequest) {
   const { pathname } = request.nextUrl;

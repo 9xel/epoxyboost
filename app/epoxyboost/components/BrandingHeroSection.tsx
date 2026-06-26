@@ -1,3 +1,4 @@
+import type { ReactNode } from "react";
 import { BrandingHeroPhoto } from "./BrandingHeroPhoto";
 import { FitHeroSubheadline } from "./FitHeroSubheadline";
 import { FitOneLineText } from "./FitOneLineText";
@@ -7,15 +8,28 @@ import { PillLimeButton } from "./PillLimeButton";
 type BrandingHeroSectionProps = {
   id?: string;
   variant?: "primary" | "classic";
+  className?: string;
+  eyebrowClassName?: string;
+  subheadline?: ReactNode;
+  compareLabel?: string;
+  stacked?: boolean;
 };
 
-export function BrandingHeroSection({ id, variant = "primary" }: BrandingHeroSectionProps = {}) {
+export function BrandingHeroSection({
+  id,
+  variant = "primary",
+  className,
+  eyebrowClassName,
+  subheadline,
+  compareLabel,
+  stacked = false,
+}: BrandingHeroSectionProps = {}) {
   const isClassic = variant === "classic";
 
-  return (
+  const section = (
     <section
       id={id}
-      className={`hero hero--landing hero--branding${isClassic ? "" : " hero--branding-primary"}`}
+      className={`hero hero--landing hero--branding${isClassic ? "" : " hero--branding-primary"}${stacked ? " hero--compare-stack" : ""}${className ? ` ${className}` : ""}`}
       aria-label="Epoxy contractor branding and growth"
     >
       <BrandingHeroPhoto />
@@ -25,16 +39,21 @@ export function BrandingHeroSection({ id, variant = "primary" }: BrandingHeroSec
           <div className="eb-col">
             <div className="hero-content">
               <header>
-                <FitOneLineText className="hero-eyebrow" minFontSize={10}>
+                <FitOneLineText
+                  className={`hero-eyebrow${eyebrowClassName ? ` ${eyebrowClassName}` : ""}`}
+                  minFontSize={10}
+                >
                   WE KNOW EPOXY + HOW TO GROW YOUR BRAND
                 </FitOneLineText>
                 <h1 className="hero-headline hero-headline--sentence">
                   Websites, Branding & Growth Strategy for Epoxy Contractors
                 </h1>
-                <FitHeroSubheadline
-                  line1="Look premium. Charge more."
-                  line2="Get better clients."
-                />
+                {subheadline ?? (
+                  <FitHeroSubheadline
+                    line1="Look premium. Charge more."
+                    line2="Get better clients."
+                  />
+                )}
               </header>
 
               <div className="hero-copy">
@@ -95,5 +114,20 @@ export function BrandingHeroSection({ id, variant = "primary" }: BrandingHeroSec
         </div>
       </div>
     </section>
+  );
+
+  if (!stacked) {
+    return section;
+  }
+
+  return (
+    <div className="hero-compare-block">
+      {compareLabel ? (
+        <div className="hero-compare-label">
+          <p className="hero-compare-label__text">{compareLabel}</p>
+        </div>
+      ) : null}
+      {section}
+    </div>
   );
 }

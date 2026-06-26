@@ -582,6 +582,10 @@
   .hero--branding-primary .hero-cta-row--paired .btn--big.btn--pill {
     font-size: clamp(13px, 0.75rem + 0.45vw, 15px);
   }
+
+  .hero--branding .hero-cta-row {
+    margin-top: calc(1.5rem - 15px);
+  }
 }
 
 @media (min-width: 992px) {
@@ -655,6 +659,111 @@
     content: " ";
     white-space: pre;
   }
+}
+
+.hero-eyebrow--lime {
+  color: var(--eb-lime);
+}
+
+.hero-checked-subheadline {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.5rem 0.875rem;
+  margin: 0 0 1.25rem;
+  padding: 0;
+  border: 0;
+  font-family: var(--font-eb-body), "Nunito Sans", sans-serif;
+  font-size: clamp(1rem, 2vw, 1.125rem);
+  font-weight: 700;
+  line-height: 1.4;
+  letter-spacing: 0.01em;
+}
+
+.hero-checked-subheadline__item {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.3rem;
+  white-space: nowrap;
+}
+
+.hero-checked-subheadline__item::before {
+  content: "✓";
+  flex-shrink: 0;
+  font-size: 0.95em;
+  font-weight: 800;
+  line-height: 1;
+}
+
+.hero-checked-subheadline--check-lime .hero-checked-subheadline__item::before {
+  color: var(--eb-lime);
+}
+
+.hero-checked-subheadline--text-white .hero-checked-subheadline__item {
+  color: var(--eb-white);
+}
+
+.hero-checked-subheadline--straight-check-md .hero-checked-subheadline__item {
+  align-items: baseline;
+  gap: 0.45rem;
+}
+
+.hero-checked-subheadline--straight-check-md .hero-checked-subheadline__item::before {
+  content: "";
+  flex-shrink: 0;
+  display: block;
+  box-sizing: border-box;
+  position: relative;
+  top: calc(0.14em - 4px);
+  width: 0.505em;
+  height: 0.895em;
+  margin: 0;
+  border-right: 2.625px solid var(--eb-lime);
+  border-bottom: 2.625px solid var(--eb-lime);
+  transform: rotate(45deg);
+  transform-origin: 50% 50%;
+  font-weight: normal;
+}
+
+@media (min-width: 992px) {
+  .hero-checked-subheadline--straight-check-md .hero-checked-subheadline__item {
+    gap: 0.5rem;
+  }
+
+  .hero-checked-subheadline--straight-check-md .hero-checked-subheadline__item::before {
+    top: calc(0.16em - 4px);
+    width: 0.545em;
+    height: 0.945em;
+    border-right-width: 3.125px;
+    border-bottom-width: 3.125px;
+  }
+}
+
+.hero--branding-benefits .hero-checked-subheadline {
+  font-size: clamp(0.9375rem, 1.85vw, 1.0625rem);
+  font-weight: 800;
+  line-height: 1.35;
+  letter-spacing: 0;
+}
+
+.hero--branding-benefits .hero-checked-subheadline__item {
+  color: #adb5bd;
+}
+
+@media (min-width: 992px) {
+  .hero--branding-benefits .hero-checked-subheadline {
+    font-size: 1.0625rem;
+  }
+}
+
+.hero--branding-benefits .hero-copy .hero-lead {
+  color: #fff;
+  font-weight: 500;
+}
+
+.hero--branding-benefits .hero-copy .hero-lead--emphasis {
+  color: #fff;
+  font-weight: 800;
 }
 
 .hero--branding .hero-content {

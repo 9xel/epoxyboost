@@ -13,6 +13,7 @@ type EpoxyBoostLandingPageProps = {
   hero: ReactNode;
   showServicesSection?: boolean;
   showClaimFormSection?: boolean;
+  sandboxNotice?: ReactNode;
 };
 
 export function EpoxyBoostLandingPage({
@@ -21,6 +22,7 @@ export function EpoxyBoostLandingPage({
   hero,
   showServicesSection = false,
   showClaimFormSection = false,
+  sandboxNotice,
 }: EpoxyBoostLandingPageProps) {
   return (
     <>
@@ -28,6 +30,7 @@ export function EpoxyBoostLandingPage({
         showCallTextSplit={showCallTextSplit}
         ctaLabel={ctaLabel}
         ctaHref="#waitlist"
+        sandboxNotice={sandboxNotice}
       />
       <main id="main-content">
         {hero}

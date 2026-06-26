@@ -1,3 +1,4 @@
+import type { ReactNode } from "react";
 import Link from "next/link";
 import { siteContactPhone } from "../../../lib/site";
 import { IMG } from "../data";
@@ -11,14 +12,19 @@ export function SiteHeader({
   showCta = true,
   ctaLabel = "Join Our Waitlist",
   ctaHref = "#waitlist",
+  sandboxNotice,
 }: {
   showCallTextSplit?: boolean;
   showCta?: boolean;
   ctaLabel?: string;
   ctaHref?: string;
+  sandboxNotice?: ReactNode;
 }) {
   return (
-    <header id="eb-site-header" className="eb-header">
+    <header
+      id="eb-site-header"
+      className={`eb-header${sandboxNotice ? " eb-header--sandbox" : ""}`}
+    >
       <nav id="main-nav" className="eb-main-nav" aria-label="Main Navigation">
         <Link href="/" className="eb-main-nav__logo shrink-0">
           <SiteImg
@@ -32,6 +38,12 @@ export function SiteHeader({
             className="h-auto w-[140px] xl:w-[156px] brightness-0 invert"
           />
         </Link>
+
+        {sandboxNotice ? (
+          <div className="eb-header__sandbox-notice" role="status">
+            {sandboxNotice}
+          </div>
+        ) : null}
 
         <div className="eb-main-nav__actions">
           {showCallTextSplit ? (
