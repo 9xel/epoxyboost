@@ -18,6 +18,7 @@ export default function HomePage() {
               items={HERO_BENEFITS}
               style="straight-check-md"
               textColor="white"
+              fitOneLine
             />
           }
         />

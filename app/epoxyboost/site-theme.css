@@ -756,6 +756,16 @@
   }
 }
 
+.hero-checked-subheadline--fit-one-line {
+  flex-wrap: nowrap;
+}
+
+@media (max-width: 991px) {
+  .hero--branding-primary .hero-copy > .hero-lead:first-child {
+    text-wrap: pretty;
+  }
+}
+
 .hero--branding-benefits .hero-copy .hero-lead {
   color: #fff;
   font-weight: 500;
