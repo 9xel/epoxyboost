@@ -653,12 +653,14 @@
 }
 
 .hc-footer__legal-brand,
+.hc-footer__legal-ownership,
 .hc-footer__legal-links {
   margin: 0;
   line-height: 1.4;
   color: var(--eb-muted);
 }
 
+.hc-footer__legal-ownership a,
 .hc-footer__legal-links a {
   color: inherit;
   text-decoration: underline;
@@ -667,6 +669,7 @@
   transition: color 0.2s ease, text-decoration-color 0.2s ease;
 }
 
+.hc-footer__legal-ownership a:hover,
 .hc-footer__legal-links a:hover {
   color: color-mix(in srgb, var(--eb-muted) 75%, white);
   text-decoration-color: color-mix(in srgb, var(--eb-muted) 85%, transparent);
@@ -735,6 +738,7 @@
   color: var(--eb-lime);
 }
 
+.hc-footer .hc-footer__legal-ownership a,
 .hc-footer .hc-footer__legal-links a {
   color: var(--eb-muted);
   text-decoration: underline;
@@ -742,6 +746,7 @@
   text-underline-offset: 2px;
 }
 
+.hc-footer .hc-footer__legal-ownership a:hover,
 .hc-footer .hc-footer__legal-links a:hover {
   color: color-mix(in srgb, var(--eb-muted) 75%, white);
   text-decoration-color: color-mix(in srgb, var(--eb-muted) 85%, transparent);
@@ -763,7 +768,7 @@
 }
 
 .eb-page--high-contrast .hc-post-hero
-  :is(p, li, .hc-body, .hc-body--bright):not(.hc-footer__legal-brand):not(.hc-footer__legal-links) {
+  :is(p, li, .hc-body, .hc-body--bright):not(.hc-footer__legal-brand):not(.hc-footer__legal-ownership):not(.hc-footer__legal-links) {
   color: var(--eb-white) !important;
 }
 
@@ -984,6 +989,8 @@
 /* Footer legal — must stay muted grey; excluded from post-hero white text */
 .eb-page--high-contrast .hc-footer--minimal .hc-footer__legal-copy,
 .eb-page--high-contrast .hc-footer--minimal .hc-footer__legal-brand,
+.eb-page--high-contrast .hc-footer--minimal .hc-footer__legal-ownership,
+.eb-page--high-contrast .hc-footer--minimal .hc-footer__legal-ownership a,
 .eb-page--high-contrast .hc-footer--minimal .hc-footer__legal-links,
 .eb-page--high-contrast .hc-footer--minimal .hc-footer__legal-links a {
   color: var(--eb-muted) !important;

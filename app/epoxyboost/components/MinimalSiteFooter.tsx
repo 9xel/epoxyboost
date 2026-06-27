@@ -28,6 +28,17 @@ export function MinimalSiteFooter() {
         </address>
         <div className="hc-footer__legal-copy">
           <p className="hc-footer__legal-brand !text-[var(--eb-muted)]">&copy; 2026 EpoxyBoost</p>
+          <p className="hc-footer__legal-ownership !text-[var(--eb-muted)]">
+            EpoxyBoost is owned and operated by{" "}
+            <a
+              href="https://uppercaseholdings.com"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              UPPERCASE HOLDINGS LLC
+            </a>
+            .
+          </p>
           <p className="hc-footer__legal-links !text-[var(--eb-muted)]">
             <a href="/privacy-policy" className="!text-[var(--eb-muted)]">
               Privacy Policy
