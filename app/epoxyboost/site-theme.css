@@ -1453,7 +1453,7 @@
   color: var(--eb-lime);
   background: rgba(212, 253, 82, 0.08);
   border: 1px solid rgba(212, 253, 82, 0.45);
-  border-radius: 999px;
+  border-radius: 6px;
 }
 
 .hero-form-card--premium-tight .hero-form-card__heading {
@@ -1518,6 +1518,10 @@
 .hero-form-card--premium-tight-compact .hero-form-card__heading {
   font-size: clamp(1.125rem, 1.85vw, 1.375rem);
   margin-bottom: 0.3125rem;
+}
+
+.hero-form-card--premium-tight-compact .hero-form-card__badge {
+  margin-bottom: calc(0.75rem + 5px);
 }
 
 .hero-form-card--premium-tight-compact .hero-form-card__subheading {
