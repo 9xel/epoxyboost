@@ -12,9 +12,9 @@
  *
  * Deploy: Execute as Me · Who has access: Anyone
  * After editing: Deploy → Manage deployments → Edit → New version → Deploy
+ *
+ * Email alerts are sent by the Next.js API via Resend (not MailApp).
  */
-
-const NOTIFY_EMAILS = ["consulting@vxinc.us"];
 
 const SERVICE_LABELS = {
   "website-seo": "Website + SEO",
@@ -63,8 +63,6 @@ function doPost(e) {
 
     const nextRow = getNextSubmissionRow_(sheet);
     sheet.getRange(nextRow, 1, 1, rowValues.length).setValues([rowValues]);
-
-    sendNotificationEmails_(body, services);
 
     return jsonResponse_({ ok: true });
   } catch (error) {
@@ -131,56 +129,6 @@ function getNextSubmissionRow_(sheet) {
   }
 
   return lastDataRow + 1;
-}
-
-function sendNotificationEmails_(body, services) {
-  const serviceSummary = formatServiceType_(services, body.services_other);
-  const subject = "New EpoxyBoost Waitlist Signup: " + (body.name || "Unknown");
-  const htmlBody =
-    "<h2>New waitlist submission</h2>" +
-    "<p><strong>Name:</strong> " + escapeHtml_(body.name) + "</p>" +
-    "<p><strong>Phone:</strong> " + escapeHtml_(body.phone) + "</p>" +
-    "<p><strong>Email:</strong> " + escapeHtml_(body.email) + "</p>" +
-    "<p><strong>Company:</strong> " + escapeHtml_(body.company) + "</p>" +
-    "<p><strong>Main Service Area:</strong> " + escapeHtml_(body.city) + "</p>" +
-    "<p><strong>Services:</strong> " + escapeHtml_(serviceSummary) + "</p>" +
-    (body.services_other
-      ? "<p><strong>Services Other:</strong> " + escapeHtml_(body.services_other) + "</p>"
-      : "") +
-    "<p><strong>Consent At:</strong> " + escapeHtml_(body.consent_at) + "</p>";
-
-  NOTIFY_EMAILS.forEach(function (email) {
-    MailApp.sendEmail({
-      to: email,
-      subject: subject,
-      htmlBody: htmlBody,
-    });
-  });
-}
-
-function formatServiceType_(services, servicesOther) {
-  const list = Array.isArray(services) ? services : [];
-  const labels = list
-    .filter(function (value) {
-      return value !== "other";
-    })
-    .map(function (value) {
-      return SERVICE_LABELS[value] || value;
-    });
-
-  if (list.indexOf("other") !== -1 && servicesOther) {
-    labels.push("Other: " + servicesOther);
-  }
-
-  return labels.join(", ");
-}
-
-function escapeHtml_(value) {
-  return String(value || "")
-    .replace(/&/g, "&amp;")
-    .replace(/</g, "&lt;")
-    .replace(/>/g, "&gt;")
-    .replace(/"/g, "&quot;");
 }
 
 function jsonResponse_(payload) {

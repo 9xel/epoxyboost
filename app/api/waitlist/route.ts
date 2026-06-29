@@ -3,6 +3,7 @@ import { NextResponse } from "next/server";
 import { isValidEmail } from "../../../lib/email";
 import { isValidUsPhone } from "../../../lib/phone";
 import { isTurnstileConfigured, verifyTurnstileToken } from "../../../lib/turnstile";
+import { sendWaitlistNotificationEmail } from "../../../lib/waitlist-notification";
 
 const WAITLIST_FORM_URL = process.env.WAITLIST_FORM_URL;
 
@@ -117,6 +118,21 @@ export async function POST(request: Request) {
         { ok: false, message: result.message || "Failed to save waitlist signup." },
         { status: 400 },
       );
+    }
+
+    try {
+      await sendWaitlistNotificationEmail({
+        name: body.name,
+        email: body.email,
+        phone: body.phone,
+        company: body.company,
+        city: body.city,
+        services: body.services,
+        services_other: body.services_other,
+        consent_at: body.consent_at,
+      });
+    } catch (error) {
+      console.error("Waitlist notification email failed:", error);
     }
 
     return NextResponse.json(result);
