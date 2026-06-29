@@ -2,7 +2,7 @@
 
 import { Turnstile, type TurnstileInstance } from "@marsidev/react-turnstile";
 import { useRouter } from "next/navigation";
-import { type FormEvent, useRef, useState } from "react";
+import { type FormEvent, useEffect, useRef, useState } from "react";
 
 import { pushWaitlistFormSubmitEvent } from "../../../lib/analytics";
 import {
@@ -70,6 +70,7 @@ const cardClassName =
 const turnstileSiteKey = process.env.NEXT_PUBLIC_TURNSTILE_SITE_KEY;
 
 type FormStatus = "idle" | "submitting" | "error";
+type SubmitPhase = "idle" | "verifying" | "submitting";
 
 function getValidationError(invalidFields: Set<FormFieldName>): string {
   if (invalidFields.has("name")) return "Please enter your name.";
@@ -118,10 +119,14 @@ type WaitlistPayload = {
 export function HeroLaunchForm() {
   const router = useRouter();
   const [status, setStatus] = useState<FormStatus>("idle");
+  const [submitPhase, setSubmitPhase] = useState<SubmitPhase>("idle");
+  const [turnstileMountKey, setTurnstileMountKey] = useState(0);
   const [errorMessage, setErrorMessage] = useState("");
   const [invalidFields, setInvalidFields] = useState<Set<FormFieldName>>(new Set());
   const phoneRef = useRef<HTMLInputElement>(null);
   const turnstileRef = useRef<TurnstileInstance>(null);
+  const pendingPayloadRef = useRef<WaitlistPayload | null>(null);
+  const verificationStartedRef = useRef(false);
 
   function clearInvalidField(field: FormFieldName) {
     setInvalidFields((current) => {
@@ -162,20 +167,82 @@ export function HeroLaunchForm() {
     return invalid;
   }
 
-  async function getTurnstileToken(): Promise<string | undefined> {
-    if (!turnstileSiteKey || !turnstileRef.current) {
-      return undefined;
-    }
-
-    const existingToken = turnstileRef.current.getResponse();
-    if (existingToken) {
-      return existingToken;
-    }
-
-    turnstileRef.current.reset();
-    turnstileRef.current.execute();
-    return turnstileRef.current.getResponsePromise();
+  function resetSubmissionState() {
+    setSubmitPhase("idle");
+    pendingPayloadRef.current = null;
+    verificationStartedRef.current = false;
+    turnstileRef.current?.reset();
   }
+
+  function handleSubmissionError(error: unknown) {
+    const message =
+      error instanceof Error ? error.message : "Something went wrong. Please try again.";
+    const serverInvalidFields = mapServerErrorToFields(message);
+
+    setInvalidFields(serverInvalidFields);
+    setStatus("error");
+    setErrorMessage(message);
+    resetSubmissionState();
+    setTurnstileMountKey((current) => current + 1);
+  }
+
+  async function submitWaitlist(payload: WaitlistPayload, turnstileToken?: string) {
+    const response = await fetch("/api/waitlist", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({
+        ...payload,
+        ...(turnstileToken ? { turnstile_token: turnstileToken } : {}),
+      }),
+    });
+
+    const result = (await response.json()) as { ok?: boolean; message?: string };
+
+    if (!response.ok || !result.ok) {
+      throw new Error(result.message || "Something went wrong. Please try again.");
+    }
+
+    await pushWaitlistFormSubmitEvent();
+    router.push("/waitlist/thank-you");
+  }
+
+  async function beginTurnstileVerification() {
+    if (!turnstileRef.current || verificationStartedRef.current) {
+      return;
+    }
+
+    verificationStartedRef.current = true;
+
+    try {
+      const turnstileToken = await turnstileRef.current.getResponsePromise();
+      if (!turnstileToken) {
+        throw new Error("Security check failed. Please try again.");
+      }
+
+      const payload = pendingPayloadRef.current;
+      if (!payload) {
+        throw new Error("Something went wrong. Please try again.");
+      }
+
+      setSubmitPhase("submitting");
+      await submitWaitlist(payload, turnstileToken);
+    } catch (error) {
+      handleSubmissionError(error);
+    }
+  }
+
+  useEffect(() => {
+    if (submitPhase === "idle") {
+      return;
+    }
+
+    const previousOverflow = document.body.style.overflow;
+    document.body.style.overflow = "hidden";
+
+    return () => {
+      document.body.style.overflow = previousOverflow;
+    };
+  }, [submitPhase]);
 
   async function handleSubmit(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
@@ -209,42 +276,20 @@ export function HeroLaunchForm() {
     };
 
     setStatus("submitting");
+    pendingPayloadRef.current = payload;
+    verificationStartedRef.current = false;
+
+    if (turnstileSiteKey) {
+      setTurnstileMountKey((current) => current + 1);
+      setSubmitPhase("verifying");
+      return;
+    }
 
     try {
-      let turnstileToken: string | undefined;
-      if (turnstileSiteKey) {
-        turnstileToken = await getTurnstileToken();
-        if (!turnstileToken) {
-          throw new Error("Please complete the security check before submitting.");
-        }
-      }
-
-      const response = await fetch("/api/waitlist", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
-          ...payload,
-          ...(turnstileToken ? { turnstile_token: turnstileToken } : {}),
-        }),
-      });
-
-      const result = (await response.json()) as { ok?: boolean; message?: string };
-
-      if (!response.ok || !result.ok) {
-        throw new Error(result.message || "Something went wrong. Please try again.");
-      }
-
-      await pushWaitlistFormSubmitEvent();
-      router.push("/waitlist/thank-you");
+      setSubmitPhase("submitting");
+      await submitWaitlist(payload);
     } catch (error) {
-      const message =
-        error instanceof Error ? error.message : "Something went wrong. Please try again.";
-      const serverInvalidFields = mapServerErrorToFields(message);
-
-      setInvalidFields(serverInvalidFields);
-      setStatus("error");
-      setErrorMessage(message);
-      turnstileRef.current?.reset();
+      handleSubmissionError(error);
     }
   }
 
@@ -254,7 +299,10 @@ export function HeroLaunchForm() {
     clearInvalidField("phone");
   }
 
+  const showSubmitOverlay = submitPhase !== "idle";
+
   return (
+    <>
     <aside className={cardClassName}>
       <p className="hero-form-card__badge">WAITLIST</p>
       <h2 id="hero-form-heading" className="hero-form-card__heading">
@@ -358,18 +406,6 @@ export function HeroLaunchForm() {
             </span>
           </label>
         </div>
-        {turnstileSiteKey ? (
-          <Turnstile
-            ref={turnstileRef}
-            siteKey={turnstileSiteKey}
-            className="hero-form__turnstile hero-form__turnstile--invisible"
-            options={{
-              size: "invisible",
-              appearance: "interaction-only",
-              execution: "execute",
-            }}
-          />
-        ) : null}
         {status === "error" ? (
           <p className="hero-form__error" role="alert">
             {errorMessage}
@@ -387,5 +423,52 @@ export function HeroLaunchForm() {
         </p>
       </form>
     </aside>
+    {showSubmitOverlay ? (
+      <div
+        className="hero-form-verification"
+        role="dialog"
+        aria-modal="true"
+        aria-labelledby="hero-form-verification-title"
+        aria-busy={submitPhase === "submitting"}
+      >
+        <div className="hero-form-verification__backdrop" aria-hidden="true" />
+        <div className="hero-form-verification__panel">
+          {submitPhase === "verifying" && turnstileSiteKey ? (
+            <>
+              <p id="hero-form-verification-title" className="hero-form-verification__eyebrow">
+                Security check
+              </p>
+              <div className="hero-form-verification__turnstile">
+                <Turnstile
+                  key={turnstileMountKey}
+                  ref={turnstileRef}
+                  siteKey={turnstileSiteKey}
+                  onWidgetLoad={beginTurnstileVerification}
+                  onError={() =>
+                    handleSubmissionError(new Error("Security check failed. Please try again."))
+                  }
+                  options={{
+                    size: "normal",
+                    appearance: "always",
+                    theme: "light",
+                  }}
+                />
+              </div>
+            </>
+          ) : (
+            <>
+              <div className="hero-form-verification__spinner" aria-hidden="true" />
+              <p id="hero-form-verification-title" className="hero-form-verification__title">
+                Submitting your request
+              </p>
+              <p className="hero-form-verification__message">
+                Hang tight — we&apos;re saving your spot on the waitlist.
+              </p>
+            </>
+          )}
+        </div>
+      </div>
+    ) : null}
+    </>
   );
 }
