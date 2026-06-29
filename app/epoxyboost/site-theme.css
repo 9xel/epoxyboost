@@ -1702,34 +1702,6 @@
   color: rgba(255, 255, 255, 0.72);
 }
 
-.hero-form-verification__turnstile-frame {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  gap: 1rem;
-  min-height: 7.5rem;
-  padding: 1.25rem 1.5rem;
-  border-radius: 12px;
-  background: #141416;
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.35);
-}
-
-.hero-form-verification__turnstile {
-  display: flex;
-  justify-content: center;
-}
-
-.hero-form-verification__turnstile--loading {
-  position: absolute;
-  width: 1px;
-  height: 1px;
-  overflow: hidden;
-  clip: rect(0, 0, 0, 0);
-  white-space: nowrap;
-}
-
 .hero-form-verification__spinner {
   width: 2rem;
   height: 2rem;
