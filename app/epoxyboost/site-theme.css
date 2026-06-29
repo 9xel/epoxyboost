@@ -1633,13 +1633,6 @@
   text-decoration-color: currentColor;
 }
 
-.hero-form__turnstile {
-  display: flex;
-  justify-content: center;
-  margin-top: 0.25rem;
-  min-height: 65px;
-}
-
 .hero-form__turnstile--invisible {
   position: absolute;
   width: 1px;

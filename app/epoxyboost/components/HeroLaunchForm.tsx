@@ -172,6 +172,8 @@ export function HeroLaunchForm() {
       return existingToken;
     }
 
+    turnstileRef.current.reset();
+    turnstileRef.current.execute();
     return turnstileRef.current.getResponsePromise();
   }
 
@@ -357,17 +359,16 @@ export function HeroLaunchForm() {
           </label>
         </div>
         {turnstileSiteKey ? (
-          <div className="hero-form__turnstile">
-            <Turnstile
-              ref={turnstileRef}
-              siteKey={turnstileSiteKey}
-              options={{
-                size: "normal",
-                appearance: "always",
-                theme: "dark",
-              }}
-            />
-          </div>
+          <Turnstile
+            ref={turnstileRef}
+            siteKey={turnstileSiteKey}
+            className="hero-form__turnstile hero-form__turnstile--invisible"
+            options={{
+              size: "invisible",
+              appearance: "interaction-only",
+              execution: "execute",
+            }}
+          />
         ) : null}
         {status === "error" ? (
           <p className="hero-form__error" role="alert">
