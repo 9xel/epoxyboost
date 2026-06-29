@@ -217,14 +217,15 @@ export function HeroLaunchForm() {
     verificationStartedRef.current = true;
 
     try {
-      const turnstileToken = await turnstileRef.current.getResponsePromise();
-      if (!turnstileToken) {
-        throw new Error("Security check failed. Please try again.");
-      }
-
       const payload = pendingPayloadRef.current;
       if (!payload) {
         throw new Error("Something went wrong. Please try again.");
+      }
+
+      const existingToken = turnstileRef.current.getResponse();
+      const turnstileToken = existingToken || (await turnstileRef.current.getResponsePromise());
+      if (!turnstileToken) {
+        throw new Error("Security check failed. Please try again.");
       }
 
       setSubmitPhase("submitting");
@@ -262,7 +263,6 @@ export function HeroLaunchForm() {
       return;
     }
 
-    turnstileRef.current?.reset();
     void beginTurnstileVerification();
   }, [submitPhase, turnstileWidgetReady, turnstileSiteKey]);
 
@@ -489,7 +489,7 @@ export function HeroLaunchForm() {
               </p>
             </>
           ) : (
-            <>
+            <div className="hero-form-verification__turnstile-frame">
               {!turnstileWidgetReady ? (
                 <div className="hero-form-verification__spinner" aria-hidden="true" />
               ) : null}
@@ -515,7 +515,7 @@ export function HeroLaunchForm() {
                   }}
                 />
               </div>
-            </>
+            </div>
           )}
         </div>
       </div>
