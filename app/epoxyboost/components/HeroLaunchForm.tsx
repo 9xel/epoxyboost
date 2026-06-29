@@ -121,6 +121,7 @@ export function HeroLaunchForm() {
   const [status, setStatus] = useState<FormStatus>("idle");
   const [submitPhase, setSubmitPhase] = useState<SubmitPhase>("idle");
   const [turnstileMountKey, setTurnstileMountKey] = useState(0);
+  const [turnstileWidgetReady, setTurnstileWidgetReady] = useState(false);
   const [errorMessage, setErrorMessage] = useState("");
   const [invalidFields, setInvalidFields] = useState<Set<FormFieldName>>(new Set());
   const phoneRef = useRef<HTMLInputElement>(null);
@@ -169,6 +170,7 @@ export function HeroLaunchForm() {
 
   function resetSubmissionState() {
     setSubmitPhase("idle");
+    setTurnstileWidgetReady(false);
     pendingPayloadRef.current = null;
     verificationStartedRef.current = false;
     turnstileRef.current?.reset();
@@ -225,10 +227,16 @@ export function HeroLaunchForm() {
       }
 
       setSubmitPhase("submitting");
+      setTurnstileWidgetReady(false);
       await submitWaitlist(payload, turnstileToken);
     } catch (error) {
       handleSubmissionError(error);
     }
+  }
+
+  function handleTurnstileWidgetLoad() {
+    setTurnstileWidgetReady(true);
+    void beginTurnstileVerification();
   }
 
   useEffect(() => {
@@ -280,6 +288,7 @@ export function HeroLaunchForm() {
     verificationStartedRef.current = false;
 
     if (turnstileSiteKey) {
+      setTurnstileWidgetReady(false);
       setTurnstileMountKey((current) => current + 1);
       setSubmitPhase("verifying");
       return;
@@ -428,29 +437,36 @@ export function HeroLaunchForm() {
         className="hero-form-verification"
         role="dialog"
         aria-modal="true"
-        aria-labelledby="hero-form-verification-title"
+        aria-labelledby={submitPhase === "submitting" ? "hero-form-verification-title" : undefined}
+        aria-label={submitPhase === "verifying" ? "Cloudflare security verification" : undefined}
         aria-busy={submitPhase === "submitting"}
       >
         <div className="hero-form-verification__backdrop" aria-hidden="true" />
-        <div className="hero-form-verification__panel">
+        <div className="hero-form-verification__content">
           {submitPhase === "verifying" && turnstileSiteKey ? (
             <>
-              <p id="hero-form-verification-title" className="hero-form-verification__eyebrow">
-                Security check
-              </p>
-              <div className="hero-form-verification__turnstile">
+              {!turnstileWidgetReady ? (
+                <div className="hero-form-verification__spinner" aria-hidden="true" />
+              ) : null}
+              <div
+                className={
+                  turnstileWidgetReady
+                    ? "hero-form-verification__turnstile"
+                    : "hero-form-verification__turnstile hero-form-verification__turnstile--loading"
+                }
+              >
                 <Turnstile
                   key={turnstileMountKey}
                   ref={turnstileRef}
                   siteKey={turnstileSiteKey}
-                  onWidgetLoad={beginTurnstileVerification}
+                  onWidgetLoad={handleTurnstileWidgetLoad}
                   onError={() =>
                     handleSubmissionError(new Error("Security check failed. Please try again."))
                   }
                   options={{
                     size: "normal",
                     appearance: "always",
-                    theme: "light",
+                    theme: "dark",
                   }}
                 />
               </div>
