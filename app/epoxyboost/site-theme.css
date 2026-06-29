@@ -1643,6 +1643,30 @@
   padding: 1.5rem;
 }
 
+.hero-form-verification--dormant {
+  visibility: hidden;
+  pointer-events: none;
+}
+
+.hero-form-verification--active {
+  visibility: visible;
+  pointer-events: auto;
+}
+
+.hero-form-verification--active .hero-form-verification__backdrop {
+  animation: hero-form-verification-fade-in 0.12s ease;
+}
+
+@keyframes hero-form-verification-fade-in {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
 .hero-form-verification__backdrop {
   position: absolute;
   inset: 0;

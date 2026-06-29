@@ -3,6 +3,7 @@
 import { Turnstile, type TurnstileInstance } from "@marsidev/react-turnstile";
 import { useRouter } from "next/navigation";
 import { type FormEvent, useEffect, useRef, useState } from "react";
+import { flushSync } from "react-dom";
 
 import { pushWaitlistFormSubmitEvent } from "../../../lib/analytics";
 import {
@@ -170,7 +171,6 @@ export function HeroLaunchForm() {
 
   function resetSubmissionState() {
     setSubmitPhase("idle");
-    setTurnstileWidgetReady(false);
     pendingPayloadRef.current = null;
     verificationStartedRef.current = false;
     turnstileRef.current?.reset();
@@ -185,6 +185,7 @@ export function HeroLaunchForm() {
     setStatus("error");
     setErrorMessage(message);
     resetSubmissionState();
+    setTurnstileWidgetReady(false);
     setTurnstileMountKey((current) => current + 1);
   }
 
@@ -227,7 +228,6 @@ export function HeroLaunchForm() {
       }
 
       setSubmitPhase("submitting");
-      setTurnstileWidgetReady(false);
       await submitWaitlist(payload, turnstileToken);
     } catch (error) {
       handleSubmissionError(error);
@@ -236,8 +236,35 @@ export function HeroLaunchForm() {
 
   function handleTurnstileWidgetLoad() {
     setTurnstileWidgetReady(true);
-    void beginTurnstileVerification();
   }
+
+  useEffect(() => {
+    if (!turnstileSiteKey) {
+      return;
+    }
+
+    const link = document.createElement("link");
+    link.rel = "preconnect";
+    link.href = "https://challenges.cloudflare.com";
+    document.head.appendChild(link);
+
+    return () => {
+      link.remove();
+    };
+  }, []);
+
+  useEffect(() => {
+    if (submitPhase !== "verifying" || !turnstileSiteKey || !turnstileWidgetReady) {
+      return;
+    }
+
+    if (verificationStartedRef.current) {
+      return;
+    }
+
+    turnstileRef.current?.reset();
+    void beginTurnstileVerification();
+  }, [submitPhase, turnstileWidgetReady, turnstileSiteKey]);
 
   useEffect(() => {
     if (submitPhase === "idle") {
@@ -283,19 +310,23 @@ export function HeroLaunchForm() {
       consent_text: WAITLIST_CONTACT_CONSENT_TEXT,
     };
 
-    setStatus("submitting");
     pendingPayloadRef.current = payload;
     verificationStartedRef.current = false;
 
     if (turnstileSiteKey) {
-      setTurnstileWidgetReady(false);
-      setTurnstileMountKey((current) => current + 1);
-      setSubmitPhase("verifying");
+      flushSync(() => {
+        setStatus("submitting");
+        setSubmitPhase("verifying");
+      });
       return;
     }
 
-    try {
+    flushSync(() => {
+      setStatus("submitting");
       setSubmitPhase("submitting");
+    });
+
+    try {
       await submitWaitlist(payload);
     } catch (error) {
       handleSubmissionError(error);
@@ -309,6 +340,9 @@ export function HeroLaunchForm() {
   }
 
   const showSubmitOverlay = submitPhase !== "idle";
+  const turnstileOverlayClassName = showSubmitOverlay
+    ? "hero-form-verification hero-form-verification--active"
+    : "hero-form-verification hero-form-verification--dormant";
 
   return (
     <>
@@ -432,18 +466,29 @@ export function HeroLaunchForm() {
         </p>
       </form>
     </aside>
-    {showSubmitOverlay ? (
+    {turnstileSiteKey ? (
       <div
-        className="hero-form-verification"
+        className={turnstileOverlayClassName}
         role="dialog"
-        aria-modal="true"
+        aria-modal={showSubmitOverlay}
+        aria-hidden={!showSubmitOverlay}
         aria-labelledby={submitPhase === "submitting" ? "hero-form-verification-title" : undefined}
         aria-label={submitPhase === "verifying" ? "Cloudflare security verification" : undefined}
         aria-busy={submitPhase === "submitting"}
       >
         <div className="hero-form-verification__backdrop" aria-hidden="true" />
         <div className="hero-form-verification__content">
-          {submitPhase === "verifying" && turnstileSiteKey ? (
+          {submitPhase === "submitting" ? (
+            <>
+              <div className="hero-form-verification__spinner" aria-hidden="true" />
+              <p id="hero-form-verification-title" className="hero-form-verification__title">
+                Submitting your request
+              </p>
+              <p className="hero-form-verification__message">
+                Hang tight — we&apos;re saving your spot on the waitlist.
+              </p>
+            </>
+          ) : (
             <>
               {!turnstileWidgetReady ? (
                 <div className="hero-form-verification__spinner" aria-hidden="true" />
@@ -471,17 +516,26 @@ export function HeroLaunchForm() {
                 />
               </div>
             </>
-          ) : (
-            <>
-              <div className="hero-form-verification__spinner" aria-hidden="true" />
-              <p id="hero-form-verification-title" className="hero-form-verification__title">
-                Submitting your request
-              </p>
-              <p className="hero-form-verification__message">
-                Hang tight — we&apos;re saving your spot on the waitlist.
-              </p>
-            </>
           )}
+        </div>
+      </div>
+    ) : showSubmitOverlay ? (
+      <div
+        className="hero-form-verification hero-form-verification--active"
+        role="dialog"
+        aria-modal="true"
+        aria-labelledby="hero-form-verification-title"
+        aria-busy
+      >
+        <div className="hero-form-verification__backdrop" aria-hidden="true" />
+        <div className="hero-form-verification__content">
+          <div className="hero-form-verification__spinner" aria-hidden="true" />
+          <p id="hero-form-verification-title" className="hero-form-verification__title">
+            Submitting your request
+          </p>
+          <p className="hero-form-verification__message">
+            Hang tight — we&apos;re saving your spot on the waitlist.
+          </p>
         </div>
       </div>
     ) : null}
