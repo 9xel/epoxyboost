@@ -1,7 +1,6 @@
 import { PillDarkOutlineButton } from "./PillDarkOutlineButton";
 
-const cardClassName =
-  "hero-form-card hero-form-card--premium hero-form-card--premium-tight hero-form-card--premium-tight-fit hero-form-card--premium-tight-compact waitlist-thank-you__card";
+const cardClassName = "hero-form-card hero-form-card--premium waitlist-thank-you__card";
 
 export function WaitlistThankYouPageContent() {
   return (
@@ -22,13 +21,11 @@ export function WaitlistThankYouPageContent() {
         <div className="hc-container waitlist-thank-you__inner">
           <aside className={cardClassName}>
             <h2 className="hero-form-card__heading">What happens next?</h2>
-            <p className="hero-form-card__subheading">
-              Our team reviews every waitlist submission. If your epoxy business looks like a strong
-              fit, we&apos;ll contact you by phone, text, or email to talk through next steps.
-            </p>
             <ul className="waitlist-thank-you__steps">
               <li>We review your company, service area, and goals.</li>
-              <li>If there&apos;s a fit, we&apos;ll reach out to schedule a brief intro.</li>
+              <li>
+                If there&apos;s a fit, we&apos;ll contact you by phone, text, or email.
+              </li>
               <li>No payment is required to stay on the waitlist.</li>
             </ul>
             <div className="waitlist-thank-you__actions">

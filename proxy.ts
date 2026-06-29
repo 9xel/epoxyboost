@@ -6,6 +6,7 @@ const ALLOWED_PATHS = new Set([
   "/privacy-policy",
   "/waitlist/thank-you",
   "/dev/favicon-preview",
+  "/dev/social-header-preview",
   "/_unknown",
 ]);
 

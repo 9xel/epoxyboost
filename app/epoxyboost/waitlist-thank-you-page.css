@@ -46,29 +46,33 @@
 .waitlist-thank-you__card {
   width: 100%;
   max-width: 522px;
+  padding: 1.5rem 1.375rem;
+  --waitlist-step-text-inset: 1.25rem;
+}
+
+@media (min-width: 576px) {
+  .waitlist-thank-you__card {
+    padding: 1.625rem 1.75rem;
+  }
 }
 
 .waitlist-thank-you__card .hero-form-card__heading {
-  margin-bottom: 0.75rem;
-}
-
-.waitlist-thank-you__card .hero-form-card__subheading {
-  margin-bottom: 1.25rem;
+  margin-bottom: 0.875rem;
 }
 
 .waitlist-thank-you__steps {
-  margin: 0 0 1.5rem;
-  padding-left: 1.25rem;
+  margin: 0;
+  padding-left: var(--waitlist-step-text-inset);
   color: rgba(255, 255, 255, 0.86);
 }
 
 .waitlist-thank-you__steps li {
-  font-size: 0.9375rem;
+  font-size: 1rem;
   line-height: 1.65;
 }
 
 .waitlist-thank-you__steps li + li {
-  margin-top: 0.625rem;
+  margin-top: 0.5rem;
 }
 
 .waitlist-thank-you__steps li::marker {
@@ -77,14 +81,20 @@
 
 .waitlist-thank-you__actions {
   display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
   justify-content: center;
-  align-items: center;
-  gap: 0.75rem;
-  margin-top: 0.5rem;
+  position: relative;
+  margin-top: 1.25rem;
   padding-top: 1.25rem;
-  border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.waitlist-thank-you__actions::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: var(--waitlist-step-text-inset);
+  right: var(--waitlist-step-text-inset);
+  height: 1px;
+  background: rgba(255, 255, 255, 0.1);
 }
 
 .waitlist-thank-you__actions .btn--big {
@@ -105,7 +115,6 @@
   color: var(--eb-white);
 }
 
-.eb-page--high-contrast .waitlist-thank-you__card .hero-form-card__subheading,
 .eb-page--high-contrast .waitlist-thank-you__trust-line {
   color: rgba(255, 255, 255, 0.68);
 }
